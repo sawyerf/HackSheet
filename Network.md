@@ -12,7 +12,6 @@ NameHost                 ether   xx:xx:xx:xx:xx:xx   C                     INTRF
 ```
 
 ## Nmap
-### All
 ```
 nmap -A ip
 ```
@@ -24,7 +23,7 @@ sudo wireshark
 ```
 
 ### Tcpdump
-- Basic
+#### Basic
 ```
 sudo tcpdump -i any
 ```

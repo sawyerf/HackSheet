@@ -1,7 +1,7 @@
 # HackSheet
 
 ## Index
-- [General](/General.md)
-- [Network](/Network.md)
-- [Reverse Engineering](/ReverseEngineering.md)
-- [Web](/Web.md)
+- [General](/wiki/General.md)
+- [Network](/wiki/Network.md)
+- [Reverse Engineering](/wiki/ReverseEngineering.md)
+- [Web](/wiki/Web.md)

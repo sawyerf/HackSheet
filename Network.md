@@ -1,9 +1,8 @@
 # Network
 
-## Index
 - [LAN](#lan)
 - [Nmap](#nmap)
-- []()
+- [Packet](#packet)
 
 ## LAN
 ```
@@ -25,7 +24,7 @@ sudo wireshark
 ```
 
 ### Tcpdump
-#### Basic
+- Basic
 ```
 sudo tcpdump -i any
 ```
@@ -56,4 +55,3 @@ for packet in scapy_cap:
 			print(i, ':', packet[TCP].payload.load)
 	i += 1
 ```
-

@@ -1,5 +1,5 @@
 # Web
-## Index
+
 - [BruteForce Url](#bruteforce-url)
 - [PhpMyAdmin](#phpmyadmin)
 - [XML external entity (XXE)](#xml-external-entity-xxe)

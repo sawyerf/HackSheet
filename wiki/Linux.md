@@ -1,0 +1,6 @@
+# Linux
+
+## Sudo
+```
+sudo -l
+```

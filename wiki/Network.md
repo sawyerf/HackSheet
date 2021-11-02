@@ -41,7 +41,7 @@ sudo tcpdump -i any -w file.pcap
 ```
 
 ### Python
-```
+```python
 from scapy.all import *
 
 scapy_cap = rdpcap('file.pcap')

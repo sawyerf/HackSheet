@@ -37,3 +37,10 @@ python -c "import pwn; shell = pwn.asm(pwn.shellcraft.i386.linux.sh()); print(sh
 ```
 x/10s **(char***)&environ
 ```
+### Peda
+#### Install
+```
+git clone https://github.com/longld/peda.git ~/.peda
+echo "source ~/.peda/peda.py" >> ~/.gdbinit
+echo "DONE! debug your program with gdb and enjoy"
+```

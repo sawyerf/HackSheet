@@ -44,3 +44,18 @@ git clone https://github.com/longld/peda.git ~/.peda
 echo "source ~/.peda/peda.py" >> ~/.gdbinit
 echo "DONE! debug your program with gdb and enjoy"
 ```
+
+### Binary ninja
+#### Scrap code from html
+
+```javascript
+let result = '';
+[...document.querySelectorAll('.LinearDisassemblyLine')].forEach(parent_elmt => {
+  [...parent_elmt.children].forEach(children_elmt => {
+    result += children_elmt.textContent
+  });
+  result +=  '\n'
+});
+console.log(result);
+```
+

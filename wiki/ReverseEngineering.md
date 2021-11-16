@@ -59,3 +59,19 @@ let result = '';
 console.log(result);
 ```
 
+## Lib Injection
+- Recreate getuid function
+```C
+uid_t	getuid(void)
+{
+	return (4242);
+}
+```
+- compile
+```
+gcc -shared -fpic lib.c -o libnike.so -m32
+```
+- run and inject
+```
+LD_PRELOAD=./libnike.so ./exec
+```

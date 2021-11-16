@@ -4,6 +4,7 @@
 - [OverFlow](#overflow)
 - [Shellcode](#shellcode)
 - [Lib Injection](#lib-injection)
+- [Binary ninja](#binary-ninja)
 
 ## Overflow
 ### Basic
@@ -46,8 +47,8 @@ echo "source ~/.peda/peda.py" >> ~/.gdbinit
 echo "DONE! debug your program with gdb and enjoy"
 ```
 
-### Binary ninja
-#### Scrap code from html
+## Binary ninja
+### Scrap code from html
 
 ```javascript
 let result = '';

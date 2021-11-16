@@ -2,6 +2,7 @@
 
 ## Index
 - [General](/wiki/General.md)
+- [Crypto](/wiki/Crypto.md)
 - [Linux](/wiki/Linux.md)
 - [Network](/wiki/Network.md)
 - [Reverse Engineering](/wiki/ReverseEngineering.md)

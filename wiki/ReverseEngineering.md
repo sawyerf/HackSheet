@@ -3,6 +3,7 @@
 - [GCC](#gcc)
 - [OverFlow](#overflow)
 - [Shellcode](#shellcode)
+- [Lib Injection](#lib-injection)
 
 ## Overflow
 ### Basic

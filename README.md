@@ -7,3 +7,7 @@
 - [Network](/wiki/Network.md)
 - [Reverse Engineering](/wiki/ReverseEngineering.md)
 - [Web](/wiki/Web.md)
+
+## Liens Interressant
+- [HackTricks](https://book.hacktricks.xyz/)
+- [Boxentriq](https://www.boxentriq.com/code-breaking/cipher-identifier)

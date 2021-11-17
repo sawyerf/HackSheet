@@ -20,6 +20,9 @@ smbclient -U user -L //ip//
 rpcclient ip -U user -L -h
 ```
 
+### Source
+[Different Outils](https://www.hackingarticles.in/impacket-guide-smb-msrpc/)
+
 ## WinRM
 *Port: 5985*
 

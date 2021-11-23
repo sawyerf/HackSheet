@@ -32,3 +32,9 @@ john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt
 ```
+
+## Editor
+### Hexa
+```
+hexedit
+```

@@ -18,8 +18,26 @@ nmap -A ip
 
 ## Packet
 ### Wireshark
+#### Run
 ```
 sudo wireshark
+```
+#### Get all Files
+- File > Export Object > HTTP
+- Rigth Click On request > Follow > TCP
+
+#### Filters
+```
+smb || smb2 || http || tcp ||
+```
+```
+ip.src == 1.1.1.1 && ip.dst == 1.1.1.1 && tcp.port == 80
+```
+
+### TCPflow
+#### Export File of pcap
+```
+tcpflow -r capture.pcap
 ```
 
 ### Tcpdump

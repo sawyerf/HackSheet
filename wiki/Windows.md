@@ -3,6 +3,9 @@
 - [Samba](#samba)
 - [MSRPC](#msrpc)
 - [WinRM](#winrm)
+- [DMP File](#dmp-file)
+- [Exfiltration](#exfiltration)
+- [Virus](#virus)
 
 ## Samba
 *Port: 445*
@@ -30,3 +33,22 @@ rpcclient ip -U user -L -h
 ```
 evil-winrm -i ip -u user -p password
 ```
+
+## DMP File
+### Extract
+```
+Foremost file.dmp
+```
+
+## Exfiltration
+### Certificate
+```
+certutil -encode payload.dll payload.b64
+certutil -decode payload.b64 payload.dll
+```
+
+## Virus
+### Cobalt Strike
+- [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 1](https://blog.nviso.eu/2021/10/21/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-1/)
+- [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 2](https://blog.nviso.eu/2021/10/27/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-2/)
+- [Cobalt Strike: Using Process Memory To Decrypt Traffic – Part 3](https://blog.nviso.eu/2021/11/03/cobalt-strike-using-process-memory-to-decrypt-traffic-part-3/)

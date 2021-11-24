@@ -20,7 +20,7 @@ nc -lp 4444
 ```
 ### TTY Support
 ```
-python -c 'import pty; pty.spawn("/bin/bash")'
+python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
 ## Hash Bruteforce

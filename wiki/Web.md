@@ -63,6 +63,7 @@ mysql -h localhost -u myname -p
 ```
 sqlite3 database.sqlite3
 ```
+or open in vs code
 
 ### SQL Injection
 ```

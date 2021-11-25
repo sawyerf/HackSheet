@@ -1,6 +1,6 @@
 # Web
 
-- [BruteForce Url](#bruteforce-url)
+- [BruteForce](#bruteforce)
 - [PhpMyAdmin](#phpmyadmin)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
 - [Mysql](#mysql)

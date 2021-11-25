@@ -4,6 +4,7 @@
 - [PhpMyAdmin](#phpmyadmin)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
 - [Mysql](#mysql)
+- [Request](#request)
 
 ## BruteForce
 ### ffuf

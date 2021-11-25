@@ -2,7 +2,7 @@
 Ce projet regroupe les differentes commandes et outils que j'ai pu utiliser dans les differents CTF et challenges que j'ai pu faire.
 
 ## Index
-- [☀️ General](/wiki/General.md)
+<!-- - [☀️ General](/wiki/General.md) -->
 - [🔒 Crypto](/wiki/Crypto.md)
 - [🐧 Linux](/wiki/Linux.md)
 - [🌐 Network](/wiki/Network.md)

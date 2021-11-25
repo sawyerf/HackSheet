@@ -3,6 +3,9 @@
 - [Sudo](#sudo)
 - [Reverse Shell](#reverse-shell)
 - [Hash Bruteforce](#hash-bruteforce)
+- [SCP](#scp)
+- [Editor](#editor)
+
 
 ## Sudo
 ```
@@ -23,21 +26,20 @@ nc -lp 4444
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
-## Hash Bruteforce
-### john
+## SCP
+### Download File
 ```
-john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+scp -P port user@192.168.1.ip:path .
 ```
-### Hashcat
+
+### Upload File
 ```
-hashid hash.txt
+scp -P port file user@192.168.1.ip:path
 ```
+
+### Upload peda
 ```
-hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt
-```
-### Make Wordlist
-```
-crunch <minimum length> <maximum length> <charset> -t <pattern> -o wordlist.lst
+scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```
 
 ## Editor

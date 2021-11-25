@@ -12,8 +12,39 @@ NameHost                 ether   xx:xx:xx:xx:xx:xx   C                     INTRF
 ```
 
 ## Nmap
+### Scan Popular Port
 ```
 nmap -A ip
+```
+### Scan all port 
+```
+nmap -p- -T4 -v ip
+```
+### Scan With Script & Version
+```
+nmap -A -T4 -sC -sV ip 
+```
+### Scan All Local
+```
+nmap 192.168.1.1/24 -sn -T4 
+```
+
+## Hydra
+### Basic HTTP Auth 
+```
+hydra -C wordlist.txt SERVER_IP -s PORT http-get /
+```
+### Post HTTP Login
+```
+hydra -l admin -P wordlist.txt -f ip -s port http-post-form "/login.php:username=^USER^&password=^PASS^:F=<form name='login'"
+```
+### SSH
+```
+hydra -L user.txt -P pass.txt -u -f -t 4 ssh://ip:port
+```
+### FTP
+```
+hydra -l m.gates -P /usr/share/wordlists/rockyou.txt ftp://127.0.0.1
 ```
 
 ## Packet

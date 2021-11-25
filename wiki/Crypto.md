@@ -9,8 +9,13 @@
 
 ## John
 ```
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+```
+### Sql Hash
+```
 john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
+
 ## Hashcat
 ### Hash Identifier
 ```

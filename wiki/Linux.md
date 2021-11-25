@@ -30,7 +30,14 @@ john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 ### Hashcat
 ```
+hashid hash.txt
+```
+```
 hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt
+```
+### Make Wordlist
+```
+crunch <minimum length> <maximum length> <charset> -t <pattern> -o wordlist.lst
 ```
 
 ## Editor

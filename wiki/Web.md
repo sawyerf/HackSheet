@@ -4,6 +4,7 @@
 - [PhpMyAdmin](#phpmyadmin)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
 - [Mysql](#mysql)
+- [SQL Injection](#sql-injection)
 - [Request](#request)
 
 ## BruteForce
@@ -82,7 +83,7 @@ sqlite3 database.sqlite3
 ```
 or open in vs code
 
-### SQL Injection
+## SQL Injection
 ```
 sqlmap -u url --batch
 ```

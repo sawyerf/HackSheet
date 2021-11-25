@@ -5,11 +5,20 @@
 - [XML external entity (XXE)](#xml-external-entity-xxe)
 - [Mysql](#mysql)
 
-## BruteForce Url
+## BruteForce
+### ffuf
+```
+ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/FUZZ'
+```
+```
+ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://FUZZ.url/ -H 'Host: FUZZ.host'
+```
+
 ### Gobuster
 ```
 gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 25 -x html,php
 ```
+
 ### Dibuster
 ```
 dirbuster

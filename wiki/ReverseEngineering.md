@@ -77,3 +77,13 @@ gcc -shared -fpic lib.c -o libnike.so -m32
 ```
 LD_PRELOAD=./libnike.so ./exec
 ```
+
+## Macro Office PPTM
+### Install
+```
+sudo pip3 install oletools
+```
+### Decompress PPTM
+```
+olevba  -c file.pptm
+```

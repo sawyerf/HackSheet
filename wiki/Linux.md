@@ -3,7 +3,6 @@
 - [Sudo](#sudo)
 - [Auto Script](#auto-script)
 - [Reverse Shell](#reverse-shell)
-- [Hash Bruteforce](#hash-bruteforce)
 - [SCP](#scp)
 - [Gdbserver](#gdbserver)
 - [File Enumeration](#file-enumeration)

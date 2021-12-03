@@ -21,6 +21,7 @@ john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 hashid hash.txt
 ```
+[Hashcat Doc](https://hashcat.net/wiki/doku.php?id=example_hashes) 
 ### Dictionnary Attack
 ```
 hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt

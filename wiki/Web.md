@@ -21,6 +21,11 @@ ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http
 gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 25 -x html,php
 ```
 
+## Dirb
+```
+dir -R url
+```
+
 ### Dibuster
 ```
 dirbuster
@@ -84,8 +89,13 @@ sqlite3 database.sqlite3
 or open in vs code
 
 ## SQL Injection
+### SQLmap
 ```
-sqlmap -u url --batch
+sqlmap -r req --proxy=http://localhost:8080 --batch
+sqlmap -r req --proxy=http://localhost:8080 --batch --passwords
+sqlmap -r req --proxy=http://localhost:8080 --batch --dbs
+sqlmap -r req --proxy=http://localhost:8080 --batch --fetch --tables -D db
+sqlmap -r req --proxy=http://localhost:8080 --batch --dump -T table -D db
 ```
 
 ## Request

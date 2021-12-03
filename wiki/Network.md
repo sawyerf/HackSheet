@@ -30,6 +30,10 @@ nmap 192.168.1.1/24 -sn -T4
 ```
 
 ## Hydra
+### Proxy
+```
+export HYDRA_PROXY=connect://localhost:8080
+```
 ### Basic HTTP Auth 
 ```
 hydra -C wordlist.txt SERVER_IP -s PORT http-get /

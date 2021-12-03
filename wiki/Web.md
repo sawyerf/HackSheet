@@ -109,10 +109,10 @@ curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlenco
 import requests
 
 s = requests.session()
-s.proxies = {
-  "http": "localhost:8080",
-  "https": "localhost:8080",
-}
+# s.proxies = {
+#   "http": "localhost:8080",
+#   "https": "localhost:8080",
+# }
 
 r = s.get('http://example.com')
 print(r.text)

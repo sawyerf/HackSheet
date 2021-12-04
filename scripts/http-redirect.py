@@ -15,4 +15,5 @@ Usage: {} <url>
     """.format(sys.argv[0]))
     sys.exit()
 
-HTTPServer(("", 80, Redirect).serve_forever()
+print('[*] Server Start')
+HTTPServer(("", 80), Redirect).serve_forever()

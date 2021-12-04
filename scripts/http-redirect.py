@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
@@ -7,7 +9,7 @@ class Redirect(BaseHTTPRequestHandler):
        self.send_header('Location', sys.argv[1])
        self.end_headers()
 
-if len(sys.argv) - 1 != 2:
+if len(sys.argv) != 2:
     print("""
 Usage: {} <url>
     """.format(sys.argv[0]))

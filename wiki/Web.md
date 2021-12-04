@@ -21,7 +21,7 @@ ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http
 gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 25 -x html,php
 ```
 
-## Dirb
+### Dirb
 ```
 dir -R url
 ```

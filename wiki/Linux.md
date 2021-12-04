@@ -47,17 +47,17 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 *[source](https://github.com/acole76/pentestmonkey-cheatsheets/blob/master/shells.md)*
 
 ## SCP
-#### Download File
+### Download File
 ```
 scp -P port user@192.168.1.ip:path .
 ```
 
-#### Upload File
+### Upload File
 ```
 scp -P port file user@192.168.1.ip:path
 ```
 
-#### Upload peda
+### Upload peda
 ```
 scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```

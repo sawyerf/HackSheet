@@ -23,7 +23,7 @@ gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small
 
 ### Dirb
 ```
-dir -R url
+dirb url -R
 ```
 
 ### Dibuster

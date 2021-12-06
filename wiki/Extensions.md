@@ -1,4 +1,4 @@
-# Extensions
+# 🦊 Extensions
 
 ## FoxyProxy
 <img width="32px" height="auto" alt='FoxyProxy' src='https://addons.mozilla.org/user-media/addon_icons/2/2464-64.png'>

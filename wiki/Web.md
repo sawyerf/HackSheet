@@ -1,4 +1,4 @@
-# Web
+# 🕸️ Web
 
 - [BruteForce](#bruteforce)
 - [Mysql](#mysql)

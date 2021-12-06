@@ -1,4 +1,4 @@
-# Network
+# 🌐 Network
 
 - [LAN](#lan)
 - [Nmap](#nmap)

@@ -1,4 +1,4 @@
-# Crypto
+# 🔒 Crypto
 
 - [Encode](#encode)
 - [GPG](#gpg)

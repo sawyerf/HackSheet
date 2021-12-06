@@ -1,4 +1,4 @@
-# Linux
+# 🐧 Linux
 
 - [Auto Script](#auto-script)
 - [File Enumeration](#file-enumeration)

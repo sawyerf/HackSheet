@@ -12,7 +12,7 @@ def format_link(file, title):
     return '{}- [{}](/wiki/{}#{})\n'.format(index, fmt[1], file, link)
 
 wr = open('wiki/Index.md', 'w')
-wr.write('# Index\n\n')
+wr.write('# 📇 Index\n\n')
 for file in sorted(os.listdir('wiki/')):
     if file == 'Index.md':
         continue

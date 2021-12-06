@@ -1,4 +1,4 @@
-# Reverse Engineering
+# 🥷 Reverse Engineering
 
 - [Binary ninja](#binary-ninja)
 - [GCC](#gcc)

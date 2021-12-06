@@ -1,4 +1,4 @@
-# Windows
+# 🪟 Windows
 
 - [DMP File](#dmp-file)
 - [Exfiltration](#exfiltration)

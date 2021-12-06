@@ -1,10 +1,11 @@
 # Crypto
 
-- [John](#john)
-- [Hashcat](#hashcat)
-- [Wordlist](#wordlist)
-- [Identifier](#identifier)
+- [Encode](#encode)
 - [GPG](#gpg)
+- [Hashcat](#hashcat)
+- [Identifier](#identifier)
+- [John](#john)
+- [Wordlist](#wordlist)
 
 
 ## John
@@ -47,3 +48,28 @@ gpg -d msg.txt
 
 ## Identifier
 [Boxentriq](https://www.boxentriq.com/code-breaking/cipher-identifier)
+
+## Encode
+### Base64
+```
+echo lol | base64
+```
+```
+echo bG9sCg== | base64 -d
+```
+
+### Urlencode
+```
+urlencode "url_raw"
+```
+```
+urlencode -d "url_encode"
+```
+
+## Hexa
+```
+echo 6c6f6c0a | xxd -p -r
+```
+```
+echo lol | xxd -p -r
+```

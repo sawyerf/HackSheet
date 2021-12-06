@@ -1,11 +1,11 @@
 # Web
 
 - [BruteForce](#bruteforce)
-- [PhpMyAdmin](#phpmyadmin)
-- [XML external entity (XXE)](#xml-external-entity-xxe)
 - [Mysql](#mysql)
-- [SQL Injection](#sql-injection)
+- [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
+- [SQL Injection](#sql-injection)
+- [XML external entity (XXE)](#xml-external-entity-xxe)
 
 ## BruteForce
 ### ffuf
@@ -26,12 +26,10 @@ gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small
 dirb url -R
 ```
 
-### Dibuster
+### GUI
 ```
 dirbuster
 ```
-
-### Zap
 ```
 owasp-zap
 ```

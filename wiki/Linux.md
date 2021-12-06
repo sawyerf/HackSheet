@@ -1,11 +1,11 @@
 # Linux
 
-- [Sudo](#sudo)
 - [Auto Script](#auto-script)
+- [File Enumeration](#file-enumeration)
+- [Gdbserver](#gdbserver)
 - [Reverse Shell](#reverse-shell)
 - [SCP](#scp)
-- [Gdbserver](#gdbserver)
-- [File Enumeration](#file-enumeration)
+- [Sudo](#sudo)
 
 
 ## Sudo

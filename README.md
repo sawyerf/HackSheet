@@ -3,6 +3,7 @@ Ce projet regroupe les differentes commandes et outils que j'ai pu utiliser dans
 
 ## Index
 <!-- - [☀️ General](/wiki/General.md) -->
+- [📇 Index](/wiki/Index.md)
 - [🔒 Crypto](/wiki/Crypto.md)
 - [🦊 Extensions](/wiki/Extensions.md)
 - [🐧 Linux](/wiki/Linux.md)

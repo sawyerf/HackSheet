@@ -66,7 +66,7 @@ urlencode "url_raw"
 urlencode -d "url_encode"
 ```
 
-## Hexa
+### Hexa
 ```
 echo 6c6f6c0a | xxd -p -r
 ```

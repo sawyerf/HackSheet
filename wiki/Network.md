@@ -1,5 +1,6 @@
 # 🌐 Network
 
+- [DNS](#dns)
 - [LAN](#lan)
 - [Nmap](#nmap)
 - [Packet](#packet)
@@ -27,6 +28,22 @@ nmap -A -T4 -sC -sV ip
 ### Scan All Local
 ```
 nmap 192.168.1.1/24 -sn -T4 
+```
+
+## DNS
+### Any Information
+```
+dig ANY @dns_ip domain
+```
+
+### Reverse Lookup
+```
+dig -x ip @dns_ip
+```
+
+### Reverse All Address
+```
+dnsrecon -r 127.0.0.0/24 -n ip_dns
 ```
 
 ## Hydra

@@ -2,11 +2,11 @@
 
 - [BruteForce](#bruteforce)
 - [Mysql](#mysql)
+- [Path traversal](#path-traversal)
 - [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
 - [SQL Injection](#sql-injection)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
-- [Path traversal](#path-traversal)
 
 ## BruteForce
 ### ffuf

@@ -1,6 +1,7 @@
 # 🥷 Reverse Engineering
 
 - [Binary ninja](#binary-ninja)
+- [Decompile Python Executable](#decompile-python-executable)
 - [GCC](#gcc)
 - [Lib Injection](#lib-injection)
 - [Macro Office PPTM](#macro-ffice-pptm)
@@ -77,6 +78,22 @@ gcc -shared -fpic lib.c -o libnike.so -m32
 - run and inject
 ```
 LD_PRELOAD=./libnike.so ./exec
+```
+
+## Decompile Python Executable
+Convert executable into .pyc
+```
+git clone https://github.com/extremecoders-re/pyinstxtractor
+cd pyinstxtractor
+python3 pyinstxtractor.py exec
+```
+Convert .pyc into .py (compatible python 3.9.2)
+```
+git clone https://github.com/zrax/pycdc
+cd pycdc
+cmake
+make
+./pycdas file.pyc
 ```
 
 ## Macro Office PPTM

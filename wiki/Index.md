@@ -84,6 +84,7 @@
   - [Binary ninja](/wiki/ReverseEngineering.md#binary-ninja)
     - [Scrap code from html](/wiki/ReverseEngineering.md#scrap-code-from-html)
   - [Lib Injection](/wiki/ReverseEngineering.md#lib-injection)
+  - [Decompile Python Executable](/wiki/ReverseEngineering.md#decompile-python-executable)
   - [Macro Office PPTM](/wiki/ReverseEngineering.md#macro-office-pptm)
     - [Install](/wiki/ReverseEngineering.md#install)
     - [Decompress PPTM](/wiki/ReverseEngineering.md#decompress-pptm)

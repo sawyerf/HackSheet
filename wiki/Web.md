@@ -6,7 +6,7 @@
 - [Request](#request)
 - [SQL Injection](#sql-injection)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
-- [File Inclusion Path traversal](#file-inclusion-path-traversal)
+- [Path traversal](#path-traversal)
 
 ## BruteForce
 ### ffuf
@@ -126,9 +126,10 @@ print(r.status_code, r.url)
 ```
 
 
-## File Inclusion Path traversal
+## Path traversal
 
 [Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
+
 [File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
 
 ```

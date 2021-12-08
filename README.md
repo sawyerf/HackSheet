@@ -1,5 +1,5 @@
 # HackSheet
-Ce projet regroupe les differentes commandes et outils que j'ai pu utiliser dans les differents CTF et challenges que j'ai pu faire.
+This projects is a compilation of commands and tools that i use during CTF challenge.
 
 ## Index
 <!-- - [☀️ General](/wiki/General.md) -->

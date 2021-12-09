@@ -87,13 +87,14 @@ git clone https://github.com/extremecoders-re/pyinstxtractor
 cd pyinstxtractor
 python3 pyinstxtractor.py exec
 ```
-Convert .pyc into .py (compatible python 3.9.2)
-```
+Disassembly .pyc (compatible python 3.9.2)
+```bash
 git clone https://github.com/zrax/pycdc
 cd pycdc
 cmake
 make
-./pycdas file.pyc
+./pycdc file.pyc # Convert .pyc into .py
+./pycdas file.pyc # Convert .pyc into byte-code disassembly
 ```
 
 ## Macro Office PPTM

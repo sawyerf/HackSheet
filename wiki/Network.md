@@ -2,9 +2,9 @@
 
 - [DNS](#dns)
 - [LAN](#lan)
+- [List opened port localy](#list-opened-port-localy)
 - [Nmap](#nmap)
 - [Packet](#packet)
-- [List opened port localy](#list-opened-port-localy)
 
 ## LAN
 ```
@@ -49,13 +49,13 @@ dnsrecon -r 127.0.0.0/24 -n ip_dns
 
 ## List opened port localy
 
-### ss
+### SS
 
 ```
 ss -lntu
 ```
 
-### netstat
+### Netstat
 
 #### Linux
 

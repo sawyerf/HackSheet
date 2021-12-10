@@ -1,13 +1,13 @@
 # 🕸️ Web
 
 - [BruteForce](#bruteforce)
-- [Mysql](#mysql)
 - [Influx DB](#influx-db)
+- [Mysql](#mysql)
+- [Path traversal](#path-traversal)
 - [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
 - [SQL Injection](#sql-injection)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
-- [Path traversal](#path-traversal)
 
 ## BruteForce
 ### ffuf
@@ -15,7 +15,7 @@
 ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/FUZZ'
 ```
 ```
-ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://FUZZ.url/ -H 'Host: FUZZ.host'
+ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/ -H 'Host: FUZZ.host'
 ```
 
 ### Gobuster
@@ -112,11 +112,11 @@ or open in vs code
 ## SQL Injection
 ### SQLmap
 ```
-sqlmap -r req --proxy=http://localhost:8080 --batch
-sqlmap -r req --proxy=http://localhost:8080 --batch --passwords
-sqlmap -r req --proxy=http://localhost:8080 --batch --dbs
-sqlmap -r req --proxy=http://localhost:8080 --batch --fetch --tables -D db
-sqlmap -r req --proxy=http://localhost:8080 --batch --dump -T table -D db
+sqlmap -r req --batch
+sqlmap -r req --batch --passwords
+sqlmap -r req --batch --dbs
+sqlmap -r req --batch --fetch --tables -D db
+sqlmap -r req --batch --dump -T table -D db
 ```
 
 ## Request

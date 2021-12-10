@@ -1,13 +1,13 @@
 # 🐧 Linux
 
 - [Auto Script](#auto-script)
+- [Command Injection](#command-injection)
 - [File Enumeration](#file-enumeration)
 - [Gdbserver](#gdbserver)
+- [Port Forwarding](#port-forwarding)
 - [Reverse Shell](#reverse-shell)
 - [SCP](#scp)
 - [Sudo](#sudo)
-- [Command Injection](#command-injection)
-- [Port Forwarding](#port-forwarding)
 
 ## Sudo
 ```
@@ -133,4 +133,9 @@ $> chisel server -p 4444 --reverse
 
 # Victim machine:
 $> ./chisel client ip-server:4444 R:8000:127.0.0.1:8000
+```
+
+### SSH
+```sh
+ssh -L 8080:127.0.0.1:8080 user@ip
 ```

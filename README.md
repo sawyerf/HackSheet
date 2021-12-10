@@ -9,7 +9,7 @@ This projects is a compilation of commands and tools that i use during CTF chall
 - [🐧 Linux](/wiki/Linux.md)
 - [🌐 Network](/wiki/Network.md)
 - [🥷 Reverse Engineering](/wiki/ReverseEngineering.md)
-- [📜 Scripts](/scripts)
+- [📜 Scripts](https://github.com/sawyerf/HackSheet/tree/main/scripts)
 - [🕸️ Web](/wiki/Web.md)
 - [🪟 Windows](/wiki/Windows.md)
 

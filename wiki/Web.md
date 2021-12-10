@@ -2,11 +2,12 @@
 
 - [BruteForce](#bruteforce)
 - [Mysql](#mysql)
-- [Path traversal](#path-traversal)
+- [Influx DB](#influx-db)
 - [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
 - [SQL Injection](#sql-injection)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
+- [Path traversal](#path-traversal)
 
 ## BruteForce
 ### ffuf
@@ -86,6 +87,27 @@ select * from table_name
 sqlite3 database.sqlite3
 ```
 or open in vs code
+
+## Influx DB
+
+[CVE-2019-20933 Influxdb](https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933)
+
+```
+> show databases # to display databases
+> show field keys # field keys (like columns in sql)
+> show measurements # to display measurements (like tables in sql)
+{
+  ...
+  "results": [
+    "values": [
+        [
+            <strong>"foo"</strong>
+        ]
+    ]
+  ...
+}
+> select * from "foo" # display all content of measurments (table) 'foo' (keep the doubles quotes)
+```
 
 ## SQL Injection
 ### SQLmap

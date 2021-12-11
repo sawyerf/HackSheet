@@ -12,8 +12,9 @@
 
 ## BruteForce
 ### Wordlist
+
 | Name                      | Path                                                                    |
-|---------------------------|-------------------------------------------------------------------------|
+|:--------------------------|:------------------------------------------------------------------------|
 | Dirbuster Small           | `/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt`           |
 | Dirbuster Small Lowercase | `/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt` |
 | Dirb                      | `/usr/share/dirb/wordlists/common.txt`                                  |

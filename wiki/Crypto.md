@@ -5,6 +5,7 @@
 - [Hashcat](#hashcat)
 - [Identifier](#identifier)
 - [John](#john)
+- [RSA](#rsa)
 - [Wordlist](#wordlist)
 
 
@@ -73,3 +74,11 @@ echo 6c6f6c0a | xxd -p -r
 ```
 echo lol | xxd -p -r
 ```
+
+# RSA
+## Common Modulus Attack
+Condition:
+- Have 2 encrypt message
+- Have 2 public keys
+If you have this two condition you can found the original message with this program
+[git clone https://github.com/HexPandaa/RSA-Common-Modulus-Attack]

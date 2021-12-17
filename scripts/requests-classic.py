@@ -9,8 +9,11 @@ s = requests.session()
 #   "https": "localhost:8080",
 # }
 
+# Classic Get
 r = s.get('http://example.com')
 print(r.text)
+
+# Classic Post
 r = s.post('http://example.com/submit',
     headers={
         'Content-type': 'raw',
@@ -19,3 +22,10 @@ r = s.post('http://example.com/submit',
     # auth=('username', 'password')
 )
 print(r.status_code, r.url)
+
+# File Post
+files = { 'fileToUpload': ('lel.jpg', open('lel.jpg', 'rb').read()) }
+r = s.post('http://example.com/upload.php',
+    files=files,
+)
+print(r.text)

@@ -16,7 +16,12 @@ NameHost                 ether   xx:xx:xx:xx:xx:xx   C                     INTRF
 ## Nmap
 ### Scan Popular Port
 ```
-nmap -A ip
+nmap --top-ports 5000 ip
+```
+### Fast scan
+```
+nmap -T4 -F ip
+nmap -sV -T4 -O -F -A --version-light ip
 ```
 ### Scan all port 
 ```
@@ -28,8 +33,30 @@ nmap -A -T4 -sC -sV ip
 ```
 ### Scan All Local
 ```
-nmap 192.168.1.1/24 -sn -T4 
+nmap 192.168.1.1/24 -sn -T4 ip
 ```
+### Scan with scripts
+```
+nmap -sC ip
+nmap --script "default,discovery,exploit,version,vuln" ip
+nmap --script "default,discovery,exploit,version,vuln,servicetags,ntp-monlist,dns-recursion,snmp-sysdescr" ip
+```
+### Scan udp
+```
+sudo nmap -sU -T4 ip
+sudo nmap -sUV -T4 -F --version-intensity 0 ip
+sudo nmap -sU -A -PN -n -pU:19,53,123,161 -script=ntp-monlist,dns-recursion,snmp-sysdescr ip
+sudo nmap -sU -pU:19,53,123,161 -Pn -n --max-retries=0 ip
+```
+### Scan SCTP
+```
+nmap -T4 -sY -n --open -Pn ip
+```
+### Hardcore scan
+```
+sudo nmap -sS -sU -p- -PN -O -sV -sC --allports --version-all -T4  ip -vv
+```
+
 
 ## DNS
 ### Any Information

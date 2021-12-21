@@ -57,6 +57,10 @@ nmap -T4 -sY -n --open -Pn ip
 sudo nmap -sS -sU -p- -PN -O -sV -sC --allports --version-all -T4  ip -vv
 ```
 
+## SNMP
+```
+snmp-check ip
+```
 
 ## DNS
 ### Any Information

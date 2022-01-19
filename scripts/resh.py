@@ -27,8 +27,7 @@ def recvLoop(sock):
 			print(e)
 		if data == b'' or data == None:
 			break
-		data = data.decode()
-		data = data.replace('\n', '\r\n')
+		data = data.decode(errors='ignore')
 		cprint(data)
 	sock.close()
 

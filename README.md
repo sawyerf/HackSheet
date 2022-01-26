@@ -13,6 +13,7 @@ This projects is a compilation of commands and tools that i use during CTF chall
 - [📜 Scripts](https://github.com/sawyerf/HackSheet/tree/main/scripts)
 - [🕸️ Web](/wiki/Web.md)
 - [🪟 Windows](/wiki/Windows.md)
+- [📷 Stego](/wiki/Stego.md)
 
 ## Interesting Links
 - [Awesome CTF Cheatsheet](https://github.com/uppusaikiran/awesome-ctf-cheatsheet)

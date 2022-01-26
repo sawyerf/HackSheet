@@ -1,0 +1,59 @@
+# 📷 Stego
+
+- [Analyze](#analyze)
+- [Extract hidden data](#extract-hidden-data)
+- [Brute force](#brute-force)
+
+
+## Analyze
+
+### Exif or meta-data
+
+```bash
+exiftool image.png
+strings image.png
+zipinfo archive.zip
+exiv2 image.jpg
+```
+
+### Hidden data
+
+```bash
+binwalk image.jpg
+steghide info image.jpg
+zsteg -a file
+stegsolve.jar # link in web tools section
+```
+
+## Extract hidden data
+
+```bash
+binwalk -e image.jpg
+steghide extract -sf image.jpg
+zsteg -E file.png
+foremost -v file
+```
+
+## Brute force
+
+#### Images
+
+```bash
+stegcracker image.jpg
+```
+
+#### Zip
+
+```bash
+fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt archive.zip
+```
+
+
+## Web tools
+
+[Unicode steganography](https://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder)
+[Dcode](https://www.dcode.fr/)
+[Unhide images inside other images](https://incoherency.co.uk/image-steganography/#unhide)
+[Reverse search image](https://tineye.com/)
+[Steganographic Decoder](https://futureboy.us/stegano/decinput.html)
+[stegsolve](https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve)

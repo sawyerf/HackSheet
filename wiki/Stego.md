@@ -3,7 +3,7 @@
 - [Analyze](#analyze)
 - [Extract hidden data](#extract-hidden-data)
 - [Brute force](#brute-force)
-
+- [Web tools](#web-tools)
 
 ## Analyze
 
@@ -51,9 +51,9 @@ fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt archive.zip
 
 ## Web tools
 
-[Unicode steganography](https://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder)
-[Dcode](https://www.dcode.fr/)
-[Unhide images inside other images](https://incoherency.co.uk/image-steganography/#unhide)
-[Reverse search image](https://tineye.com/)
-[Steganographic Decoder](https://futureboy.us/stegano/decinput.html)
-[stegsolve](https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve)
+- [Unicode steganography](https://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder)
+- [Dcode](https://www.dcode.fr/)
+- [Unhide images inside other images](https://incoherency.co.uk/image-steganography/#unhide)
+- [Reverse search image](https://tineye.com/)
+- [Steganographic Decoder](https://futureboy.us/stegano/decinput.html)
+- [stegsolve](https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve)

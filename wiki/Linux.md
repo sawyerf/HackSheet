@@ -107,7 +107,7 @@ find / -group group 2>&-
 find / -user root -executable -type f 2>&- | grep -v /bin/
 ```
 
-## Script
+### Script
 ```
 curl "https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh" -Lo lse.sh
 chmod +x lse.sh

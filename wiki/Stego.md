@@ -1,14 +1,12 @@
 # 📷 Stego
 
-- [Analyze](#analyze)
-- [Extract hidden data](#extract-hidden-data)
 - [Brute force](#brute-force)
+- [Compare 2 Images](#compare-2-images)
+- [Exif or meta-data](#exif-or-meta-data)
+- [Hidden data](#hidden-data)
 - [Web tools](#web-tools)
 
-## Analyze
-
-### Exif or meta-data
-
+## Exif or meta-data
 ```bash
 exiftool image.png
 strings image.png
@@ -16,8 +14,7 @@ zipinfo archive.zip
 exiv2 image.jpg
 ```
 
-### Hidden data
-
+## Hidden data
 ```bash
 binwalk image.jpg
 steghide info image.jpg
@@ -25,8 +22,7 @@ zsteg -a file
 stegsolve.jar # link in web tools section
 ```
 
-## Extract hidden data
-
+### Extract hidden data
 ```bash
 binwalk -e image.jpg
 steghide extract -sf image.jpg
@@ -34,20 +30,22 @@ zsteg -E file.png
 foremost -v file
 ```
 
+## Compare 2 Images
+```bash
+compare -metric mae image1.png image2.png difference.png
+```
+[source](https://www.imagemagick.org/script/compare.php)
+
 ## Brute force
-
-#### Images
-
+### Images
 ```bash
 stegcracker image.jpg
 ```
 
-#### Zip
-
+### Zip
 ```bash
 fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt archive.zip
 ```
-
 
 ## Web tools
 

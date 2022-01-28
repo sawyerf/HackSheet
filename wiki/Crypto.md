@@ -11,39 +11,41 @@
 
 
 ## John
-```
+```bash
 john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
+
 ### Sql Hash
-```
+```bash
 john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 
 ## Hashcat
 ### Hash Identifier
-```
+```bash
 hashid hash.txt
 ```
-[Hashcat Doc](https://hashcat.net/wiki/doku.php?id=example_hashes) 
+[Hashcat Doc](https://hashcat.net/wiki/doku.php?id=example_hashes)
+
 ### Dictionnary Attack
-```
+```bash
 hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt
 ```
 
 ## Wordlist
-```
+```bash
 crunch <minimum length> <maximum length> <charset> -t <pattern> -o wordlist.lst
 ```
 
 ## GPG
 ### Buteforce
-```
+```bash
 gpg2john private.key > hash.txt
 john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 
 ### Decrypt message
-```
+```bash
 gpg -import private.key
 gpg -d msg.txt
 ```
@@ -53,26 +55,26 @@ gpg -d msg.txt
 
 ## Encode
 ### Base64
-```
+```bash
 echo lol | base64
 ```
-```
+```bash
 echo bG9sCg== | base64 -d
 ```
 
 ### Urlencode
-```
+```bash
 urlencode "url_raw"
 ```
-```
+```bash
 urlencode -d "url_encode"
 ```
 
 ### Hexa
-```
+```bash
 echo 6c6f6c0a | xxd -p -r
 ```
-```
+```bash
 echo lol | xxd -p -r
 ```
 

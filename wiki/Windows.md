@@ -11,7 +11,7 @@
 *Port: 445*
 
 ### Connect
-```
+```bash
 smbclient -U user -L //ip//
 ```
 
@@ -19,7 +19,7 @@ smbclient -U user -L //ip//
 *Port: 135*
 
 ### Connect
-```
+```bash
 rpcclient ip -U user -L -h
 ```
 
@@ -30,19 +30,19 @@ rpcclient ip -U user -L -h
 *Port: 5985*
 
 ### Connect
-```
+```bash
 evil-winrm -i ip -u user -p password
 ```
 
 ## DMP File
 ### Extract
-```
+```bash
 Foremost file.dmp
 ```
 
 ## Exfiltration
 ### Certificate
-```
+```cmd
 certutil -encode payload.dll payload.b64
 certutil -decode payload.b64 payload.dll
 ```

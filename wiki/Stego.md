@@ -54,4 +54,5 @@ fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt archive.zip
 - [Unhide images inside other images](https://incoherency.co.uk/image-steganography/#unhide)
 - [Reverse search image](https://tineye.com/)
 - [Steganographic Decoder](https://futureboy.us/stegano/decinput.html)
+- [Npiet](https://www.bertnase.de/npiet/npiet-execute.php)
 - [stegsolve](https://github.com/eugenekolo/sec-tools/tree/master/stego/stegsolve/stegsolve)

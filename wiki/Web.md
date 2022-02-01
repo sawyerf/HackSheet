@@ -1,8 +1,9 @@
 # 🕸️ Web
 
 - [BruteForce](#bruteforce)
-- [Download .git](#download-.git)
+- [Download .git](#download-git)
 - [Influx DB](#influx-db)
+- [Interesting routes](#interesting-routes)
 - [Mysql](#mysql)
 - [Path traversal](#path-traversal)
 - [PhpMyAdmin](#phpmyadmin)
@@ -218,4 +219,15 @@ githacker --url http://url/.git/ --folder result
 #### Scaning
 ```bash
 wpscan --force update -e --url IP --disable-tls-checks
+```
+
+## Interesting routes
+
+### Graphql
+
+```
+/graphql
+/graphiql
+/graphql.php
+/graphql/console
 ```

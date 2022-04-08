@@ -23,7 +23,6 @@ This projects is a compilation of commands and tools that i use during CTF chall
 - [GTFOBins](https://gtfobins.github.io/)
 - [HackTricks](https://book.hacktricks.xyz/)
 - [Les Tutos de Processus](https://lestutosdeprocessus.fr/ctf-cheat-sheet/)
-- [gtfobins](https://gtfobins.github.io/)
 
 If this is helpful to you, feel free to make a donation.
 BTC Address: 17QMZ1Xxo4pcQ2GsPWf9ZkuHzQAPTLryRc

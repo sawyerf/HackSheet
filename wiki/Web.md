@@ -24,6 +24,7 @@
 | Dirb                      | `/usr/share/dirb/wordlists/common.txt`                                  |
 
 ### Extensions
+
 | Type    | Extension      |
 |:--------|:---------------|
 | Script  | `php,js,twig`  |

@@ -5,6 +5,7 @@
 - [Hashcat](#hashcat)
 - [Identifier](#identifier)
 - [John](#john)
+- [PFX](#pfx)
 - [RSA](#rsa)
 - [Wordlist](#wordlist)
 - [XOR](#xor)
@@ -77,6 +78,13 @@ echo 6c6f6c0a | xxd -p -r
 ```bash
 echo lol | xxd -p -r
 ```
+
+## PFX
+### Bruteforce
+```
+crackpkcs12 -d /usr/share/wordlists/rockyou.txt certificate.pfx
+```
+[Source](https://github.com/crackpkcs12/crackpkcs12)
 
 ## RSA
 ### Common Modulus Attack

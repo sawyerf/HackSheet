@@ -18,9 +18,17 @@
 
 | Name                      | Path                                                                    |
 |:--------------------------|:------------------------------------------------------------------------|
+| SecLists Raft Medium      | `/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt` |
 | Dirbuster Small           | `/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt`           |
 | Dirbuster Small Lowercase | `/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt` |
 | Dirb                      | `/usr/share/dirb/wordlists/common.txt`                                  |
+
+### Extensions
+| Type    | Extension      |
+| Script  | `php,js,twig`  |
+| Text    | `html,txt,md`  |
+| Linux   | `sh,bin`       |
+| Windows | `ps1,exe`      |
 
 ### ffuf
 ```bash
@@ -33,6 +41,11 @@ ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http
 ### Gobuster
 ```bash
 gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 25 -x html,php
+```
+
+### Feroxbuster
+```bash
+feroxbuster -u <url> -e -x html,js,php
 ```
 
 ### Dirb
@@ -114,7 +127,12 @@ sqlmap -r req --privileges
 sqlmap -r req --file-read=/etc/passwd
 ```
 
-## Pattern
+### Turbo SQLmap
+```bash
+sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --level=2 --force-ssl --time-sec 1 --predict-output --dbms 'MySQL' --technique T  --flush-session
+```
+
+### Pattern
 ```
 " OR ""="
 ' OR ''='
@@ -222,7 +240,6 @@ wpscan --force update -e --url IP --disable-tls-checks
 ```
 
 ## Interesting routes
-
 ### Graphql
 
 ```

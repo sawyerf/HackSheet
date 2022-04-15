@@ -25,6 +25,7 @@
 
 ### Extensions
 | Type    | Extension      |
+|:--------|:---------------|
 | Script  | `php,js,twig`  |
 | Text    | `html,txt,md`  |
 | Linux   | `sh,bin`       |

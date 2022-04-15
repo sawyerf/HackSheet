@@ -10,9 +10,27 @@
 ## Samba
 *Port: 445*
 
+### List Directories
+```bash
+smbclient  --no-pass -L //ip//
+smbclient -U user -L //ip//
+```
+
 ### Connect
 ```bash
-smbclient -U user -L //ip//
+smbclient "\\\\DOMAIN\\SHARENAME" --no-pass
+smbclient  "\\\\DOMAIN\\SHARENAME" -u USER -p PASSWORD
+```
+
+### SmbMap
+```bash
+smbmap -H ip -u anonymous
+smbmap -u user -p pass -H ip
+```
+
+### Bruteforce
+```bash
+crackmapexec smb ip -u users.txt -p password.txt
 ```
 
 ## MSRPC

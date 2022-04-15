@@ -250,3 +250,8 @@ wpscan --force update -e --url IP --disable-tls-checks
 /graphql.php
 /graphql/console
 ```
+
+## Certificate
+```
+curl <url> --key KEY.key --cert CERT.cert
+```

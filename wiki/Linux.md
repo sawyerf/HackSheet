@@ -8,6 +8,7 @@
 - [Privilege Escalation](#privilege-escalation)
 - [Reverse Shell](#reverse-shell)
 - [SCP](#scp)
+- [FTP](#ftp)
 - [Sudo](#sudo)
 
 ## Sudo
@@ -90,6 +91,11 @@ scp -P port file user@192.168.1.ip:path
 ### Upload peda
 ```
 scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
+```
+## FTP
+### Download all files
+```
+wget -m --user=user--password=fpassword ftp://10.10.11.160
 ```
 
 ## Gdbserver

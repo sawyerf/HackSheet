@@ -83,6 +83,11 @@ scp -P port file user@192.168.1.ip:path
 ```
 scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```
+## FTP
+### Download all files
+```
+wget -m --user=user--password=fpassword ftp://10.10.11.160
+```
 
 ## Gdbserver
 *Port: 1337*

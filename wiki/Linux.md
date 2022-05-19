@@ -8,6 +8,7 @@
 - [Privilege Escalation](#privilege-escalation)
 - [Reverse Shell](#reverse-shell)
 - [SCP](#scp)
+- [FTP](#ftp)
 - [Sudo](#sudo)
 
 ## Sudo

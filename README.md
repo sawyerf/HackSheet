@@ -1,7 +1,7 @@
-# HackSheet
+# 🥷 HackSheet
 This projects is a compilation of commands and tools that i use during CTF challenge.
 
-## Index
+## 📇 Index
 <!-- - [☀️ General](/wiki/General.md) -->
 - [📇 Index](/wiki/Index.md)
 - [🔒 Crypto](/wiki/Crypto.md)
@@ -17,10 +17,13 @@ This projects is a compilation of commands and tools that i use during CTF chall
 - [🕸️ Web](/wiki/Web.md)
 - [🪟 Windows](/wiki/Windows.md)
 
-## Interesting Links
+## 🔗 Interesting Links
 - [Awesome CTF Cheatsheet](https://github.com/uppusaikiran/awesome-ctf-cheatsheet)
 - [Boxentriq](https://www.boxentriq.com/code-breaking/cipher-identifier)
 - [Explain Shell](https://explainshell.com/)
 - [GTFOBins](https://gtfobins.github.io/)
 - [HackTricks](https://book.hacktricks.xyz/)
 - [Les Tutos de Processus](https://lestutosdeprocessus.fr/ctf-cheat-sheet/)
+
+## ❤️ Contributors
+[![contributors](https://contrib.rocks/image?repo=sawyerf/hacksheet)](https://github.com/sawyerf/hacksheet/graphs/contributors)

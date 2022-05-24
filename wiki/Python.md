@@ -1,4 +1,4 @@
-# Python
+# 🐍 Python
 
 - [Base64](#base64)
 - [Execute Command](#execute-command)
@@ -13,7 +13,6 @@ import requests
 ### GET
 ```python
 r = requests.get('http://example.com')
-print(r.text)
 ```
 
 ### POST

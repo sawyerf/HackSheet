@@ -3,9 +3,6 @@
 <img width="300px" height="300px" src="https://user-images.githubusercontent.com/28403617/171045438-63fdf5c2-56a9-4bff-bff3-ecf4838fcd8d.svg#gh-dark-mode-only">
 </div>
 
-# 🥷
-This projects is a compilation of commands and tools that i use during CTF challenge.
-
 ## 📇 Index
 <!-- - [☀️ General](/wiki/General.md) -->
 - [📇 Index](/wiki/Index.md)

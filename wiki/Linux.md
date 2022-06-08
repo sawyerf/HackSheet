@@ -1,4 +1,7 @@
-# 🐧 Linux
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172728126-5dc238f3-9491-415b-a5f6-bedbb62d01cd.svg#gh-light-mode-only" />
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172728127-a6e102b5-225e-4c4f-9465-629b4d1452c9.svg#gh-dark-mode-only" />
+
+---
 
 - [Auto Script](#auto-script)
 - [Command Injection](#command-injection)

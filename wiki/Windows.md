@@ -1,4 +1,7 @@
-# 🪟 Windows
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172732896-97a2e867-7e5a-473d-afd4-c00a0378b7ac.svg#gh-light-mode-only" />
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172732894-5a754b66-c657-4830-8a88-6f7d6b0956da.svg#gh-dark-mode-only" />
+
+---
 
 - [DMP File](#dmp-file)
 - [Exfiltration](#exfiltration)

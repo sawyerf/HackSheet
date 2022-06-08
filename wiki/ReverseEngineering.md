@@ -1,10 +1,13 @@
-# 🥷 Reverse Engineering
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172731874-c08c9da6-bac7-4836-b8bc-3744087d30a3.svg#gh-light-mode-only" />
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172731902-a0475209-6730-4a90-996f-f7688d49506e.svg#gh-dark-mode-only" />
+
+---
 
 - [Binary ninja](#binary-ninja)
 - [Decompile Python Executable](#decompile-python-executable)
 - [GCC](#gcc)
 - [Lib Injection](#lib-injection)
-- [Macro Office PPTM](#macro-ffice-pptm)
+- [Macro Office PPTM](#macro-office-pptm)
 - [OverFlow](#overflow)
 - [Shellcode](#shellcode)
 

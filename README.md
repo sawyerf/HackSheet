@@ -1,7 +1,6 @@
-<div align="center">
-<img width="300px" height="300px" src="https://user-images.githubusercontent.com/28403617/171045441-a5f1b734-8d30-4c03-a2eb-32965dd0dbf8.svg#gh-light-mode-only">
-<img width="300px" height="300px" src="https://user-images.githubusercontent.com/28403617/171045438-63fdf5c2-56a9-4bff-bff3-ecf4838fcd8d.svg#gh-dark-mode-only">
-</div>
+
+<img width="500px" height="250px" src="https://user-images.githubusercontent.com/22857002/172731495-7dfe6993-103c-44a6-b057-5632afe32167.svg#gh-dark-mode-only">
+<img width="500px" height="250px" src="https://user-images.githubusercontent.com/22857002/172731498-c80af566-b252-4c21-8f48-d6d0e33dc5fb.svg#gh-light-mode-only">
 
 ## 📇 Index
 <!-- - [☀️ General](/wiki/General.md) -->

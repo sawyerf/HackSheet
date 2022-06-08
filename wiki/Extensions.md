@@ -1,4 +1,7 @@
-# 🦊 Extensions
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172729625-a931492c-ab7f-4175-8f40-728c5aa96fd1.svg#gh-dark-mode-only" />
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172729627-7ff8e230-a668-4e57-b7db-7ec9c809ebfd.svg#gh-light-mode-only" />
+
+---
 
 ## FoxyProxy
 <img width="32px" height="auto" alt='FoxyProxy' src='https://addons.mozilla.org/user-media/addon_icons/2/2464-64.png'>

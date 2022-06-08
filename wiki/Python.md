@@ -1,4 +1,7 @@
-# 🐍 Python
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172731520-180b308c-a207-4a2f-95f5-0c5aac40881e.svg#gh-light-mode-only" />
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172731517-bf97b0e8-60a9-4ea2-9a80-9cb65cf14fe3.svg#gh-dark-mode-only" />
+
+---
 
 - [Base64](#base64)
 - [Execute Command](#execute-command)

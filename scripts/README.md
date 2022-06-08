@@ -1,4 +1,7 @@
-# 📜 Scripts
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172733622-dd2b79e3-b10d-4693-bdef-851758fc8cce.svg#gh-light-mode-only" />
+<img width="300px" height="100px" src="https://user-images.githubusercontent.com/28403617/172733621-ad1dc900-495d-48cd-ad9a-b4b581f4b72d.svg#gh-dark-mode-only" />
+
+---
 
 ## Bashrc
 This bashrc include a command that print the cheat sheet.

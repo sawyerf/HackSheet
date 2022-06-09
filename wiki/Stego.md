@@ -9,7 +9,7 @@
 - [Hidden data](#hidden-data)
 - [Web tools](#web-tools)
 
-## Exif or meta-data
+# Exif or meta-data
 ```bash
 exiftool image.png
 strings image.png
@@ -17,7 +17,7 @@ zipinfo archive.zip
 exiv2 image.jpg
 ```
 
-## Hidden data
+# Hidden data
 ```bash
 binwalk image.jpg
 steghide info image.jpg
@@ -33,13 +33,13 @@ zsteg -E file.png
 foremost -v file
 ```
 
-## Compare 2 Images
+# Compare 2 Images
 ```bash
 compare -metric mae image1.png image2.png difference.png
 ```
 [source](https://www.imagemagick.org/script/compare.php)
 
-## Brute force
+# Brute force
 ### Images
 ```bash
 stegcracker image.jpg
@@ -50,7 +50,7 @@ stegcracker image.jpg
 fcrackzip -u -D -p /usr/share/wordlists/rockyou.txt archive.zip
 ```
 
-## Web tools
+# Web tools
 
 - [Unicode steganography](https://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder)
 - [Dcode](https://www.dcode.fr/)

@@ -9,14 +9,14 @@
 - [Nmap](#nmap)
 - [Packet](#packet)
 
-## LAN
+# LAN
 ```bash
 sudo arp
 Address                  HWtype  HWaddress           Flags Mask            Iface
 NameHost                 ether   xx:xx:xx:xx:xx:xx   C                     INTRFC
 ```
 
-## Nmap
+# Nmap
 ### Scan Popular Port
 ```bash
 nmap --top-ports 5000 ip
@@ -60,12 +60,12 @@ nmap -T4 -sY -n --open -Pn ip
 sudo nmap -sS -sU -p- -PN -O -sV -sC --allports --version-all -T4  ip -vv
 ```
 
-## SNMP
+# SNMP
 ```bash
 snmp-check ip
 ```
 
-## DNS
+# DNS
 ### Any Information
 ```bash
 dig ANY @dns_ip domain
@@ -81,31 +81,31 @@ dig -x ip @dns_ip
 dnsrecon -r 127.0.0.0/24 -n ip_dns
 ```
 
-## List opened port localy
+# List opened port localy
 ### SS
 ```bash
 ss -lntu
 ```
 
-### Netstat
-#### Linux
+## Netstat
+### Linux
 ```bash
 netstat -tulpn
 ```
 
-#### FreeBSD/MacOS X
+### FreeBSD/MacOS X
 ```bash
 netstat -anp tcp
 netstat -anp udp
 ```
 
-#### Openbsd
+### Openbsd
 ```bash
 netstat -na -f inet
 netstat -nat
 ```
 
-## Hydra
+# Hydra
 ### Proxy
 ```bash
 export HYDRA_PROXY=connect://localhost:8080
@@ -127,17 +127,17 @@ hydra -L user.txt -P pass.txt -u -f -t 4 ssh://ip:port
 hydra -l m.gates -P /usr/share/wordlists/rockyou.txt ftp://127.0.0.1
 ```
 
-## Packet
-### Wireshark
-#### Run
+# Packet
+## Wireshark
+### Run
 ```bash
 sudo wireshark
 ```
-#### Get all Files
+### Get all Files
 - File > Export Object > HTTP
 - Rigth Click On request > Follow > TCP
 
-#### Filters
+### Filters
 ```
 smb || smb2 || http || tcp ||
 ```
@@ -145,31 +145,31 @@ smb || smb2 || http || tcp ||
 ip.src == 1.1.1.1 && ip.dst == 1.1.1.1 && tcp.port == 80
 ```
 
-### TCPflow
-#### Export File of pcap
+## TCPflow
+### Export File of pcap
 ```bash
 tcpflow -r capture.pcap
 ```
 
-### Tcpdump
-#### Basic
+## Tcpdump
+### Basic
 ```bash
 sudo tcpdump -i any
 ```
-#### Max Argument
+### Max Argument
 ```bash
 sudo tcpdump -i any -c <MAX_PACKETS> host 192.168.1.1 '&&' port 80 '&&' src 1.1.1.1
 ```
-#### Print HTTP content
+### Print HTTP content
 ```bash
 sudo tcpdump -i any -c10 -nn -A port 80
 ```
-#### Save
+### Save
 ```bash
 sudo tcpdump -i any -w file.pcap
 ```
 
-### Python
+## Python
 ```python
 from scapy.all import *
 

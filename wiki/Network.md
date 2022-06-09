@@ -66,6 +66,8 @@ snmp-check ip
 ```
 
 # DNS
+*Port: 53*
+
 ### Any Information
 ```bash
 dig ANY @dns_ip domain
@@ -82,7 +84,7 @@ dnsrecon -r 127.0.0.0/24 -n ip_dns
 ```
 
 # List opened port localy
-### SS
+## SS
 ```bash
 ss -lntu
 ```

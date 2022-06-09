@@ -14,7 +14,8 @@
 - [XOR](#xor)
 
 
-# John
+# Bruteforce
+## John
 ```bash
 john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
@@ -24,7 +25,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 
-# Hashcat
+## Hashcat
 ### Hash Identifier
 ```bash
 hashid hash.txt

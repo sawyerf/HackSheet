@@ -6,9 +6,7 @@
 - [AWS](#aws)
 
 # AWS
-
 ### Configure
-
 ```
 aws configure
 
@@ -19,47 +17,38 @@ Default output format [None]:
 ```
 
 ## S3
-
 ### List bucket
-
 ```
 aws --profile <profile> --endpoint-url <url> s3api list-buckets --query "Buckets"
 ```
 
 ### List bucket files
-
 ```
 aws --profile <profile> --endpoint-url <url> s3 ls --recursive s3://<bucket_name>
 ```
 
 ### Get file from bucket
-
 ```
 aws --profile <profile> --endpoint-url <url> s3 sync s3://<bucket_name> <destination>
 ```
 
 ### Upload file to bucket
-
 ```
 aws --profile <profile> --endpoint-url <url> s3 cp <path_to_file> s3://<bucket_name>
 ```
 
 ## Dynamodb
-
 ### List all tables
-
 ```
 aws --profile <profile> --endpoint-url <url> dynamodb list-tables
 ```
 
 ### Get data from table
-
 ```
 aws --profile <profile> --endpoint-url <url> dynamodb scan --table-name <table_name>
 ```
 
 ### Create table
-
 ```
 aws --endpoint-url http://localhost:4566 dynamodb create-table --table-name example \
   --attribute-definitions AttributeName=example_attribute,AttributeType=S \
@@ -68,7 +57,6 @@ aws --endpoint-url http://localhost:4566 dynamodb create-table --table-name exam
 ```
 
 ### Put item in table
-
 ```
 aws --endpoint-url http://localhost:4566 dynamodb put-item --table-name example \
   --item '{"example_attribute":{"S":"Example"}}'

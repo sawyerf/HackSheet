@@ -12,7 +12,7 @@
 - [Virus](#virus)
 - [WinRM](#winrm)
 
-## Samba
+# Samba
 *Port: 445*
 
 ### List Directories
@@ -38,7 +38,7 @@ smbmap -u user -p pass -H ip
 crackmapexec smb ip -u users.txt -p password.txt
 ```
 
-## MSRPC
+# MSRPC
 *Port: 135*
 
 ### Connect
@@ -49,7 +49,7 @@ rpcclient ip -U user -L -h
 ### Source
 - [Different Outils](https://www.hackingarticles.in/impacket-guide-smb-msrpc/)
 
-## WinRM
+# WinRM
 *Port: 5985*
 
 ### Connect
@@ -57,13 +57,13 @@ rpcclient ip -U user -L -h
 evil-winrm -i ip -u user -p password
 ```
 
-## DMP File
+# DMP File
 ### Extract
 ```bash
 Foremost file.dmp
 ```
 
-## Kerberos
+# Kerberos
 *Port: 88*
 
 Kerberos is an authentication protocol that is used to verify the identity of a user or host.
@@ -81,7 +81,7 @@ GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip domain
 
 - [Kerberos cheatsheet](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
 
-## Ldap
+# Ldap
 *Port: 389, 636*
 
 ### Nmap
@@ -89,14 +89,14 @@ GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip domain
 nmap -n -sV --script "ldap* and not brute" -p 389 <DC IP>
 ```
 
-## Exfiltration
+# Exfiltration
 ### Certificate
 ```cmd
 certutil -encode payload.dll payload.b64
 certutil -decode payload.b64 payload.dll
 ```
 
-## Virus
+# Virus
 ### Cobalt Strike
 - [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 1](https://blog.nviso.eu/2021/10/21/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-1/)
 - [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 2](https://blog.nviso.eu/2021/10/27/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-2/)

@@ -8,7 +8,7 @@
 - [Pwn](#pwn)
 - [Requests](#requests)
 
-## Requests
+# Requests
 ```python
 import requests
 ```
@@ -46,7 +46,7 @@ r.request
 ### Example
 - [Example script](https://github.com/sawyerf/HackSheet/blob/main/scripts/requests-classic.py)
 
-## Base64
+# Base64
 ```python
 import base64
 ```
@@ -63,7 +63,7 @@ data = "Test Random String"
 encodedBytes = base64.b64encode(data.encode()).decode() # 'VGVzdCBSYW5kb20gU3RyaW5n'
 ```
 
-## Socket
+# Socket
 ```python
 import socket
 ```
@@ -92,7 +92,7 @@ sock.send(b'Random content')
 sock.close()
 ```
 
-## Execute Command
+# Execute Command
 ### Os
 ```python
 import os
@@ -115,5 +115,5 @@ subprocess.call('echo desbarres', shell=True) # Exit Code
 subprocess.check_output('echo desbarres', shell=True) # b'desbarres'
 ```
 
-## Pwn
+# Pwn
 - [Example script](https://github.com/sawyerf/HackSheet/blob/main/scripts/pwn-connect.py)

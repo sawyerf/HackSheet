@@ -14,7 +14,7 @@
 - [XOR](#xor)
 
 
-## John
+# John
 ```bash
 john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
@@ -24,7 +24,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 john -format=md5crypt-long --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 
-## Hashcat
+# Hashcat
 ### Hash Identifier
 ```bash
 hashid hash.txt
@@ -36,12 +36,12 @@ hashid hash.txt
 hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt
 ```
 
-## Wordlist
+# Wordlist
 ```bash
 crunch <minimum length> <maximum length> <charset> -t <pattern> -o wordlist.lst
 ```
 
-## GPG
+# GPG
 ### Buteforce
 ```bash
 gpg2john private.key > hash.txt
@@ -54,10 +54,10 @@ gpg -import private.key
 gpg -d msg.txt
 ```
 
-## Identifier
+# Identifier
 [Boxentriq](https://www.boxentriq.com/code-breaking/cipher-identifier)
 
-## Encode
+# Encode
 ### Base64
 ```bash
 echo lol | base64
@@ -82,14 +82,14 @@ echo 6c6f6c0a | xxd -p -r
 echo lol | xxd -p -r
 ```
 
-## PFX
+# PFX
 ### Bruteforce
 ```
 crackpkcs12 -d /usr/share/wordlists/rockyou.txt certificate.pfx
 ```
 [Source](https://github.com/crackpkcs12/crackpkcs12)
 
-## RSA
+# RSA
 ### Common Modulus Attack
 Condition:
 - Have 2 encrypt message
@@ -98,7 +98,7 @@ If you have this two condition you can found the original message with this prog
 
 [Git - RSA Common Modulus Attack](https://github.com/HexPandaa/RSA-Common-Modulus-Attack)
 
-## Xor
+# Xor
 ### Basic calcul
 ```
 a ^ b = c

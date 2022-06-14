@@ -5,7 +5,6 @@
 
 ---
 
-- [Auto Script](#auto-script)
 - [Command Injection](#command-injection)
 - [Enumeration](#enumeration)
 - [FTP](#ftp)

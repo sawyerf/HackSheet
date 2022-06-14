@@ -6,10 +6,12 @@
 ---
 
 - [DNS](#dns)
+- [Hydra](#hydra)
 - [LAN](#lan)
 - [List opened port localy](#list-opened-port-localy)
 - [Nmap](#nmap)
 - [Packet](#packet)
+- [SNMP](#snmp)
 
 # LAN
 ```bash
@@ -63,6 +65,11 @@ sudo nmap -sS -sU -p- -PN -O -sV -sC --allports --version-all -T4  ip -vv
 ```
 
 # SNMP
+*Port: 161 / 162*
+
+SNMP is used to monitor the network, detect network faults, and sometimes even used to configure remote devices.
+
+### List devices
 ```bash
 snmp-check ip
 ```

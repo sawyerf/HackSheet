@@ -6,17 +6,19 @@
 ---
 
 - [BruteForce](#bruteforce)
+- [CMS](#cms)
+- [Certificate](#certificate)
 - [Download .git](#download-git)
+- [Dynamodb](#dynamodb)
 - [Influx DB](#influx-db)
 - [Interesting routes](#interesting-routes)
-- [Mysql](#mysql)
+- [MySql](#mysql)
 - [Path traversal](#path-traversal)
 - [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
 - [SQL Injection](#sql-injection)
-- [XML external entity (XXE)](#xml-external-entity-xxe)
 - [SSTI](#ssti)
-- [CMS](#cms)
+- [XML external entity (XXE)](#xml-external-entity-xxe)
 
 # BruteForce
 ### Wordlist

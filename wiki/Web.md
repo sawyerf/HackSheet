@@ -36,6 +36,8 @@
 |:--------|:---------------|
 | Script  | `php,js,twig`  |
 | Text    | `html,txt,md`  |
+| Data    | `json,csv`     |
+| DB      | `db,sqlite`    |
 | Linux   | `sh,bin`       |
 | Windows | `ps1,exe`      |
 

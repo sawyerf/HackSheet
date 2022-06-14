@@ -1,8 +1,7 @@
 <picture>
-    <source width="500px" height="220px" srcset="https://user-images.githubusercontent.com/22857002/172902125-b945a54b-799f-4934-92fe-7e6819774d74.svg#gh-dark-mode-only" media="(prefers-color-scheme: dark)">
-    <img width="500px" height="220px" src="https://user-images.githubusercontent.com/22857002/172902121-1a7017ee-8a41-4003-8dc0-1ad7d4187d56.svg#gh-light-mode-only">
+    <source width="500px" height="220px" srcset="https://user-images.githubusercontent.com/22857002/173618731-d679fe64-fc90-417a-a544-dc433e75431f.svg#gh-dark-mode-only" media="(prefers-color-scheme: dark)">
+    <img width="500px" height="220px" src="https://user-images.githubusercontent.com/22857002/173618729-f2055b91-7961-4e11-9bd9-e5fb74d5baba.svg#gh-light-mode-only">
 </picture>
-
 
 ## 📇 Index
 <!-- - [☀️ General](/wiki/General.md) -->

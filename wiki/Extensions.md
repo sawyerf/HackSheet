@@ -1,5 +1,5 @@
 <picture>
-    <source height="100px" srcset="https://user-images.githubusercontent.com/28403617/172729625-a931492c-ab7f-4175-8f40-728c5aa96fd1.svg#gh-dark-mode-only" media="(prefers-color-scheme: dark)">
+    <source height="100px" srcset="https://user-images.githubusercontent.com/22857002/173634280-09e60055-f091-4ec2-8ac3-ee9f7553af86.svg#gh-dark-mode-only" media="(prefers-color-scheme: dark)">
     <img height="100px" src="https://user-images.githubusercontent.com/28403617/172729627-7ff8e230-a668-4e57-b7db-7ec9c809ebfd.svg#gh-light-mode-only">
 </picture>
 

@@ -82,6 +82,16 @@ snmp-check ip
 dig ANY @dns_ip domain
 ```
 
+### Information
+```bash
+dig TXT @dns_ip domain
+```
+
+### Tranfert Zone
+```bash
+dig axfr @dns_ip domain
+```
+
 ### Reverse Lookup
 ```bash
 dig -x ip @dns_ip

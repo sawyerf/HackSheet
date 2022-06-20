@@ -34,6 +34,11 @@ chmod +x lse.sh
 ./lse.sh -l1
 ```
 
+### Metasploit
+```bash
+msfconsole -q -x 'use exploit; set RHOSTS ip; set RPORT port; run; exit'
+```
+
 ### Docker
 ```bash
 curl -sL https://github.com/stealthcopter/deepce/raw/main/deepce.sh -O

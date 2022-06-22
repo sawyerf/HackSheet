@@ -117,5 +117,29 @@ subprocess.call('echo desbarres', shell=True) # Exit Code
 subprocess.check_output('echo desbarres', shell=True) # b'desbarres'
 ```
 
+# Thread
+```python
+from threading import Thread
+```
+### Run function
+```python
+thr = Thread(target=func, args=(1,))
+thr.start()
+thr.join()
+```
+
+### Run class
+```python
+class ExampleClass(Thread):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+
+	def run(self):
+		do_stuff
+
+thr = ExampleClass()
+thr.start()
+```
+
 # Pwn
 - [Example script](https://github.com/sawyerf/HackSheet/blob/main/scripts/pwn-connect.py)

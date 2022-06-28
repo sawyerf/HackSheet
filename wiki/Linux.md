@@ -9,6 +9,7 @@
 - [Enumeration](#enumeration)
 - [FTP](#ftp)
 - [Gdbserver](#gdbserver)
+- [Network](#network)
 - [Port Forwarding](#port-forwarding)
 - [Privilege Escalation](#privilege-escalation)
 - [Reverse Shell](#reverse-shell)
@@ -185,9 +186,23 @@ $(cat /etc/passwd)
 ```
 [GTFOBins - Bypass  local security restrictions](https://gtfobins.github.io/)
 
+# Network
+### Netstat
+```bash
+netstat -tulpn
+```
+
+### Scan Port
+```bash
+for port in {1..65535}; do echo > /dev/tcp/ip/$port && echo "$port open"; done 2>/dev/null
+```
+
+### Scan Ip
+```bash
+for i in {1..254}; do (ping -c 1 192.168.1.${i} | grep "bytes from" | grep -v "Unreachable" &); done;
+```
 
 # Port Forwarding
-
 ### Chisel
 
 ```bash

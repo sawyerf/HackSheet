@@ -154,6 +154,7 @@ hydra -l m.gates -P /usr/share/wordlists/rockyou.txt ftp://127.0.0.1
 ```bash
 sudo wireshark
 ```
+
 ### Get all Files
 - File > Export Object > HTTP
 - Rigth Click On request > Follow > TCP

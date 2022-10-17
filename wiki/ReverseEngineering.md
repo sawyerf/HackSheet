@@ -41,7 +41,21 @@ python -c "import pwn; shell = pwn.asm(pwn.shellcraft.i386.linux.sh()); print(sh
 21
 ```
 
-# GCC
+# GDB
+### Variables
+| Variable | What is ?             |
+|----------|-----------------------|
+| EIP      | Next Instruction      |
+| RDI      | First Arg of Function |
+| RSI      | Second Arg            |
+| RCX      | Third Arg             |
+
+### Print
+```
+x/s "string"
+x/x 0xff
+```
+
 ### Get env address
 ```
 x/10s **(char***)&environ

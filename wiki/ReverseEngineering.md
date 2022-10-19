@@ -5,6 +5,7 @@
 
 ---
 
+- [ASM](#asm)
 - [Binary ninja](#binary-ninja)
 - [Decompile Python Executable](#decompile-python-executable)
 - [GCC](#gcc)
@@ -12,6 +13,44 @@
 - [Macro Office PPTM](#macro-office-pptm)
 - [OverFlow](#overflow)
 - [Shellcode](#shellcode)
+
+# ASM
+### Variables
+| x64 | x32 | What is ?             |
+|:---:|:---:|-----------------------|
+| RAX | EAX | Return Value          |
+| EIP | EIP | Next Instruction      |
+| RCX | ECX | Counter               |
+| RSP | ESP | Stack Pointer         |
+| RDI | EDI | First Arg of Function |
+| RSI | ESI | Second Arg            |
+| RCX | ??? | Third Arg             | 
+
+[Source](https://www.cs.uaf.edu/2017/fall/cs301/lecture/09_11_registers.html)
+
+## Operation
+| Operation             | Explication             |
+|:----------------------|-------------------------|
+| **MOV** size dest,src | dest ← src              |
+| **LEA** dest,\[op\]   | dest ← addr op          |
+| **PUSH** op           | Increase RSP & Store op |
+| **POP** op            | Load op & Discrease RSP |
+|                       |                         |
+| **ADD** op1,op2       | op1 ← op1 + op2         |
+| **SUB** op1,op2       | op1 ← op1 - op2         |
+| **NEG** reg           | reg ← -reg              |
+| **INC** reg           | reg ← reg + 1           |
+| **DEC** reg           | reg ← reg - 1           |
+|                       |                         |
+| **AND** op1,op2       | op1 ← op1 & op2         |
+| **OR**  op1,op2       | op1 ← op1 | op2         |
+| **XOR** op1,op2       | op1 ← op1 ^ op2         |
+|                       |                         |
+| **CMP** op1,op2       | op1 - op2               |
+| **TEST** op1,op2      | op1 & op2               |
+| **JMP** op            | Jump to op              |
+
+[Source - Page 21](https://www.lacl.fr/tan/asm)
 
 # Overflow
 ### Basic
@@ -42,14 +81,6 @@ python -c "import pwn; shell = pwn.asm(pwn.shellcraft.i386.linux.sh()); print(sh
 ```
 
 # GDB
-### Variables
-| Variable | What is ?             |
-|----------|-----------------------|
-| EIP      | Next Instruction      |
-| RDI      | First Arg of Function |
-| RSI      | Second Arg            |
-| RCX      | Third Arg             |
-
 ### Print
 ```
 x/s "string"
@@ -60,6 +91,7 @@ x/x 0xff
 ```
 x/10s **(char***)&environ
 ```
+
 ## Peda
 ### Install
 ```bash

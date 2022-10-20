@@ -8,7 +8,7 @@
 - [ASM](#asm)
 - [Binary ninja](#binary-ninja)
 - [Decompile Python Executable](#decompile-python-executable)
-- [GCC](#gcc)
+- [GDB](#gdb)
 - [Lib Injection](#lib-injection)
 - [Macro Office PPTM](#macro-office-pptm)
 - [OverFlow](#overflow)
@@ -16,15 +16,17 @@
 
 # ASM
 ### Variables
-| x64 | x32 | What is ?             |
-|:---:|:---:|-----------------------|
-| RAX | EAX | Return Value          |
-| EIP | EIP | Next Instruction      |
-| RCX | ECX | Counter               |
-| RSP | ESP | Stack Pointer         |
-| RDI | EDI | First Arg of Function |
-| RSI | ESI | Second Arg            |
-| RCX | ??? | Third Arg             | 
+| x64     | x32       | What is ?               |
+|:-------:|:---------:|-------------------------|
+| RAX     | EAX       | Return Value            |
+| RCX     | ECX       | Counter (or Fourth Arg) |
+| RDX     | EDX       | Third Arg               | 
+| RSI     | ESI       | Second Arg              |
+| RDI     | EDI       | First Arg of Function   |
+| RSP     | ESP       | Stack Pointer           |
+| RIP     | EIP       | Next Instruction        |
+| R8-R11  | r8d-r11d  | Scratch register        |
+| R12-R15 | r12d-r15d | Preserved register      |
 
 [Source](https://www.cs.uaf.edu/2017/fall/cs301/lecture/09_11_registers.html)
 
@@ -81,14 +83,34 @@ python -c "import pwn; shell = pwn.asm(pwn.shellcraft.i386.linux.sh()); print(sh
 ```
 
 # GDB
-### Print
-```
-x/s "string"
-x/x 0xff
+### Command
+```gdb
+b *0x12345678      # Breakpoint
+b strcpy           # Breakpoint
+r                  # Run program
+r < <(echo lol)    # Run with pipe
+r arg1 arg2        # Run with arg
+c                  # Continue
+n                  # Next operation
+set $eax=0x00      # Set variable
+info register      # Show Register
 ```
 
-### Get env address
+### Print
+```gdb
+x/s "string"
+x/d 53
+x/x 0xff
+help x
+
+print $rax
 ```
+
+- [Gdb cheatsheet - gabriellesc](https://gabriellesc.github.io/teaching/resources/GDB-cheat-sheet.pdf)
+- [Gdb cheatsheet - darkdust](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf)
+
+### Get env address
+```gdb
 x/10s **(char***)&environ
 ```
 

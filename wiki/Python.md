@@ -9,6 +9,9 @@
 - [Execute Command](#execute-command)
 - [Pwn](#pwn)
 - [Requests](#requests)
+- [Server](#server)
+- [Socket](#socket)
+- [Thread](#thread)
 
 # Requests
 ```python
@@ -47,6 +50,26 @@ r.request
 
 ### Example
 - [Example script](https://github.com/sawyerf/HackSheet/blob/main/scripts/requests-classic.py)
+
+# Server
+### Handler
+```python
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class httpHandler(BaseHTTPRequestHandler):
+	def do_GET(self):
+		self.send_response(200)
+		self.end_headers()
+		self.wfile.write(b'Hello World')
+
+	def do_POST():
+		pass
+
+httpd = HTTPServer(('0.0.0.0', 8000), httpHandler)
+httpd.serve_forever()
+```
+
+- [http.server doc](https://docs.python.org/3/library/http.server.html#http.server.BaseHTTPRequestHandler)
 
 # Base64
 ```python

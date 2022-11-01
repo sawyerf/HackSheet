@@ -6,7 +6,7 @@
 ---
 
 - [Encode](#encode)
-- [GPG](#gpg)
+- [GPG / PGP](#gpg-/-pgp)
 - [Hashcat](#hashcat)
 - [Identifier](#identifier)
 - [John](#john)
@@ -44,7 +44,7 @@ hashcat -m 500 hash.txt /usr/share/wordlists/rockyou.txt
 crunch <minimum length> <maximum length> <charset> -t <pattern> -o wordlist.lst
 ```
 
-# GPG
+# GPG / PGP
 ### Buteforce
 ```bash
 gpg2john private.key > hash.txt

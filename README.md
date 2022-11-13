@@ -29,6 +29,7 @@
 - [GTFOBins](https://gtfobins.github.io/)
 - [HackTricks](https://book.hacktricks.xyz/)
 - [Les Tutos de Processus](https://lestutosdeprocessus.fr/ctf-cheat-sheet/)
+- [Cheat.sh](http://cheat.sh/)
 
 ## ❤️ Contributors
 [![contributors](https://contrib.rocks/image?repo=sawyerf/hacksheet)](https://github.com/sawyerf/hacksheet/graphs/contributors)

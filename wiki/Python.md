@@ -7,6 +7,7 @@
 
 - [Base64](#base64)
 - [Execute Command](#execute-command)
+- [Hash](#hash)
 - [Pwn](#pwn)
 - [Requests](#requests)
 - [Server](#server)
@@ -23,6 +24,20 @@ import requests
 r = requests.get('http://example.com')
 ```
 
+### Session
+```python
+# Replace requests by `s` in your future requests to use session.
+s = requests.session()
+```
+
+### Proxies
+```python
+s.proxies = {
+  "http": "localhost:8080",
+  "https": "localhost:8080",
+}
+```
+
 ### POST
 ```python
 # Classic Post
@@ -34,6 +49,8 @@ r = requests.post('http://example.com/submit',
     verify=False # Check Certificate
 )
 ```
+
+- [Example Script](/scripts/requests-classic.py)
 
 ### Response Objects
 ```python
@@ -109,6 +126,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
 
 ### Common
 ```python
+# Set Timeout
+sock.settimeout(5)
 # Receive
 sock.recv(1024) # b'Random content'
 # Send
@@ -164,5 +183,21 @@ thr = ExampleClass()
 thr.start()
 ```
 
+# Hash
+```python
+import hashlib
+```
+
+### MD5
+```python
+hashlib.md5(b'password').hexdigest() # '5f4dcc3b5aa765d61d8327deb882cf99'
+```
+
+### Sha256
+```python
+hashlib.sha256(b'password').hexdigest() # '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'
+```
+
 # Pwn
 - [Example script](https://github.com/sawyerf/HackSheet/blob/main/scripts/pwn-connect.py)
+- [Shellcode](/wiki/ReverseEngineering.md#shellcode)

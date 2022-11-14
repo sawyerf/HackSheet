@@ -10,6 +10,7 @@
 - [📇 Index](/wiki/Index.md)
 - [🔒 Crypto](/wiki/Crypto.md)
 - [☁️ Cloud](/wiki/Cloud.md)
+- [🗄️ Database](/wiki/Database.md)
 - [🦊 Extensions](/wiki/Extensions.md)
 - [🐧 Linux](/wiki/Linux.md)
 - [🌐 Network](/wiki/Network.md)
@@ -25,11 +26,12 @@
 ## 🔗 Interesting Links
 - [Awesome CTF Cheatsheet](https://github.com/uppusaikiran/awesome-ctf-cheatsheet)
 - [Boxentriq](https://www.boxentriq.com/code-breaking/cipher-identifier)
+- [Cheat.sh](http://cheat.sh/)
 - [Explain Shell](https://explainshell.com/)
 - [GTFOBins](https://gtfobins.github.io/)
 - [HackTricks](https://book.hacktricks.xyz/)
 - [Les Tutos de Processus](https://lestutosdeprocessus.fr/ctf-cheat-sheet/)
-- [Cheat.sh](http://cheat.sh/)
+- [OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/index.html)
 
 ## ❤️ Contributors
 [![contributors](https://contrib.rocks/image?repo=sawyerf/hacksheet)](https://github.com/sawyerf/hacksheet/graphs/contributors)

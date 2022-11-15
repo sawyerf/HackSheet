@@ -154,7 +154,7 @@ scp -P 22 -r ~/.peda user@192.168.1.ip:/tmp/peda
 ```
 
 # FTP
-*Port: 21*
+> *Port: 21*
 
 ### Download all files
 ```
@@ -162,7 +162,11 @@ wget -m --user=user--password=fpassword ftp://10.10.11.160
 ```
 
 # Gdbserver
-*Port: 1337*
+> *Port: 1337*
+>
+> Gdbserver is a computer program that makes it possible to remotely debug other programs.
+> You need to have a copy of the program you want to debug put onto the target system.
+
 ```
 $ gdb
 (gdb) target extended-remote ip:port

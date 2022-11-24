@@ -126,10 +126,10 @@ Apply:
 
 If you have good rights to apply a pod, most of the time you will be able to turn up the volume of the root machine.
 
-You can find an definition of malicious pod here: [pwn.yml](https://github.com/sawyerf/HackSheet/scripts/pwn.yaml)
+You can find an definition of malicious pod here: [pwn.yml](https://github.com/sawyerf/HackSheet/scripts/pwn.yml)
 
 ```
-kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt --token=$token apply -f pwn.yaml
+kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt --token=$token apply -f pwn.yml
 ```
 
 ### Exec command

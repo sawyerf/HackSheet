@@ -142,9 +142,17 @@ bash -p
 > 
 > File transfer protocol (FTP) is an Internet tool provided by TCP/IP. It helps to transfer files from one computer to another by providing access to directories or folders on remote computers 
 
-### Download all files
+### Scan
+```bash
+nmap --script ftp-* -p 21 ip
 ```
-wget -m --user=user--password=fpassword ftp://10.10.11.160
+
+### Download all files
+```bash
+wget -m --user=user --password=fpassword ftp://ip
+```
+```bash
+wget -m --user=anonymous --password=anonymous ftp://ip
 ```
 
 # Gdbserver

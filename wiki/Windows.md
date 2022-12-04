@@ -9,6 +9,7 @@
 - [Enum4Linux](#enum4linux)
 - [Enumeration](#enumeration)
 - [Exfiltration](#exfiltration)
+- [IMPACKET](#impacket)
 - [Kerberos](#kerberos)
 - [Ldap](#ldap)
 - [MSRPC](#msrpc)
@@ -225,7 +226,24 @@ Invoke-WebRequest -Uri http://example.com -OutFile file.out
 Foremost file.dmp
 ```
 
+### Volatility
+```
+vol -f memory.dmp scan_name | tee output_scan
+```
+
+### Bulk Extractor
+```bash
+bulk_extractor -o bulk_output memory.dmp
+```
+
 # Virus
+### Virus Total
+> Analyse suspicious files, domains, IPs and URLs to detect malware and other breaches, automatically share them with the security community. 
+>
+> VirusTotal aggregates many antivirus products and online scan engines called Contributors
+
+- [VirusTotal Site](https://www.virustotal.com/gui/home/upload)
+
 ### Cobalt Strike
 - [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 1](https://blog.nviso.eu/2021/10/21/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-1/)
 - [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 2](https://blog.nviso.eu/2021/10/27/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-2/)

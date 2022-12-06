@@ -8,8 +8,10 @@
 - [DNS](#dns)
 - [Hydra](#hydra)
 - [List opened port localy](#list-opened-port-localy)
+- [NFS](#nfs)
 - [Nmap](#nmap)
 - [Packet Analyzer](#packet-analyzer)
+- [RPCBind](#rpcbind)
 - [SNMP](#snmp)
 - [Scan Local Network](#scan-local-network)
 
@@ -97,6 +99,36 @@ dnsrecon -r 127.0.0.0/24 -n ip_dns
 ```bash
 snmp-check ip
 ```
+
+# RPCBind
+> The rpcbind utility maps RPC services to the ports on which they listen. RPC processes notify rpcbind when they start, registering the ports they are listening on and the RPC program numbers they expect to serve. - [redhat](https://access.redhat.com/documentation/en-en/red_hat_enterprise_linux/6/html/storage_administration_guide/s2-nfs-methodology-portmap)
+> 
+> Port: 111
+
+## Info
+```
+rpcinfo -p ip
+```
+
+- [Pentesting NFS Servers](https://medium.com/@minimalist.ascent/pentesting-nfs-servers-a22090e1ec09)
+
+# NFS
+>  A Network File System (NFS) allows remote hosts to mount file systems over a network and interact with those file systems as though they are mounted locally. - [redhat](https://access.redhat.com/documentation/en-en/red_hat_enterprise_linux/6/html/storage_administration_guide/ch-nfs)
+>
+> Port: 2049
+
+> To bypass permission change your uid
+### Show NFS
+```bash
+showmount -e squashed.htb
+```
+
+### Mount
+```bash
+mount -t nfs squashed.htb:/ nsf_mount -o nolock
+```
+
+- [Pentesting NFS Servers](https://medium.com/@minimalist.ascent/pentesting-nfs-servers-a22090e1ec09)
 
 # Scan Local Network
 > ARP Scannner Tools shows every active IPv4 device on your Subnet. Since ARP is non-routable, this type of scanner only works on the local LAN.

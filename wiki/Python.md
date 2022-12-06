@@ -13,6 +13,7 @@
 - [Server](#server)
 - [Socket](#socket)
 - [Thread](#thread)
+- [Urlencode](#urlencode)
 
 # Requests
 ```python
@@ -104,6 +105,25 @@ text = base64.b64decode(encodedStr).decode() # 'Test Random String'
 data = "Test Random String"
 encodedBytes = base64.b64encode(data.encode()).decode() # 'VGVzdCBSYW5kb20gU3RyaW5n'
 ```
+
+# Urlencode
+```python
+import urllib.parse
+```
+
+### Decode
+```python
+urllib.parse.quote('/Tést Rä') # '/T%C3%A9st%20R%C3%A4'
+urllib.parse.quote('/', safe='') # '%2F'
+```
+
+### Encode
+```python
+urllib.parse.unquote('lol+lol') # 'lol+lol'
+urllib.parse.unquote_plus('lol+lol') # 'lol lol'
+```
+
+- [How to encode URLs in Python](https://www.urldecoder.io/python/)
 
 # Socket
 ```python

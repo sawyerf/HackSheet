@@ -13,9 +13,9 @@
 - [🗄️ Database](/wiki/Database.md)
 - [🦊 Extensions](/wiki/Extensions.md)
 - [🐧 Linux](/wiki/Linux.md)
-- Languages
-  - [🐍 Python](/wiki/Python.md)
+- [💬 Languages]()
   - [☕ Javascript](/wiki/Javascript.md)
+  - [🐍 Python](/wiki/Python.md)
 - [🌐 Network](/wiki/Network.md)
 - [🔍 OSINT](/wiki/OSINT.md)
 - [🥷 Reverse Engineering](/wiki/ReverseEngineering.md)

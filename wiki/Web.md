@@ -386,7 +386,13 @@ python3 script/get-pdf-annot.py -f "<HTTP(S)_URL> OR <PDF_PATH>"
 ```
 
 # Cookies
+> Cookies can be hijack by different way.
+> **Sign cookies** can be decode to find vulnerable informations or bruteforce to find secret in order to create your own cookies.
+> Other type of cookies need to be steal to hijack session.
+
 ## Flask
+> Flask cookies are sign cookie so you can decode it or bruteforce the secret.
+
 ### Decode
 ```bash
 flask-unsign --decode --cookie 'eyJ1c2VyIjoiYWRtaW4ifQ.Y4za7g.ZHmbIsx0-wdFV_IgyWI7MruY9OY'
@@ -403,8 +409,15 @@ flask-unsign --sign --cookie "{'user': 'admin'}" --secret 'mySecret'
 ```
 
 ## Json Web Token (JWT)
-> A JWT comes in this structure, aaaaaa.bbbbbb.ccccc. aaaaaaa represents the header, bbbbb represents the payload while cccccc represents the signature.
+> A JWT comes in this structure:
+> `AAAAAA.BBBBBB.CCCCCC`.
+> AAAAAA represents the header, BBBBBB represents the payload while CCCCCC represents the signature.
 > 
+> The most common algorithms for signing JWTs are:
+> - HMAC + SHA256 (HS256)
+> - RSASSA-PKCS1-v1_5 + SHA256 (RS256)
+> - ECDSA + P-256 + SHA256 ( ES256)
+>
 > [Source](https://krevetk0.medium.com/brute-forcing-jwt-token-hs256-6f545d24c7c3)
 
 ### Encode / Decode
@@ -474,22 +487,6 @@ githacker --url http://url/.git/ --folder result
 ### Scaning
 ```bash
 wpscan --force update -e --url IP --disable-tls-checks
-```
-
-# Interesting routes
-### Graphql
-
-```
-/graphql
-/graphiql
-/graphql.php
-/graphql/console
-```
-
-### Python
-```
-/console
-/cgi
 ```
 
 # Certificate

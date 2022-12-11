@@ -13,7 +13,7 @@
 - [Kerberos](#kerberos)
 - [Ldap](#ldap)
 - [MSRPC](#msrpc)
-- [Samba](#samba)
+- [SMB](#SMB)
 - [Virus](#virus)
 - [WinRM](#winrm)
 
@@ -24,13 +24,14 @@
 curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASany.exe -O
 ```
 
-<!--
-## Manual
-### Users
-- Guest
-- Administrator
-- krbtgt
--->
+### PrivescCheck
+> This script aims to enumerate common Windows configuration issues that can be leveraged for local privilege escalation. It also gathers various information that might be useful for exploitation and/or post-exploitation.
+
+```powershell
+powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck"
+```
+
+[Github](https://github.com/itm4n/PrivescCheck)
 
 # Enum4Linux
 > Enum4linux is a tool for enumerating information from Windows and Samba systems.
@@ -50,10 +51,10 @@ enum4linux -a -u '' -p '' ip
 enum4linux -a -u user -p password ip
 ```
 
-# Samba
+# SMB
 > *Port: 445*
 >
-> Samba is a popular freeware program that allows users to access and use files, printers, and other commonly shared resources.
+> SMB/Samba is a popular freeware program that allows users to access and use files, printers, and other commonly shared resources.
 
 ### Nmap
 ```bash
@@ -85,6 +86,11 @@ smbmap -u user -p pass -H ip
 ### Bruteforce
 ```bash
 crackmapexec smb ip -u users.txt -p password.txt
+```
+
+### Bruteforce users
+```bash
+crackmapexec smb -u 'user' -p 'pass' ip --rid-brute 
 ```
 
 # MSRPC

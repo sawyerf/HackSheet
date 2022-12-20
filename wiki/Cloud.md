@@ -161,7 +161,7 @@ kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt -
 
 #### List all containers files.
 ```bash
-curl http://<account>.blob.core.windows.net/<container>?restype=container&comp=list&se=<SE>&sp=<SP>&sv=<SV>&sr=c&sig=<SIG>%3D
+curl "http://<account>.blob.core.windows.net/<container>?restype=container&comp=list&se=<SE>&sp=<SP>&sv=<SV>&sr=c&sig=<SIG>%3D"
 ```
 
 #### List one file

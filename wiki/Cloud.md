@@ -149,23 +149,23 @@ kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt -
 
 ## Domain name for Azure resources storages
 
-- Blob storage -> https://[account].blob.core.windows.net
-- Azure Data Lake Storage Gen2 -> https://[account].dfs.core.windows.net
-- Azure files -> https://[account].file.core.windows.net
-- Queue storage -> https://[account].queue.core.windows.net
-- Table storage -> https://[account].table.core.windows.net
+- Blob storage -> <strong>https://[account].blob.core.windows.net</strong>
+- Azure Data Lake Storage Gen2 -> <strong>https://[account].dfs.core.windows.net</strong>
+- Azure files -> <strong>https://[account].file.core.windows.net</strong>
+- Queue storage -> <strong>https://[account].queue.core.windows.net</strong>
+- Table storage -> <strong>https://[account].table.core.windows.net</strong>
 
 
 ## List public blob
 
 
 #### List all containers files.
-```
+```bash
 curl http://<account>.blob.core.windows.net/<container>?restype=container&comp=list&se=<SE>&sp=<SP>&sv=<SV>&sr=c&sig=<SIG>%3D
 ```
 
 #### List one file
-```
+```bash
 curl "http://<account>.blob.core.windows.net/<container>/<file_name>?se=<SE>&sp=rl&sv=<SV>&sr=c&sig=<SIG>%3D"
 ```
 
@@ -178,7 +178,8 @@ curl "http://<account>.blob.core.windows.net/<container>/<file_name>?se=<SE>&sp=
 
 #### List table content
 
-```
+```py
+# script.py
 from azure.cosmosdb.table import TableService
 
 table_service = TableService(account_name="...", sas_token='se=<SE>&sp=<SP>&sv=<SV>&tn=<Table>&sig=<SIG>%3D', protocol='http', endpoint_suffix='core.windows.net')

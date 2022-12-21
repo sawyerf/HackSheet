@@ -146,7 +146,6 @@ kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt -
 - [Pods PE](https://bishopfox.com/blog/kubernetes-pod-privilege-escalation)
 
 # Azure
-
 ## Domain name for Azure resources storages
 
 - Blob storage -> <strong>https://[account].blob.core.windows.net</strong>
@@ -155,16 +154,13 @@ kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt -
 - Queue storage -> <strong>https://[account].queue.core.windows.net</strong>
 - Table storage -> <strong>https://[account].table.core.windows.net</strong>
 
-
 ## List public blob
-
-
-#### List all containers files.
+### List all containers files.
 ```bash
 curl "http://<account>.blob.core.windows.net/<container>?restype=container&comp=list&se=<SE>&sp=<SP>&sv=<SV>&sr=c&sig=<SIG>%3D"
 ```
 
-#### List one file
+### List one file
 ```bash
 curl "http://<account>.blob.core.windows.net/<container>/<file_name>?se=<SE>&sp=rl&sv=<SV>&sr=c&sig=<SIG>%3D"
 ```
@@ -173,10 +169,8 @@ curl "http://<account>.blob.core.windows.net/<container>/<file_name>?se=<SE>&sp=
 
 [Here you can find more information for query parameters](https://learn.microsoft.com/en-us/rest/api/storageservices/create-service-sas#service-sas-example)
 
-
 ## Azure cosmos
-
-#### List table content
+### List table content
 
 ```py
 # script.py

@@ -7,6 +7,7 @@
 
 - [AWS](#aws)
 - [Kubernetes](#kubernetes)
+- [Azure](#azure)
 
 # AWS
 
@@ -224,3 +225,39 @@ kubectl --namespace=<NAMESPACE> --server <HOST> --certificate-authority=ca.crt -
 - [Kubernetes Methodology 1](https://www.cyberark.com/resources/threat-research-blog/kubernetes-pentest-methodology-part-1)
 - [Kubernetes Methodology 2](https://www.cyberark.com/resources/threat-research-blog/kubernetes-pentest-methodology-part-2)
 - [Pods PE](https://bishopfox.com/blog/kubernetes-pod-privilege-escalation)
+
+# Azure
+## Domain name for Azure resources storages
+
+- Blob storage -> <strong>https://[account].blob.core.windows.net</strong>
+- Azure Data Lake Storage Gen2 -> <strong>https://[account].dfs.core.windows.net</strong>
+- Azure files -> <strong>https://[account].file.core.windows.net</strong>
+- Queue storage -> <strong>https://[account].queue.core.windows.net</strong>
+- Table storage -> <strong>https://[account].table.core.windows.net</strong>
+
+## List public blob
+### List all containers files.
+```bash
+curl "http://<account>.blob.core.windows.net/<container>?restype=container&comp=list&se=<SE>&sp=<SP>&sv=<SV>&sr=c&sig=<SIG>%3D"
+```
+
+### List one file
+```bash
+curl "http://<account>.blob.core.windows.net/<container>/<file_name>?se=<SE>&sp=rl&sv=<SV>&sr=c&sig=<SIG>%3D"
+```
+
+> Note %3D is '=' and it's required
+
+[Here you can find more information for query parameters](https://learn.microsoft.com/en-us/rest/api/storageservices/create-service-sas#service-sas-example)
+
+## Azure cosmos
+### List table content
+
+```py
+# script.py
+from azure.cosmosdb.table import TableService
+
+table_service = TableService(account_name="...", sas_token='se=<SE>&sp=<SP>&sv=<SV>&tn=<Table>&sig=<SIG>%3D', protocol='http', endpoint_suffix='core.windows.net')
+print(table_service.exists('<TABLE>'))
+print(list(table_service.query_entities('<TABLE>')))
+```

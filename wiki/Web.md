@@ -483,6 +483,12 @@ githacker --url http://url/.git/ --folder result
 ```
 [Source](https://github.com/WangYihang/GitHacker)
 
+
+```bash
+git-dumper http://url .
+```
+[Source](https://github.com/arthaud/git-dumper)
+
 # CMS
 ### Scaning
 ```bash

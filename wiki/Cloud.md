@@ -9,6 +9,9 @@
 - [Kubernetes](#kubernetes)
 
 # AWS
+
+[aws cli documentation](https://docs.aws.amazon.com/cli/latest/reference/index.html)
+
 ### Configure
 ```
 aws configure
@@ -19,40 +22,118 @@ Default region name [None]: eu-west-3
 Default output format [None]:
 ```
 
-## S3
-### List bucket
+> Note: If you have a multiple of account you can specifie your account and your endpoint url with `--profile <profile_name>` and `--endpoint-url <url>`.
+
+<strong>Example:</strong>
+
+```bash
+aws --profile <profile> --endpoint-url <url> iam list-attached-user-policies --user-name <USERNAME>
 ```
-aws --profile <profile> --endpoint-url <url> s3api list-buckets --query "Buckets"
+
+## IAM
+
+[aws iam documentation](https://docs.aws.amazon.com/cli/latest/reference/iam/index.html#cli-aws-iam)
+
+### List policies attached to an user
+```bash
+aws iam list-attached-user-policies --user-name <USERNAME>
+```
+
+This command will return an object like this:
+
+```json
+{
+  "AttachedPolicies": [
+      {
+          "PolicyName": "<POLICY_NAME>",
+          "PolicyArn": "arn:aws:iam::......:policy/<POLICY_NAME>"
+      }
+  ],
+  "IsTruncated": false
+}
+```
+
+### Get policy detail from an policy arn
+
+```bash
+aws iam get-policy --policy-arn <ARN_POLICY>
+```
+
+### List user policy
+
+```bash
+aws iam list-user-policies --user-name <USER_NAME>
+```
+
+### Get user policy detail for an user
+
+```bash
+aws iam get-user-policy --user-name <USER_NAME> --policy-name <POLICY_NAME>
+```
+
+## LAMBDA
+
+[aws lambda documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/index.html)
+
+### List function
+
+```bash
+aws lambda list-functions
+```
+
+### Get public url of the function
+
+```bash
+aws lambda get-function-url-config --function-name <FUNCTION_NAME>
+```
+
+## S3
+
+[aws s3 documentation](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html)
+[aws s3api documentation](https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html)
+
+
+### List buckets
+```bash
+aws s3api list-buckets --query "Buckets"
+```
+
+### List object in buckets
+```bash
+aws s3api list-objects --bucket <BUCKET>
 ```
 
 ### List bucket files
-```
-aws --profile <profile> --endpoint-url <url> s3 ls --recursive s3://<bucket_name>
+```bash
+aws s3 ls --recursive s3://<bucket_name>
 ```
 
 ### Get file from bucket
-```
-aws --profile <profile> --endpoint-url <url> s3 sync s3://<bucket_name> <destination>
+```bash
+aws s3 sync s3://<bucket_name> <destination>
 ```
 
 ### Upload file to bucket
-```
-aws --profile <profile> --endpoint-url <url> s3 cp <path_to_file> s3://<bucket_name>
+```bash
+aws s3 cp <path_to_file> s3://<bucket_name>
 ```
 
 ## Dynamodb
+
+[aws dynamodb documentation](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/index.html)
+
 ### List all tables
-```
-aws --profile <profile> --endpoint-url <url> dynamodb list-tables
+```bash
+aws dynamodb list-tables
 ```
 
 ### Get data from table
-```
-aws --profile <profile> --endpoint-url <url> dynamodb scan --table-name <table_name>
+```bash
+aws dynamodb scan --table-name <table_name>
 ```
 
 ### Create table
-```
+```bash
 aws --endpoint-url http://localhost:4566 dynamodb create-table --table-name example \
   --attribute-definitions AttributeName=example_attribute,AttributeType=S \
   --key-schema AttributeName=example_attribute,KeyType=HASH \
@@ -60,7 +141,7 @@ aws --endpoint-url http://localhost:4566 dynamodb create-table --table-name exam
 ```
 
 ### Put item in table
-```
+```bash
 aws --endpoint-url http://localhost:4566 dynamodb put-item --table-name example \
   --item '{"example_attribute":{"S":"Example"}}'
 ```

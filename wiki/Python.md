@@ -111,13 +111,22 @@ encodedBytes = base64.b64encode(data.encode()).decode() # 'VGVzdCBSYW5kb20gU3Rya
 import urllib.parse
 ```
 
-### Decode
+### Encode
 ```python
 urllib.parse.quote('/Tést Rä') # '/T%C3%A9st%20R%C3%A4'
 urllib.parse.quote('/', safe='') # '%2F'
 ```
 
-### Encode
+#### Interpret newlines as char
+
+```python
+my_string = 'hello\nworld'
+my_string = my_string.encode().decode('unicode_escape')
+urllib.parse.quote(my_string) # 'hello%0Aworld'
+```
+
+
+### Decode
 ```python
 urllib.parse.unquote('lol+lol') # 'lol+lol'
 urllib.parse.unquote_plus('lol+lol') # 'lol lol'

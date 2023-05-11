@@ -53,6 +53,8 @@ curl -sL https://github.com/stealthcopter/deepce/raw/main/deepce.sh -O
 - `/etc/cron.d`
 - `/opt/`
 - `/usr/local/bin`
+- `/etc/nginx/sites-available/default`
+- `/etc/apache2/sites-enabled/000-default.conf`
 
 ### Proc
 `/proc/` contains useful information about the processes that are currently running

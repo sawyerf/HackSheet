@@ -202,8 +202,8 @@ hashcat -m 13100 --force -a 0 KERBEROS_FILE /usr/share/wordlists/rockyou.txt
 ```
 
 # Responder
-> Responder is a LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication. [source](https://github.com/lgandx/Responder)
-> Basicaly a rogue everything use for exemple to steal NLTLM Hash, usernames...
+> Responder is a LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication.  
+> Basicaly a rogue everything use for exemple to steal NLTLM Hash, usernames...  [source](https://github.com/lgandx/Responder)
 
 Server (attacker) :
 ```bash

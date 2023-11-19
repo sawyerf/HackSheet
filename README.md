@@ -8,6 +8,7 @@
 ## 📇 Index
 <!-- - [☀️ General](/wiki/General.md) -->
 - [📇 Index](/wiki/Index.md)
+- [💸 Block-chain](/wiki/BlockChain.md)
 - [🔒 Crypto](/wiki/Crypto.md)
 - [☁️ Cloud](/wiki/Cloud.md)
 - [🗄️ Database](/wiki/Database.md)
@@ -31,8 +32,10 @@
 - [Cheat.sh](http://cheat.sh/)
 - [Explain Shell](https://explainshell.com/)
 - [GTFOBins](https://gtfobins.github.io/)
+- [Lolbas](https://lolbas-project.github.io/)
+- [WADComs](https://wadcoms.github.io/)
+- [The Hacker Recipes](https://www.thehacker.recipes/)
 - [HackTricks](https://book.hacktricks.xyz/)
-- [Les Tutos de Processus](https://lestutosdeprocessus.fr/ctf-cheat-sheet/)
 - [OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/index.html)
 
 ## ❤️ Contributors

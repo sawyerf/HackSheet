@@ -8,6 +8,7 @@
 - [AWS](#aws)
 - [Kubernetes](#kubernetes)
 - [Azure](#azure)
+- [Docker registry](#docker-registry)
 
 # AWS
 
@@ -261,3 +262,76 @@ table_service = TableService(account_name="...", sas_token='se=<SE>&sp=<SP>&sv=<
 print(table_service.exists('<TABLE>'))
 print(list(table_service.query_entities('<TABLE>')))
 ```
+
+
+# Docker registry
+### Recon
+
+> By default, docker registry run on port 5000.
+> The first step to do is to know if the registry need authentication token or not. You can do this by sending a request to the registry.
+
+```bash
+curl -I http://<HOST>:5000/v2/
+```
+
+### Get authentication token
+
+> With the header `www-authenticate` you can know if the registry need authentication token or not.
+
+Example of response:
+```
+Www-Authenticate: Bearer realm="http://<HOST>:5001/",service="Docker registry",error="invalid_token"
+```
+
+From this response you can try to get a token, the realm is the url to get the token.
+
+Examples of requests:
+
+```bash
+# Try to get only access on catalog
+curl http://<REALM_URL>/auth?scope=registry:catalog:*&service=<NAME_OF_SERVICE>
+```
+
+```bash
+# Try to get only pull,push right on an image
+curl http://<REALM_URL>/auth?scope=repository:<IMAGE_NAME>:*&service=<NAME_OF_SERVICE>
+```
+
+```bash
+# Try to get only pull right on an image
+curl http://<REALM_URL>/auth?scope=repository:<IMAGE_NAME>:pull&service=<NAME_OF_SERVICE>
+```
+
+### Get all images names
+
+> You can get all images names by sending a request to the registry with the authentication token.
+
+```bash
+curl -H "Authorization: Bearer eyJ......" http://<HOST>:5000/v2/_catalog
+```
+
+### Get all tags for an image
+
+> You can get all tags for an image by sending a request to the registry with the authentication token.
+
+```bash
+curl -H "Authorization: Bearer eyJ......" http://<HOST>:5000/v2/<IMAGE>/tags/list
+```
+
+### Get image manifest
+
+> You can get image manifest by sending a request to the registry with the authentication token.
+
+```bash
+curl -H "Authorization: Bearer eyJ......" http://<HOST>:5000/v2/<IMAGE>/manifests/<TAG>
+```
+
+### Get image layer
+
+```bash
+curl  -H "Authorization: Bearer eyJ......" http://<HOST>:5000/v2/<IMAGE>/blobs/<LAYER>
+```
+
+### Automated tools
+
+You can also use an automated tool like [DockerRegistryGrabber](https://github.com/Syzik/DockerRegistryGrabber).

